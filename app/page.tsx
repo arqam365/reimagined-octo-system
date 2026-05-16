@@ -81,7 +81,7 @@ export default function Home() {
 
                 <h1
                   className="elegant-text font-bold leading-[0.88] tracking-tight mb-0 whitespace-nowrap"
-                  style={{ fontSize: 'clamp(2.6rem, 9vw, 8rem)' }}
+                  style={{ fontSize: 'clamp(2.4rem, 7vw, 6rem)' }}
                 >
                   <span className="text-white">MAZEN</span><span className="text-amber-500/90">CITO</span>
                 </h1>
