@@ -619,7 +619,7 @@ export default function Reservation() {
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="elegant-text text-2xl font-bold text-[#0A0806]">Booking Summary</h2>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 font-ui text-xs font-bold bg-green-50 text-green-700 border border-green-200">
-                    <span className="w-2 h-2 bg-green-500 animate-pulse" />
+                    <span className="w-2 h-2 bg-green-500 animate-pulse" aria-hidden="true" />
                     Available
                   </span>
                 </div>

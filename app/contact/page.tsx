@@ -73,13 +73,13 @@ export default function Contact() {
                 <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Phone</p>
                 <a
                   href="tel:+966555674383"
-                  className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
+                  className="font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
                 >
                   +966 55 567 4383
                 </a>
                 <a
                   href="tel:+966554430556"
-                  className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors"
+                  className="font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
                 >
                   +966 55 443 0556
                 </a>
@@ -196,7 +196,7 @@ export default function Contact() {
 
                 <div className="overflow-hidden h-[400px] mb-6">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d39.19!3d21.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiAzOcKwMTEnMjQuMCJF!5e0!3m2!1sen!2ssa!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.872!2d39.1726!3d21.6226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d14e7e5c5555%3A0x0!2sMazencito%20Pizzeria!5e0!3m2!1sen!2ssa!4v1716900000000"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

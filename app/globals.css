@@ -81,12 +81,12 @@
   }
 
   body {
-    font-family: 'Lora', serif;
+    font-family: 'Lora', 'Georgia', 'Times New Roman', serif;
     @apply bg-background text-foreground;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
     @apply font-bold;
   }
 }
@@ -101,19 +101,19 @@
   }
 
   .elegant-text {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
   }
 
   .font-display {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
   }
 
   .font-body {
-    font-family: 'Lora', serif;
+    font-family: 'Lora', 'Georgia', 'Times New Roman', serif;
   }
 
   .font-ui {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 

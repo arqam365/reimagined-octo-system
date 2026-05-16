@@ -202,7 +202,7 @@ export default function Menu() {
         </section>
 
         {/* Category Tabs */}
-        <div className="bg-[#F5F0E8] sticky top-16 z-40 border-b border-[#0A0806]/8 py-4">
+        <div className="bg-[#F5F0E8] sticky top-0 md:top-16 lg:top-20 z-40 border-b border-[#0A0806]/8 py-4">
           <div className="flex flex-wrap gap-2 px-6 sm:px-8 max-w-7xl mx-auto">
             {categories.map((category) => (
               <button

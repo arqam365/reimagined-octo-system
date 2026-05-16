@@ -63,18 +63,15 @@ export default function Home() {
 
         {/* ── A. HERO — Editorial split ── */}
         <section className="bg-[#0A0806] min-h-screen relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] min-h-screen">
+          <div className="grid grid-cols-1 md:grid-cols-[55%_45%] lg:grid-cols-[55%_45%] min-h-screen">
 
             {/* LEFT COLUMN — text */}
             <div className="relative z-10 pt-36 pb-16 px-8 sm:px-12 lg:px-20 flex flex-col justify-between min-h-screen">
 
               {/* TOP: location label */}
-              <div className="flex items-center gap-0">
-                <div className="w-0.5 h-full bg-amber-500 self-stretch" />
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/35 pl-3 border-l-2 border-amber-500">
-                  Ash Shati &middot; Jeddah &middot; KSA
-                </p>
-              </div>
+              <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/35 pl-3 border-l-2 border-amber-500">
+                Ash Shati &middot; Jeddah &middot; KSA
+              </p>
 
               {/* MIDDLE: main content */}
               <div className="flex-1 flex flex-col justify-center py-12">
@@ -133,8 +130,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN — image (desktop only) */}
-            <div className="hidden lg:block relative overflow-hidden">
+            {/* RIGHT COLUMN — image */}
+            <div className="hidden md:block relative overflow-hidden">
               <Image
                 src="/hero-pasta.jpg"
                 alt="Mazencito Pizzeria — wood-fired Italian cuisine"
@@ -148,7 +145,7 @@ export default function Home() {
           </div>
 
           {/* Mobile background image (below z-10 text) */}
-          <div className="absolute inset-0 lg:hidden">
+          <div className="absolute inset-0 md:hidden">
             <Image
               src="/hero-pasta.jpg"
               alt=""
@@ -173,7 +170,7 @@ export default function Home() {
 
         {/* ── B. BRAND PROMISE STRIP ── */}
         <section className="bg-[#8B1A1A] py-4 overflow-hidden">
-          <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/75 text-center whitespace-nowrap">
+          <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/75 text-center whitespace-normal sm:whitespace-nowrap">
             Same Quality &nbsp;&middot;&nbsp; Same Fresh Ingredients &nbsp;&middot;&nbsp; Better Value &nbsp;&middot;&nbsp; Wood-Fired Since Day One &nbsp;&middot;&nbsp; Ash Shati, Jeddah
           </p>
         </section>
@@ -332,7 +329,7 @@ export default function Home() {
 
             <Link
               href="/menu"
-              className="font-ui text-xs tracking-[0.3em] uppercase text-black bg-amber-500 px-7 py-4 hover:bg-amber-400 transition-colors inline-block w-fit min-h-[44px] flex items-center"
+              className="font-ui text-xs tracking-[0.3em] uppercase text-black bg-amber-500 px-7 py-4 hover:bg-amber-400 transition-colors w-fit min-h-[44px] flex items-center justify-center"
             >
               Order Now
             </Link>
@@ -496,7 +493,7 @@ export default function Home() {
                   <p className="font-ui text-xs uppercase tracking-widest text-[#5C4A3A]/50 mb-1">Phone</p>
                   <a
                     href="tel:+966555674383"
-                    className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
+                    className="font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
                   >
                     +966 55 567 4383
                   </a>
@@ -523,7 +520,7 @@ export default function Home() {
               <div className="mt-8">
                 <Link
                   href="/reservation"
-                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] text-white px-6 py-3.5 hover:bg-[#8B1A1A] transition-colors inline-block min-h-[44px] flex items-center"
+                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] text-white px-6 py-3.5 hover:bg-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
                 >
                   Reserve a Table
                 </Link>
@@ -533,7 +530,7 @@ export default function Home() {
             {/* RIGHT: map */}
             <div className="overflow-hidden h-[400px] lg:h-[500px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d39.19!3d21.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiAzOcKwMTEnMjQuMCJF!5e0!3m2!1sen!2ssa!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.872!2d39.1726!3d21.6226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d14e7e5c5555%3A0x0!2sMazencito%20Pizzeria!5e0!3m2!1sen!2ssa!4v1716900000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
