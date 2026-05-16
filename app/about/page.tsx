@@ -59,12 +59,12 @@ export default function About() {
         </section>
 
         {/* Story Section */}
-        <section className="bg-[#F5F0E8]">
+        <section className="bg-[#FFFFFF]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
 
             {/* Text */}
             <div className="flex flex-col justify-center px-8 sm:px-14 lg:px-20 py-20 order-2 lg:order-1">
-              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-8">
+              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#CC2229] mb-8">
                 Our Beginning
               </p>
               <h2
@@ -74,14 +74,14 @@ export default function About() {
                 Authentic Italian<br />
                 <em className="italic">in the heart of Jeddah</em>
               </h2>
-              <div className="h-px w-12 bg-[#8B1A1A]/30 mb-8" />
-              <p className="font-body text-[#5C4A3A] text-lg leading-relaxed mb-5">
+              <div className="h-px w-12 bg-[#CC2229]/30 mb-8" />
+              <p className="font-body text-[#0A0806] text-lg leading-relaxed mb-5">
                 Mazencito Pizzeria was founded with a simple yet passionate mission: to bring authentic Italian pizza tradition to the heart of Jeddah. Our journey began with a deep love for Italian culinary heritage and an unwavering commitment to quality.
               </p>
-              <p className="font-body text-[#5C4A3A] text-lg leading-relaxed mb-5">
+              <p className="font-body text-[#0A0806] text-lg leading-relaxed mb-5">
                 Every pizza that leaves our kitchen is a masterpiece, crafted with traditional Italian techniques using the finest fresh ingredients. We believe in the power of food to create connections, build community, and celebrate the warmth and hospitality that defines both Italian and Saudi cultures.
               </p>
-              <p className="font-body text-[#5C4A3A]/70 text-base leading-relaxed">
+              <p className="font-body text-[#0A0806]/70 text-base leading-relaxed">
                 Whether you&apos;re joining us for a casual family dinner or a special gathering, Mazencito offers the perfect blend of authentic flavours, welcoming atmosphere, and genuine hospitality.
               </p>
             </div>
@@ -89,8 +89,8 @@ export default function About() {
             {/* Image */}
             <div className="relative h-[60vw] lg:h-auto lg:min-h-[600px] overflow-hidden order-1 lg:order-2">
               <Image
-                src="/restaurant-interior.jpg"
-                alt="Mazencito Restaurant Interior"
+                src="/gallery-IMG-20240413-WA0025-95e4fd9.jpg"
+                alt="Mazencito Pizzeria — Vegetariano pizza"
                 fill
                 className="object-cover"
               />
@@ -105,8 +105,8 @@ export default function About() {
             {/* Image */}
             <div className="relative h-[60vw] lg:h-auto lg:min-h-[600px] overflow-hidden">
               <Image
-                src="/chef.jpg"
-                alt="Mazencito pizza preparation"
+                src="/gallery-IMG-20240425-WA0043.jpg"
+                alt="Mazencito Pizzeria — fresh truffle risotto"
                 fill
                 className="object-cover"
               />
@@ -123,7 +123,7 @@ export default function About() {
                 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
               >
                 Baked at 500&deg;C.<br />
-                <em className="italic text-amber-500/80">Never rushed.</em>
+                <em className="italic text-[#CC2229]/80">Never rushed.</em>
               </h2>
               <div className="h-px w-12 bg-white/10 mb-8" />
               <p className="font-body text-white/60 text-lg leading-relaxed mb-5">
@@ -140,12 +140,12 @@ export default function About() {
         </section>
 
         {/* Values — stacked list, NOT cards */}
-        <section className="bg-[#F5F0E8] py-24 md:py-32">
+        <section className="bg-[#FFFFFF] py-24 md:py-32">
           <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
 
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
               <div>
-                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-4">
+                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#CC2229] mb-4">
                   What We Stand For
                 </p>
                 <h2
@@ -176,7 +176,7 @@ export default function About() {
                     >
                       {value.title}
                     </h3>
-                    <p className="font-body text-[#5C4A3A] text-lg leading-relaxed max-w-lg">
+                    <p className="font-body text-[#0A0806] text-lg leading-relaxed max-w-lg">
                       {value.description}
                     </p>
                   </div>
@@ -187,7 +187,7 @@ export default function About() {
         </section>
 
         {/* Promise — typographic list on wine red */}
-        <section className="bg-[#8B1A1A] py-24 md:py-32">
+        <section className="bg-[#CC2229] py-24 md:py-32">
           <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
 
             <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30 mb-12">
@@ -225,13 +225,13 @@ export default function About() {
                   style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}
                 >
                   Shortlisted.<br />
-                  <em className="not-italic text-amber-500">Come see why.</em>
+                  <em className="not-italic text-[#CC2229]">Come see why.</em>
                 </h2>
               </div>
               <div className="flex flex-col gap-3 sm:flex-shrink-0">
                 <Link
                   href="/reservation"
-                  className="font-ui text-xs tracking-[0.3em] uppercase bg-amber-500 text-black px-7 py-4 hover:bg-amber-400 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#CC2229] text-white px-7 py-4 hover:bg-[#B01E24] transition-colors text-center min-h-[44px] flex items-center justify-center"
                 >
                   Reserve Your Table
                 </Link>

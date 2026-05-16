@@ -29,10 +29,10 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full px-4 py-3.5 border border-[#0A0806]/12 bg-white text-[#0A0806] placeholder-[#5C4A3A]/35 focus:outline-none focus:ring-2 focus:ring-[#8B1A1A]/20 focus:border-[#8B1A1A]/40 transition-all font-body text-sm'
+    'w-full px-4 py-3.5 border border-[#0A0806]/12 bg-white text-[#0A0806] placeholder-[#0A0806]/35 focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20 focus:border-[#CC2229]/40 transition-all font-body text-sm'
 
   const labelClass =
-    'block font-ui text-[10px] font-semibold uppercase tracking-[0.3em] text-[#5C4A3A]/60 mb-2'
+    'block font-ui text-[10px] font-semibold uppercase tracking-[0.3em] text-[#0A0806]/60 mb-2'
 
   return (
     <>
@@ -57,12 +57,12 @@ export default function Contact() {
         </section>
 
         {/* Contact info bar — horizontal, not cards */}
-        <section className="bg-[#F5F0E8] border-b border-[#0A0806]/8">
+        <section className="bg-[#FFFFFF] border-b border-[#0A0806]/8">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="flex flex-col sm:flex-row sm:divide-x sm:divide-[#0A0806]/8">
 
               <div className="py-8 sm:pr-12">
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Address</p>
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Address</p>
                 <p className="font-body text-[#0A0806] text-base">
                   Ash Shati, Atelier Lavie<br />
                   Jeddah, Saudi Arabia
@@ -70,38 +70,38 @@ export default function Contact() {
               </div>
 
               <div className="py-8 sm:px-12">
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Phone</p>
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Phone</p>
                 <a
                   href="tel:+966555674383"
-                  className="font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
+                  className="font-body text-[#0A0806] hover:text-[#CC2229] transition-colors min-h-[44px] flex items-center"
                 >
                   +966 55 567 4383
                 </a>
                 <a
                   href="tel:+966554430556"
-                  className="font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
+                  className="font-body text-[#0A0806] hover:text-[#CC2229] transition-colors min-h-[44px] flex items-center"
                 >
                   +966 55 443 0556
                 </a>
               </div>
 
               <div className="py-8 sm:pl-12">
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Hours</p>
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Hours</p>
                 <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
-                <p className="font-body text-[#5C4A3A]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
+                <p className="font-body text-[#0A0806]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Form + Map side by side */}
-        <section className="bg-[#F5F0E8] py-20 md:py-24">
+        <section className="bg-[#FFFFFF] py-20 md:py-24">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
               {/* Contact Form */}
               <div>
-                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-6">
+                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#CC2229] mb-6">
                   Send a Message
                 </p>
                 <h2 className="elegant-text text-4xl font-bold text-[#0A0806] mb-10">
@@ -110,13 +110,13 @@ export default function Contact() {
 
                 {submitted ? (
                   <div className="border border-[#0A0806]/10 p-12 text-center bg-white">
-                    <div className="w-14 h-14 bg-[#8B1A1A]/8 flex items-center justify-center mx-auto mb-5">
-                      <CheckCircle2 className="w-7 h-7 text-[#8B1A1A]" />
+                    <div className="w-14 h-14 bg-[#CC2229]/8 flex items-center justify-center mx-auto mb-5">
+                      <CheckCircle2 className="w-7 h-7 text-[#CC2229]" />
                     </div>
                     <h3 className="elegant-text text-2xl font-bold text-[#0A0806] mb-3">
                       Message Received
                     </h3>
-                    <p className="font-body text-[#5C4A3A]">
+                    <p className="font-body text-[#0A0806]">
                       We&apos;ll get back to you shortly.
                     </p>
                   </div>
@@ -176,7 +176,7 @@ export default function Contact() {
 
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-ui text-xs tracking-[0.3em] uppercase px-6 py-4 hover:bg-[#701515] transition-colors min-h-[44px]"
+                      className="w-full flex items-center justify-center gap-2 bg-[#CC2229] text-white font-ui text-xs tracking-[0.3em] uppercase px-6 py-4 hover:bg-[#B01E24] transition-colors min-h-[44px]"
                     >
                       <Send className="w-3.5 h-3.5" />
                       Send Message
@@ -187,7 +187,7 @@ export default function Contact() {
 
               {/* Map */}
               <div>
-                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-6">
+                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#CC2229] mb-6">
                   Find Us
                 </p>
                 <h2 className="elegant-text text-4xl font-bold text-[#0A0806] mb-10">
@@ -206,12 +206,12 @@ export default function Contact() {
                 </div>
 
                 <div className="border border-[#0A0806]/8 p-6 bg-white">
-                  <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-[#5C4A3A]/50 mb-2">
+                  <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/50 mb-2">
                     Opening Hours
                   </p>
                   <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
-                  <p className="font-body text-[#5C4A3A]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
-                  <p className="font-ui text-[10px] text-[#5C4A3A]/40 tracking-wide mt-3">
+                  <p className="font-body text-[#0A0806]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
+                  <p className="font-ui text-[10px] text-[#0A0806]/40 tracking-wide mt-3">
                     Ash Shati, Atelier Lavie, Jeddah, Saudi Arabia
                   </p>
                 </div>
@@ -221,7 +221,7 @@ export default function Contact() {
         </section>
 
         {/* WhatsApp strip */}
-        <section className="bg-[#8B1A1A] py-20">
+        <section className="bg-[#CC2229] py-20">
           <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
               <div>
@@ -240,7 +240,7 @@ export default function Contact() {
                 href="https://wa.me/966555674383"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-ui text-xs tracking-[0.3em] uppercase bg-amber-500 text-black px-8 py-4 hover:bg-amber-400 transition-colors min-h-[44px] flex items-center justify-center sm:flex-shrink-0"
+                className="font-ui text-xs tracking-[0.3em] uppercase bg-[#CC2229] text-white px-8 py-4 hover:bg-[#B01E24] transition-colors min-h-[44px] flex items-center justify-center sm:flex-shrink-0"
               >
                 Open WhatsApp
               </a>

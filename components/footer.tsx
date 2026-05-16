@@ -12,11 +12,11 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <Link href="/" aria-label="Mazencito Pizzeria — Home">
             <Image
-              src="/logo.png"
+              src="/mazencito-brand-logo.jpg"
               alt="Mazencito Pizzeria"
-              width={140}
-              height={70}
-              className="h-12 w-auto object-contain invert mix-blend-screen opacity-70 hover:opacity-90 transition-opacity duration-200"
+              width={160}
+              height={112}
+              className="h-14 w-auto object-contain invert mix-blend-screen opacity-70 hover:opacity-90 transition-opacity duration-200"
             />
           </Link>
           <a
@@ -105,7 +105,7 @@ export default function Footer() {
             <div className="space-y-3">
               <Link
                 href="/reservation"
-                className="w-full text-center bg-amber-500 text-black font-ui text-xs tracking-[0.25em] uppercase px-5 py-3.5 hover:bg-amber-400 transition-colors min-h-[44px] flex items-center justify-center"
+                className="w-full text-center bg-[#CC2229] text-white font-ui text-xs tracking-[0.25em] uppercase px-5 py-3.5 hover:bg-[#B01E24] transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Reserve a Table
               </Link>

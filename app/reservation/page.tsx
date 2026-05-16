@@ -38,10 +38,10 @@ const PACKAGE_FEES: Record<string, number> = {
 }
 
 const inputClass =
-  'w-full px-4 py-3.5 border border-[#0A0806]/12 bg-white text-[#0A0806] placeholder-[#5C4A3A]/35 focus:outline-none focus:ring-2 focus:ring-[#8B1A1A]/20 focus:border-[#8B1A1A]/40 transition-all text-sm font-body'
+  'w-full px-4 py-3.5 border border-[#0A0806]/12 bg-white text-[#0A0806] placeholder-[#0A0806]/35 focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20 focus:border-[#CC2229]/40 transition-all text-sm font-body'
 
 const labelClass =
-  'block font-ui text-[10px] font-semibold uppercase tracking-[0.3em] text-[#5C4A3A]/60 mb-1.5'
+  'block font-ui text-[10px] font-semibold uppercase tracking-[0.3em] text-[#0A0806]/60 mb-1.5'
 
 const STEPS: Step[] = ['form', 'availability', 'payment-form', 'payment-processing', 'success']
 const VISIBLE_STEPS: Step[] = ['form', 'availability', 'payment-form', 'success']
@@ -188,77 +188,77 @@ export default function Reservation() {
 
   const BookingSummaryCard = ({ compact = false }: { compact?: boolean }) => (
     <div className={`space-y-2 ${compact ? '' : 'space-y-3'}`}>
-      <div className="flex items-center gap-2.5 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-        <div className="w-7 h-7 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
+      <div className="flex items-center gap-2.5 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+        <div className="w-7 h-7 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
           {bookingType === 'table'
-            ? <Clock className="w-3.5 h-3.5 text-[#8B1A1A]" />
-            : <UtensilsCrossed className="w-3.5 h-3.5 text-[#8B1A1A]" />}
+            ? <Clock className="w-3.5 h-3.5 text-[#CC2229]" />
+            : <UtensilsCrossed className="w-3.5 h-3.5 text-[#CC2229]" />}
         </div>
         <div>
-          <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Type</p>
+          <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Type</p>
           <p className="font-ui text-sm font-semibold text-[#0A0806]">
             {bookingType === 'table' ? 'Table Reservation' : 'Catering Service'}
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-2.5 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-        <div className="w-7 h-7 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-          <Users className="w-3.5 h-3.5 text-[#8B1A1A]" />
+      <div className="flex items-center gap-2.5 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+        <div className="w-7 h-7 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+          <Users className="w-3.5 h-3.5 text-[#CC2229]" />
         </div>
         <div>
-          <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Name</p>
+          <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Name</p>
           <p className="font-ui text-sm font-semibold text-[#0A0806]">{formData.name}</p>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <div className="flex items-center gap-2 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-          <CalendarDays className="w-3.5 h-3.5 text-[#8B1A1A] flex-shrink-0" />
+        <div className="flex items-center gap-2 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+          <CalendarDays className="w-3.5 h-3.5 text-[#CC2229] flex-shrink-0" />
           <div>
-            <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Date</p>
+            <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Date</p>
             <p className="font-ui text-xs font-semibold text-[#0A0806] leading-tight">{formatDate(formData.date)}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-          <Users className="w-3.5 h-3.5 text-[#8B1A1A] flex-shrink-0" />
+        <div className="flex items-center gap-2 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+          <Users className="w-3.5 h-3.5 text-[#CC2229] flex-shrink-0" />
           <div>
-            <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Guests</p>
+            <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Guests</p>
             <p className="font-ui text-xs font-semibold text-[#0A0806]">{formData.guests}</p>
           </div>
         </div>
       </div>
       {bookingType === 'table' && (
-        <div className="flex items-center gap-2.5 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-          <Clock className="w-3.5 h-3.5 text-[#8B1A1A] flex-shrink-0" />
+        <div className="flex items-center gap-2.5 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+          <Clock className="w-3.5 h-3.5 text-[#CC2229] flex-shrink-0" />
           <div>
-            <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Time</p>
+            <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Time</p>
             <p className="font-ui text-sm font-semibold text-[#0A0806]">{formData.time}</p>
           </div>
         </div>
       )}
       {bookingType === 'catering' && (
         <>
-          <div className="flex items-center gap-2.5 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-            <MapPin className="w-3.5 h-3.5 text-[#8B1A1A] flex-shrink-0" />
+          <div className="flex items-center gap-2.5 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+            <MapPin className="w-3.5 h-3.5 text-[#CC2229] flex-shrink-0" />
             <div>
-              <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Location</p>
+              <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Location</p>
               <p className="font-ui text-sm font-semibold text-[#0A0806]">{formData.eventLocation}</p>
             </div>
           </div>
-          <div className="flex items-center gap-2.5 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-            <UtensilsCrossed className="w-3.5 h-3.5 text-[#8B1A1A] flex-shrink-0" />
+          <div className="flex items-center gap-2.5 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+            <UtensilsCrossed className="w-3.5 h-3.5 text-[#CC2229] flex-shrink-0" />
             <div>
-              <p className="font-ui text-[10px] text-[#5C4A3A]/50 uppercase tracking-wide">Package</p>
+              <p className="font-ui text-[10px] text-[#0A0806]/50 uppercase tracking-wide">Package</p>
               <p className="font-ui text-sm font-semibold text-[#0A0806]">{PACKAGE_LABELS[formData.cateringPackage]}</p>
             </div>
           </div>
         </>
       )}
-      <div className="flex items-center justify-between p-4 bg-[#8B1A1A]/5 border border-[#8B1A1A]/15">
+      <div className="flex items-center justify-between p-4 bg-[#CC2229]/5 border border-[#CC2229]/15">
         <div>
           <p className="font-ui text-xs font-bold text-[#0A0806]">
             {bookingType === 'table' ? 'Reservation Fee' : 'Booking Deposit'}
           </p>
-          <p className="font-ui text-[11px] text-[#5C4A3A]/60">
+          <p className="font-ui text-[11px] text-[#0A0806]/60">
             {bookingType === 'table'
               ? 'Deducted from final bill'
               : reservationFee === 0
@@ -266,7 +266,7 @@ export default function Reservation() {
               : 'Per-person rate applies'}
           </p>
         </div>
-        <span className="font-ui text-xl font-bold text-amber-600">
+        <span className="font-ui text-xl font-bold text-[#CC2229]">
           {reservationFee === 0 ? 'TBD' : `${reservationFee} SAR`}
         </span>
       </div>
@@ -298,7 +298,7 @@ export default function Reservation() {
         </section>
 
         {/* Main Form Area */}
-        <div className="bg-[#F5F0E8] py-16 pb-24">
+        <div className="bg-[#FFFFFF] py-16 pb-24">
           <div className="max-w-2xl mx-auto px-4 sm:px-6">
 
             {/* Booking Type Selector — two full-width buttons */}
@@ -310,7 +310,7 @@ export default function Reservation() {
                   className={`flex flex-col items-center gap-2.5 p-6 transition-all border-r border-[#0A0806]/10 min-h-[44px] ${
                     bookingType === 'table'
                       ? 'bg-[#0A0806] text-white'
-                      : 'bg-white text-[#5C4A3A]/60 hover:text-[#0A0806]'
+                      : 'bg-white text-[#0A0806]/60 hover:text-[#0A0806]'
                   }`}
                 >
                   <Clock className="w-5 h-5" />
@@ -322,7 +322,7 @@ export default function Reservation() {
                   className={`flex flex-col items-center gap-2.5 p-6 transition-all min-h-[44px] ${
                     bookingType === 'catering'
                       ? 'bg-[#0A0806] text-white'
-                      : 'bg-white text-[#5C4A3A]/60 hover:text-[#0A0806]'
+                      : 'bg-white text-[#0A0806]/60 hover:text-[#0A0806]'
                   }`}
                 >
                   <UtensilsCrossed className="w-5 h-5" />
@@ -343,22 +343,22 @@ export default function Reservation() {
                         <div
                           className={`w-9 h-9 flex items-center justify-center text-xs font-bold transition-all border ${
                             isDone
-                              ? 'bg-[#8B1A1A] border-[#8B1A1A] text-white'
+                              ? 'bg-[#CC2229] border-[#CC2229] text-white'
                               : isActive
-                              ? 'bg-white border-[#8B1A1A] text-[#8B1A1A]'
-                              : 'bg-white border-[#0A0806]/15 text-[#5C4A3A]/40'
+                              ? 'bg-white border-[#CC2229] text-[#CC2229]'
+                              : 'bg-white border-[#0A0806]/15 text-[#0A0806]/40'
                           }`}
                         >
                           {isDone ? <CheckCircle className="w-4 h-4" /> : i + 1}
                         </div>
-                        <span className="font-ui text-[10px] text-[#5C4A3A]/50 hidden sm:block uppercase tracking-wide">
+                        <span className="font-ui text-[10px] text-[#0A0806]/50 hidden sm:block uppercase tracking-wide">
                           {stepLabels[s]}
                         </span>
                       </div>
                       {i < VISIBLE_STEPS.length - 1 && (
                         <div
                           className={`h-0.5 w-12 mb-5 transition-all ${
-                            visibleIndex > i ? 'bg-[#8B1A1A]' : 'bg-[#0A0806]/12'
+                            visibleIndex > i ? 'bg-[#CC2229]' : 'bg-[#0A0806]/12'
                           }`}
                         />
                       )}
@@ -373,7 +373,7 @@ export default function Reservation() {
               <form onSubmit={handleCheckAvailability} noValidate>
                 <div className="bg-white border border-[#0A0806]/10 p-6 md:p-8 space-y-5">
 
-                  <p className="font-ui text-xs font-bold uppercase tracking-widest text-[#5C4A3A]/40 pb-3 border-b border-[#0A0806]/8">
+                  <p className="font-ui text-xs font-bold uppercase tracking-widest text-[#0A0806]/40 pb-3 border-b border-[#0A0806]/8">
                     {bookingType === 'table' ? 'Table Reservation' : 'Catering Service'} &mdash; Contact Details
                   </p>
 
@@ -424,7 +424,7 @@ export default function Reservation() {
                     </div>
                   </div>
 
-                  <p className="font-ui text-xs font-bold uppercase tracking-widest text-[#5C4A3A]/40 pb-3 border-b border-[#0A0806]/8 pt-2">
+                  <p className="font-ui text-xs font-bold uppercase tracking-widest text-[#0A0806]/40 pb-3 border-b border-[#0A0806]/8 pt-2">
                     {bookingType === 'table' ? 'Booking Details' : 'Event Details'}
                   </p>
 
@@ -470,7 +470,7 @@ export default function Reservation() {
                         <div className="space-y-4">
                           {[{ label: 'Lunch', slots: LUNCH_SLOTS }, { label: 'Dinner', slots: DINNER_SLOTS }].map(({ label, slots }) => (
                             <div key={label}>
-                              <p className="font-ui text-xs font-semibold text-[#5C4A3A]/50 uppercase tracking-widest mb-2">{label}</p>
+                              <p className="font-ui text-xs font-semibold text-[#0A0806]/50 uppercase tracking-widest mb-2">{label}</p>
                               <div className="flex flex-wrap gap-2">
                                 {slots.map((slot) => {
                                   const unavailable = UNAVAILABLE_SLOTS.includes(slot)
@@ -487,15 +487,15 @@ export default function Reservation() {
                                       }}
                                       className={`px-4 py-2.5 font-ui text-sm font-medium border transition-all min-h-[44px] ${
                                         unavailable
-                                          ? 'border-[#0A0806]/8 text-[#5C4A3A]/30 bg-[#F5F0E8] line-through cursor-not-allowed'
+                                          ? 'border-[#0A0806]/8 text-[#0A0806]/30 bg-[#FFFFFF] line-through cursor-not-allowed'
                                           : formData.time === slot
-                                          ? 'border-[#8B1A1A] bg-[#8B1A1A] text-white'
-                                          : 'border-[#0A0806]/12 bg-white hover:border-[#8B1A1A]/40 text-[#0A0806]'
+                                          ? 'border-[#CC2229] bg-[#CC2229] text-white'
+                                          : 'border-[#0A0806]/12 bg-white hover:border-[#CC2229]/40 text-[#0A0806]'
                                       }`}
                                     >
                                       {slot}
                                       {unavailable && (
-                                        <span className="ml-1.5 text-[10px] text-[#5C4A3A]/30">Full</span>
+                                        <span className="ml-1.5 text-[10px] text-[#0A0806]/30">Full</span>
                                       )}
                                     </button>
                                   )
@@ -570,15 +570,15 @@ export default function Reservation() {
                               onClick={() => setFormData((p) => ({ ...p, cateringPackage: pkg.key }))}
                               className={`p-3 border-2 text-left transition-all min-h-[44px] ${
                                 formData.cateringPackage === pkg.key
-                                  ? 'border-[#8B1A1A] bg-[#8B1A1A]/5'
-                                  : 'border-[#0A0806]/10 bg-white hover:border-[#8B1A1A]/30'
+                                  ? 'border-[#CC2229] bg-[#CC2229]/5'
+                                  : 'border-[#0A0806]/10 bg-white hover:border-[#CC2229]/30'
                               }`}
                             >
-                              <p className={`font-ui text-sm font-bold mb-0.5 ${formData.cateringPackage === pkg.key ? 'text-[#8B1A1A]' : 'text-[#0A0806]'}`}>
+                              <p className={`font-ui text-sm font-bold mb-0.5 ${formData.cateringPackage === pkg.key ? 'text-[#CC2229]' : 'text-[#0A0806]'}`}>
                                 {pkg.label}
                               </p>
-                              <p className="font-ui text-[11px] font-semibold text-amber-600">{pkg.price}</p>
-                              <p className="font-ui text-[11px] text-[#5C4A3A]/50 mt-1 leading-tight">{pkg.desc}</p>
+                              <p className="font-ui text-[11px] font-semibold text-[#CC2229]">{pkg.price}</p>
+                              <p className="font-ui text-[11px] text-[#0A0806]/50 mt-1 leading-tight">{pkg.desc}</p>
                             </button>
                           ))}
                         </div>
@@ -601,7 +601,7 @@ export default function Reservation() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#8B1A1A] text-white font-ui text-xs tracking-[0.3em] uppercase hover:bg-[#701515] transition-all disabled:opacity-70 disabled:cursor-not-allowed min-h-[44px]"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#CC2229] text-white font-ui text-xs tracking-[0.3em] uppercase hover:bg-[#B01E24] transition-all disabled:opacity-70 disabled:cursor-not-allowed min-h-[44px]"
                   >
                     {isLoading ? (
                       <><Loader2 className="w-5 h-5 animate-spin" /> Checking Availability...</>
@@ -625,83 +625,83 @@ export default function Reservation() {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                    <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                      {bookingType === 'table' ? <Clock className="w-4 h-4 text-[#8B1A1A]" /> : <UtensilsCrossed className="w-4 h-4 text-[#8B1A1A]" />}
+                  <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                    <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                      {bookingType === 'table' ? <Clock className="w-4 h-4 text-[#CC2229]" /> : <UtensilsCrossed className="w-4 h-4 text-[#CC2229]" />}
                     </div>
                     <div>
-                      <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Booking Type</p>
+                      <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Booking Type</p>
                       <p className="font-ui font-semibold text-[#0A0806]">{bookingType === 'table' ? 'Table Reservation' : 'Catering Service'}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                    <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                      <Users className="w-4 h-4 text-[#8B1A1A]" />
+                  <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                    <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                      <Users className="w-4 h-4 text-[#CC2229]" />
                     </div>
                     <div>
-                      <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Name</p>
+                      <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Name</p>
                       <p className="font-ui font-semibold text-[#0A0806]">{formData.name}</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                      <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                        <CalendarDays className="w-4 h-4 text-[#8B1A1A]" />
+                    <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                      <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                        <CalendarDays className="w-4 h-4 text-[#CC2229]" />
                       </div>
                       <div>
-                        <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Date</p>
+                        <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Date</p>
                         <p className="font-ui font-semibold text-[#0A0806] text-sm">{formatDate(formData.date)}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                      <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                        <Users className="w-4 h-4 text-[#8B1A1A]" />
+                    <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                      <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                        <Users className="w-4 h-4 text-[#CC2229]" />
                       </div>
                       <div>
-                        <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Guests</p>
+                        <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Guests</p>
                         <p className="font-ui font-semibold text-[#0A0806]">{formData.guests}</p>
                       </div>
                     </div>
                   </div>
                   {bookingType === 'table' && (
-                    <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                      <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                        <Clock className="w-4 h-4 text-[#8B1A1A]" />
+                    <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                      <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                        <Clock className="w-4 h-4 text-[#CC2229]" />
                       </div>
                       <div>
-                        <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Time Slot</p>
+                        <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Time Slot</p>
                         <p className="font-ui font-semibold text-[#0A0806]">{formData.time}</p>
                       </div>
                     </div>
                   )}
                   {bookingType === 'catering' && (
                     <>
-                      <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                        <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                          <MapPin className="w-4 h-4 text-[#8B1A1A]" />
+                      <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                        <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                          <MapPin className="w-4 h-4 text-[#CC2229]" />
                         </div>
                         <div>
-                          <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Event Location</p>
+                          <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Event Location</p>
                           <p className="font-ui font-semibold text-[#0A0806]">{formData.eventLocation}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                        <div className="w-8 h-8 bg-[#8B1A1A]/10 flex items-center justify-center flex-shrink-0">
-                          <UtensilsCrossed className="w-4 h-4 text-[#8B1A1A]" />
+                      <div className="flex items-center gap-3 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                        <div className="w-8 h-8 bg-[#CC2229]/10 flex items-center justify-center flex-shrink-0">
+                          <UtensilsCrossed className="w-4 h-4 text-[#CC2229]" />
                         </div>
                         <div>
-                          <p className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide">Package</p>
+                          <p className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide">Package</p>
                           <p className="font-ui font-semibold text-[#0A0806]">{PACKAGE_LABELS[formData.cateringPackage]}</p>
                         </div>
                       </div>
                     </>
                   )}
-                  <div className="flex items-center justify-between p-4 bg-[#8B1A1A]/5 border border-[#8B1A1A]/15">
+                  <div className="flex items-center justify-between p-4 bg-[#CC2229]/5 border border-[#CC2229]/15">
                     <div>
                       <p className="font-ui text-sm font-bold text-[#0A0806]">
                         {bookingType === 'table' ? 'Reservation Fee' : 'Booking Deposit'}
                       </p>
-                      <p className="font-ui text-xs text-[#5C4A3A]/60">
+                      <p className="font-ui text-xs text-[#0A0806]/60">
                         {bookingType === 'table'
                           ? 'Deducted from your final bill'
                           : reservationFee === 0
@@ -709,7 +709,7 @@ export default function Reservation() {
                           : 'Per-person rate applies on the event day'}
                       </p>
                     </div>
-                    <span className="font-ui text-2xl font-bold text-amber-600">
+                    <span className="font-ui text-2xl font-bold text-[#CC2229]">
                       {reservationFee === 0 ? 'TBD' : `${reservationFee} SAR`}
                     </span>
                   </div>
@@ -717,13 +717,13 @@ export default function Reservation() {
 
                 <button
                   onClick={() => setStep('payment-form')}
-                  className="mt-6 w-full px-6 py-4 bg-[#8B1A1A] text-white font-ui text-xs tracking-[0.3em] uppercase hover:bg-[#701515] transition-all min-h-[44px]"
+                  className="mt-6 w-full px-6 py-4 bg-[#CC2229] text-white font-ui text-xs tracking-[0.3em] uppercase hover:bg-[#B01E24] transition-all min-h-[44px]"
                 >
                   Proceed to Payment
                 </button>
                 <button
                   onClick={handleReset}
-                  className="mt-3 w-full px-6 py-2.5 bg-transparent font-ui text-[#5C4A3A]/60 text-sm hover:text-[#0A0806] transition-colors min-h-[44px]"
+                  className="mt-3 w-full px-6 py-2.5 bg-transparent font-ui text-[#0A0806]/60 text-sm hover:text-[#0A0806] transition-colors min-h-[44px]"
                 >
                   Edit Details
                 </button>
@@ -740,14 +740,14 @@ export default function Reservation() {
 
                     <div className="flex items-center justify-between pb-3 border-b border-[#0A0806]/8">
                       <h2 className="elegant-text text-xl font-bold text-[#0A0806]">Payment Details</h2>
-                      <div className="flex items-center gap-1.5 font-ui text-xs text-[#5C4A3A]/50">
+                      <div className="flex items-center gap-1.5 font-ui text-xs text-[#0A0806]/50">
                         <Lock className="w-3.5 h-3.5" />
                         Secured
                       </div>
                     </div>
 
                     {/* Mock card visual */}
-                    <div className="relative h-44 bg-gradient-to-br from-[#8B1A1A] via-[#8B1A1A]/85 to-[#5a1414] p-5 flex flex-col justify-between overflow-hidden shadow-lg select-none">
+                    <div className="relative h-44 bg-gradient-to-br from-[#CC2229] via-[#CC2229]/85 to-[#5a1414] p-5 flex flex-col justify-between overflow-hidden shadow-lg select-none">
                       <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-4 right-4 w-32 h-32 border-2 border-white" />
                         <div className="absolute top-8 right-8 w-32 h-32 border-2 border-white" />
@@ -808,7 +808,7 @@ export default function Reservation() {
                           maxLength={19}
                           className={`${inputClass} pl-10 ${cardErrors.cardNumber ? 'border-red-300 ring-1 ring-red-300' : ''}`}
                         />
-                        <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5C4A3A]/40" />
+                        <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#0A0806]/40" />
                       </div>
                       {cardErrors.cardNumber && (
                         <p className="mt-1 text-xs text-red-500 flex items-center gap-1 font-ui">
@@ -854,16 +854,16 @@ export default function Reservation() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 p-3 bg-[#F5F0E8] border border-[#0A0806]/8">
-                      <ShieldCheck className="w-5 h-5 text-[#8B1A1A] flex-shrink-0" />
-                      <p className="font-ui text-xs text-[#5C4A3A]/60">
+                    <div className="flex items-center gap-2 p-3 bg-[#FFFFFF] border border-[#0A0806]/8">
+                      <ShieldCheck className="w-5 h-5 text-[#CC2229] flex-shrink-0" />
+                      <p className="font-ui text-xs text-[#0A0806]/60">
                         Your payment is secured with 256-bit SSL encryption. Card details are never stored.
                       </p>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-amber-500 text-black font-ui text-xs tracking-[0.3em] uppercase hover:bg-amber-400 transition-all min-h-[44px] font-bold"
+                      className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-[#CC2229] text-white font-ui text-xs tracking-[0.3em] uppercase hover:bg-[#B01E24] transition-all min-h-[44px] font-bold"
                     >
                       <Lock className="w-4 h-4" />
                       Pay {reservationFee === 0 ? 'Now' : `${reservationFee} SAR`} Now
@@ -872,7 +872,7 @@ export default function Reservation() {
                     <button
                       type="button"
                       onClick={() => setStep('availability')}
-                      className="w-full px-6 py-2.5 bg-transparent font-ui text-[#5C4A3A]/60 text-sm hover:text-[#0A0806] transition-colors min-h-[44px]"
+                      className="w-full px-6 py-2.5 bg-transparent font-ui text-[#0A0806]/60 text-sm hover:text-[#0A0806] transition-colors min-h-[44px]"
                     >
                       Back to Summary
                     </button>
@@ -894,18 +894,18 @@ export default function Reservation() {
               <div className="bg-white border border-[#0A0806]/10 p-12 text-center">
                 <div className="relative w-20 h-20 mx-auto mb-8">
                   <div className="absolute inset-0 border-4 border-[#0A0806]/8" />
-                  <div className="absolute inset-0 border-4 border-[#8B1A1A] border-t-transparent animate-spin" />
-                  <div className="absolute inset-2 bg-[#8B1A1A]/5 flex items-center justify-center">
-                    <Lock className="w-6 h-6 text-[#8B1A1A]" />
+                  <div className="absolute inset-0 border-4 border-[#CC2229] border-t-transparent animate-spin" />
+                  <div className="absolute inset-2 bg-[#CC2229]/5 flex items-center justify-center">
+                    <Lock className="w-6 h-6 text-[#CC2229]" />
                   </div>
                 </div>
                 <h2 className="elegant-text text-2xl font-bold text-[#0A0806] mb-3">
                   Processing your payment...
                 </h2>
-                <p className="font-body text-[#5C4A3A]/60 text-sm max-w-xs mx-auto leading-relaxed">
+                <p className="font-body text-[#0A0806]/60 text-sm max-w-xs mx-auto leading-relaxed">
                   Please wait while we securely process your transaction. Do not close this window.
                 </p>
-                <div className="mt-8 flex items-center justify-center gap-2 font-ui text-xs text-[#5C4A3A]/40">
+                <div className="mt-8 flex items-center justify-center gap-2 font-ui text-xs text-[#0A0806]/40">
                   <ShieldCheck className="w-4 h-4" />
                   256-bit SSL encrypted
                 </div>
@@ -916,21 +916,21 @@ export default function Reservation() {
             {step === 'success' && (
               <div className="bg-white border border-[#0A0806]/10 p-8 md:p-10">
                 <div className="text-center mb-8">
-                  <div className="w-20 h-20 bg-[#8B1A1A]/8 flex items-center justify-center mx-auto mb-5">
-                    <CheckCircle className="w-10 h-10 text-[#8B1A1A]" />
+                  <div className="w-20 h-20 bg-[#CC2229]/8 flex items-center justify-center mx-auto mb-5">
+                    <CheckCircle className="w-10 h-10 text-[#CC2229]" />
                   </div>
-                  <span className="inline-block px-3 py-1 font-ui text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 mb-3">
+                  <span className="inline-block px-3 py-1 font-ui text-xs font-bold bg-[#CC2229]/8 text-[#CC2229] border border-[#CC2229]/25 mb-3">
                     Payment Successful
                   </span>
                   <h2 className="elegant-text text-3xl font-bold text-[#0A0806] mb-2">
                     Reservation Confirmed
                   </h2>
-                  <p className="font-body text-[#5C4A3A]/60 text-sm">
+                  <p className="font-body text-[#0A0806]/60 text-sm">
                     Your reservation request has been received. We&apos;ll be in touch shortly.
                   </p>
                 </div>
 
-                <div className="bg-[#F5F0E8] border border-[#0A0806]/8 divide-y divide-[#0A0806]/8 mb-6">
+                <div className="bg-[#FFFFFF] border border-[#0A0806]/8 divide-y divide-[#0A0806]/8 mb-6">
                   {[
                     { label: 'Reservation ID', value: reservationId },
                     { label: 'Booking Type', value: bookingType === 'table' ? 'Table Reservation' : 'Catering Service' },
@@ -947,8 +947,8 @@ export default function Reservation() {
                     },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-center justify-between px-4 py-3">
-                      <span className="font-ui text-xs text-[#5C4A3A]/50 uppercase tracking-wide font-semibold">{label}</span>
-                      <span className={`font-ui text-sm font-semibold text-[#0A0806] text-right max-w-[55%] ${label === 'Reservation ID' ? 'font-mono text-[#8B1A1A]' : ''}`}>
+                      <span className="font-ui text-xs text-[#0A0806]/50 uppercase tracking-wide font-semibold">{label}</span>
+                      <span className={`font-ui text-sm font-semibold text-[#0A0806] text-right max-w-[55%] ${label === 'Reservation ID' ? 'font-mono text-[#CC2229]' : ''}`}>
                         {value}
                       </span>
                     </div>
@@ -956,7 +956,7 @@ export default function Reservation() {
                 </div>
 
                 {formData.email || formData.phone ? (
-                  <p className="font-ui text-xs text-[#5C4A3A]/50 text-center mb-6">
+                  <p className="font-ui text-xs text-[#0A0806]/50 text-center mb-6">
                     Confirmation sent to{' '}
                     <span className="text-[#0A0806] font-medium">{formData.email || formData.phone}</span>
                   </p>
@@ -965,13 +965,13 @@ export default function Reservation() {
                 <div className="grid sm:grid-cols-2 gap-3">
                   <button
                     onClick={handleReset}
-                    className="w-full px-6 py-3.5 bg-[#8B1A1A] text-white font-ui text-xs tracking-[0.25em] uppercase hover:bg-[#701515] transition-all min-h-[44px]"
+                    className="w-full px-6 py-3.5 bg-[#CC2229] text-white font-ui text-xs tracking-[0.25em] uppercase hover:bg-[#B01E24] transition-all min-h-[44px]"
                   >
                     New Reservation
                   </button>
                   <Link
                     href="/"
-                    className="w-full px-6 py-3.5 bg-[#F5F0E8] border border-[#0A0806]/10 text-[#0A0806] font-ui text-xs tracking-[0.25em] uppercase hover:bg-[#E8E3DC] transition-all text-center min-h-[44px] flex items-center justify-center"
+                    className="w-full px-6 py-3.5 bg-[#FFFFFF] border border-[#0A0806]/10 text-[#0A0806] font-ui text-xs tracking-[0.25em] uppercase hover:bg-[#E8E3DC] transition-all text-center min-h-[44px] flex items-center justify-center"
                   >
                     Return to Home
                   </Link>
@@ -983,26 +983,26 @@ export default function Reservation() {
             {(step === 'form' || step === 'success') && (
               <div className="mt-8 grid sm:grid-cols-3 gap-3">
                 <div className="flex items-center gap-3 bg-white border border-[#0A0806]/10 p-4">
-                  <MapPin className="w-5 h-5 text-[#8B1A1A] flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-[#CC2229] flex-shrink-0" />
                   <div>
                     <p className="font-ui text-xs font-bold text-[#0A0806]">Location</p>
-                    <p className="font-ui text-xs text-[#5C4A3A]/60">Ash Shati, Atelier Lavie</p>
+                    <p className="font-ui text-xs text-[#0A0806]/60">Ash Shati, Atelier Lavie</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 bg-white border border-[#0A0806]/10 p-4">
-                  <Clock className="w-5 h-5 text-[#8B1A1A] flex-shrink-0" />
+                  <Clock className="w-5 h-5 text-[#CC2229] flex-shrink-0" />
                   <div>
                     <p className="font-ui text-xs font-bold text-[#0A0806]">Hours</p>
-                    <p className="font-ui text-xs text-[#5C4A3A]/60">Daily: 12:00 PM &ndash; 1:00 AM</p>
+                    <p className="font-ui text-xs text-[#0A0806]/60">Daily: 12:00 PM &ndash; 1:00 AM</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 bg-white border border-[#0A0806]/10 p-4">
-                  <Phone className="w-5 h-5 text-[#8B1A1A] flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-[#CC2229] flex-shrink-0" />
                   <div>
                     <p className="font-ui text-xs font-bold text-[#0A0806]">Call Us</p>
                     <a
                       href="tel:+966555674383"
-                      className="font-ui text-xs text-[#8B1A1A] hover:text-[#701515] transition-colors"
+                      className="font-ui text-xs text-[#CC2229] hover:text-[#B01E24] transition-colors"
                     >
                       +966 55 567 4383
                     </a>

@@ -202,7 +202,7 @@ export default function Menu() {
         </section>
 
         {/* Category Tabs */}
-        <div className="bg-[#F5F0E8] sticky top-0 md:top-16 lg:top-20 z-40 border-b border-[#0A0806]/8 py-4">
+        <div className="bg-[#FFFFFF] sticky top-0 md:top-16 lg:top-20 z-40 border-b border-[#0A0806]/8 py-4">
           <div className="flex flex-wrap gap-2 px-6 sm:px-8 max-w-7xl mx-auto">
             {categories.map((category) => (
               <button
@@ -211,7 +211,7 @@ export default function Menu() {
                 className={`font-ui text-xs px-5 py-2.5 tracking-[0.2em] uppercase transition-all min-h-[44px] ${
                   activeCategory === category.key
                     ? 'bg-[#0A0806] text-white'
-                    : 'text-[#5C4A3A] hover:text-[#0A0806] border border-transparent hover:border-[#0A0806]/15'
+                    : 'text-[#0A0806] hover:text-[#0A0806] border border-transparent hover:border-[#0A0806]/15'
                 }`}
               >
                 {category.label}
@@ -221,7 +221,7 @@ export default function Menu() {
         </div>
 
         {/* Menu Items */}
-        <section className="bg-[#F5F0E8] pt-12 pb-24">
+        <section className="bg-[#FFFFFF] pt-12 pb-24">
           <div className="max-w-4xl mx-auto px-6 sm:px-8">
 
             <h2 className="elegant-text text-3xl md:text-4xl text-[#0A0806] mb-10">
@@ -236,11 +236,11 @@ export default function Menu() {
                 >
                   <div className="flex-1 min-w-0 pr-6">
                     <p className="elegant-text text-xl text-[#0A0806]">{item.name}</p>
-                    <p className="font-ui text-xs text-[#5C4A3A]/55 tracking-wide mt-1 leading-relaxed">
+                    <p className="font-ui text-xs text-[#0A0806]/55 tracking-wide mt-1 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
-                  <span className="font-ui font-semibold text-[#8B1A1A] text-sm flex-shrink-0 ml-6">
+                  <span className="font-ui font-semibold text-[#CC2229] text-sm flex-shrink-0 ml-6">
                     {item.price}
                   </span>
                 </div>
@@ -249,11 +249,11 @@ export default function Menu() {
 
             {/* Tuesday Pasta Day note */}
             {activeCategory === 'pasta' && (
-              <div className="mt-8 border border-[#8B1A1A]/20 p-6 bg-[#8B1A1A]/4">
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#8B1A1A] mb-1">
+              <div className="mt-8 border border-[#CC2229]/20 p-6 bg-[#CC2229]/4">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#CC2229] mb-1">
                   Tuesday Pasta Day
                 </p>
-                <p className="font-body text-[#5C4A3A] text-sm">
+                <p className="font-body text-[#0A0806] text-sm">
                   Every Tuesday — buy one pasta, get the second free. Dine-in and delivery.
                 </p>
               </div>
@@ -272,13 +272,13 @@ export default function Menu() {
                 </p>
                 <h2 className="elegant-text text-4xl md:text-5xl text-white">
                   Reserve your<br />
-                  <em className="not-italic text-amber-500">table tonight</em>
+                  <em className="not-italic text-[#CC2229]">table tonight</em>
                 </h2>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:flex-shrink-0">
                 <Link
                   href="/reservation"
-                  className="font-ui text-xs tracking-[0.3em] uppercase bg-amber-500 text-black px-7 py-4 hover:bg-amber-400 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#CC2229] text-white px-7 py-4 hover:bg-[#B01E24] transition-colors text-center min-h-[44px] flex items-center justify-center"
                 >
                   Make a Reservation
                 </Link>

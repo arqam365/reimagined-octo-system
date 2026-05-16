@@ -37,11 +37,11 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group" aria-label="Mazencito Pizzeria — Home">
             <Image
-              src="/logo.png"
+              src="/mazencito-brand-logo.jpg"
               alt="Mazencito Pizzeria"
-              width={120}
-              height={60}
-              className="h-12 md:h-14 w-auto object-contain invert mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+              width={160}
+              height={112}
+              className="h-14 md:h-16 w-auto object-contain invert mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity duration-200"
               priority
             />
           </Link>
@@ -63,7 +63,7 @@ export default function Navigation() {
           <div className="hidden md:block flex-shrink-0">
             <Link
               href="/reservation"
-              className="font-ui text-xs tracking-[0.25em] uppercase bg-amber-500 text-black px-5 py-2.5 hover:bg-amber-400 transition-colors duration-200"
+              className="font-ui text-xs tracking-[0.25em] uppercase bg-[#CC2229] text-white px-5 py-2.5 hover:bg-[#B01E24] transition-colors duration-200"
             >
               Reserve
             </Link>
@@ -102,7 +102,7 @@ export default function Navigation() {
               <Link
                 href="/reservation"
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-center bg-amber-500 text-black font-ui text-xs tracking-[0.3em] uppercase px-5 py-4 hover:bg-amber-400 transition-colors min-h-[44px]"
+                className="block w-full text-center bg-[#CC2229] text-white font-ui text-xs tracking-[0.3em] uppercase px-5 py-4 hover:bg-[#B01E24] transition-colors min-h-[44px]"
               >
                 Reserve a Table
               </Link>
