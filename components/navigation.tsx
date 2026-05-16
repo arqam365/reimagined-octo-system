@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
@@ -34,13 +35,15 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16 md:h-20">
 
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-start leading-none group flex-shrink-0">
-            <span className="elegant-text text-xl font-bold text-white group-hover:text-amber-100 transition-colors duration-200">
-              Mazencito
-            </span>
-            <span className="font-ui text-[9px] tracking-[0.4em] text-amber-500/60 uppercase mt-0.5">
-              Pizzeria
-            </span>
+          <Link href="/" className="flex-shrink-0 group" aria-label="Mazencito Pizzeria — Home">
+            <Image
+              src="/logo.png"
+              alt="Mazencito Pizzeria"
+              width={120}
+              height={60}
+              className="h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav Links — centered */}

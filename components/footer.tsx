@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -9,10 +10,15 @@ export default function Footer() {
 
         {/* Top row: Logo + Instagram */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-          <div className="flex flex-col items-start leading-none">
-            <span className="elegant-text text-xl font-bold text-white">Mazencito</span>
-            <span className="font-ui text-[9px] tracking-[0.4em] text-amber-500/60 uppercase mt-0.5">Pizzeria</span>
-          </div>
+          <Link href="/" aria-label="Mazencito Pizzeria — Home">
+            <Image
+              src="/logo.png"
+              alt="Mazencito Pizzeria"
+              width={140}
+              height={70}
+              className="h-12 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-90 transition-opacity duration-200"
+            />
+          </Link>
           <a
             href="https://www.instagram.com/mazencito.ksa"
             target="_blank"
@@ -99,7 +105,7 @@ export default function Footer() {
             <div className="space-y-3">
               <Link
                 href="/reservation"
-                className="block w-full text-center bg-amber-500 text-black font-ui text-xs tracking-[0.25em] uppercase px-5 py-3.5 hover:bg-amber-400 transition-colors min-h-[44px] flex items-center justify-center"
+                className="w-full text-center bg-amber-500 text-black font-ui text-xs tracking-[0.25em] uppercase px-5 py-3.5 hover:bg-amber-400 transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Reserve a Table
               </Link>
@@ -107,7 +113,7 @@ export default function Footer() {
                 href="https://wa.me/966555674383"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center border border-white/15 text-white/50 font-ui text-xs tracking-[0.2em] uppercase px-5 py-3.5 hover:border-white/30 hover:text-white/70 transition-colors min-h-[44px] flex items-center justify-center"
+                className="w-full text-center border border-white/15 text-white/50 font-ui text-xs tracking-[0.2em] uppercase px-5 py-3.5 hover:border-white/30 hover:text-white/70 transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Chat on WhatsApp
               </a>
