@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
-import { Phone, MapPin, Clock, Send, CheckCircle2, MessageCircle } from 'lucide-react'
+import { Send, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -29,9 +29,10 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full px-4 py-3 border border-[#E8DFD0] rounded-lg bg-white text-[#1A0D0D] placeholder-[#5C4A3A]/40 focus:outline-none focus:ring-2 focus:ring-[#7A1A1A]/30 focus:border-[#7A1A1A]/50 transition-all font-body text-sm'
+    'w-full px-4 py-3.5 border border-[#0A0806]/12 bg-white text-[#0A0806] placeholder-[#5C4A3A]/35 focus:outline-none focus:ring-2 focus:ring-[#8B1A1A]/20 focus:border-[#8B1A1A]/40 transition-all font-body text-sm'
 
-  const labelClass = 'block font-ui text-xs font-semibold uppercase tracking-widest text-[#5C4A3A]/70 mb-2'
+  const labelClass =
+    'block font-ui text-[10px] font-semibold uppercase tracking-[0.3em] text-[#5C4A3A]/60 mb-2'
 
   return (
     <>
@@ -39,127 +40,84 @@ export default function Contact() {
       <main>
 
         {/* Dark Hero */}
-        <section className="bg-[#0C0907] pt-36 pb-24 text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0C0907]/90" />
-          <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
-            <p className="font-ui text-xs tracking-[0.35em] uppercase text-amber-400/80 mb-5">
+        <section className="bg-[#0A0806] pt-36 pb-24">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/25 mb-8">
               We&apos;d Love to Hear from You
             </p>
-            <h1 className="elegant-text text-6xl md:text-7xl font-bold text-white leading-tight mb-5">
-              Get in Touch
+            <h1
+              className="elegant-text font-bold text-white leading-none mb-8"
+              style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}
+            >
+              Get in<br />
+              <span className="text-white/20">Touch</span>
             </h1>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-16 bg-amber-500/40" />
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-500/70" />
-              <div className="h-px w-16 bg-amber-500/40" />
-            </div>
-            <p className="font-body text-white/55 text-lg">
-              Contact Mazencito Pizzeria — we&apos;re always happy to help.
-            </p>
+            <div className="h-px w-16 bg-white/10" />
           </div>
         </section>
 
-        {/* Contact Cards */}
-        <section className="bg-[#F9F5EE] py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Contact info bar — horizontal, not cards */}
+        <section className="bg-[#F5F0E8] border-b border-[#0A0806]/8">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="flex flex-col sm:flex-row sm:divide-x sm:divide-[#0A0806]/8">
 
-              {/* Phone */}
-              <div className="bg-white border border-[#E8DFD0] rounded-2xl p-10 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="w-16 h-16 rounded-full bg-[#7A1A1A]/8 flex items-center justify-center mx-auto mb-6">
-                  <Phone className="w-7 h-7 text-[#7A1A1A]" />
-                </div>
-                <h3 className="elegant-text text-2xl font-bold text-[#1A0D0D] mb-4">
-                  Call Us
-                </h3>
-                <div className="space-y-2 mb-4">
-                  <a
-                    href="tel:+966555674383"
-                    className="block font-body text-[#7A1A1A] hover:text-[#5a1414] text-lg font-medium transition-colors"
-                  >
-                    +966 55 567 4383
-                  </a>
-                  <a
-                    href="tel:+966554430556"
-                    className="block font-body text-[#7A1A1A] hover:text-[#5a1414] text-lg font-medium transition-colors"
-                  >
-                    +966 55 443 0556
-                  </a>
-                </div>
-                <p className="font-ui text-xs text-[#5C4A3A]/60 uppercase tracking-wide">
-                  Open Daily 1:00 PM &ndash; 1:00 AM
+              <div className="py-8 sm:pr-12">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Address</p>
+                <p className="font-body text-[#0A0806] text-base">
+                  Ash Shati, Atelier Lavie<br />
+                  Jeddah, Saudi Arabia
                 </p>
               </div>
 
-              {/* WhatsApp */}
-              <div className="bg-white border border-[#E8DFD0] rounded-2xl p-10 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="w-16 h-16 rounded-full bg-[#7A1A1A]/8 flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-7 h-7 text-[#7A1A1A]" />
-                </div>
-                <h3 className="elegant-text text-2xl font-bold text-[#1A0D0D] mb-4">
-                  WhatsApp
-                </h3>
-                <p className="font-body text-[#5C4A3A] text-sm mb-6 leading-relaxed">
-                  Quick responses and instant support for reservations, menu questions, and more.
-                </p>
+              <div className="py-8 sm:px-12">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Phone</p>
                 <a
-                  href="https://wa.me/966555674383"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-amber-500 text-black font-ui font-bold text-sm px-6 py-3 rounded hover:bg-amber-400 transition-colors"
+                  href="tel:+966555674383"
+                  className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  Message Us
+                  +966 55 567 4383
+                </a>
+                <a
+                  href="tel:+966554430556"
+                  className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors"
+                >
+                  +966 55 443 0556
                 </a>
               </div>
 
-              {/* Location */}
-              <div className="bg-white border border-[#E8DFD0] rounded-2xl p-10 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="w-16 h-16 rounded-full bg-[#7A1A1A]/8 flex items-center justify-center mx-auto mb-6">
-                  <MapPin className="w-7 h-7 text-[#7A1A1A]" />
-                </div>
-                <h3 className="elegant-text text-2xl font-bold text-[#1A0D0D] mb-4">
-                  Location
-                </h3>
-                <p className="font-body text-[#5C4A3A] text-lg mb-2">
-                  King Abdulaziz Branch Road
-                </p>
-                <p className="font-body text-[#5C4A3A]/70 text-sm">
-                  Jeddah, Saudi Arabia
-                </p>
-                <div className="mt-4 flex items-center justify-center gap-2 text-[#5C4A3A]/60">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span className="font-ui text-xs">Daily 1:00 PM &ndash; 1:00 AM</span>
-                </div>
+              <div className="py-8 sm:pl-12">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#5C4A3A]/40 mb-2">Hours</p>
+                <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
+                <p className="font-body text-[#5C4A3A]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Form + Map */}
-        <section className="bg-white py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+        {/* Form + Map side by side */}
+        <section className="bg-[#F5F0E8] py-20 md:py-24">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
               {/* Contact Form */}
               <div>
-                <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-600 mb-4">
+                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-6">
                   Send a Message
                 </p>
-                <h2 className="elegant-text text-4xl font-bold text-[#1A0D0D] mb-8">
+                <h2 className="elegant-text text-4xl font-bold text-[#0A0806] mb-10">
                   Write to Us
                 </h2>
 
                 {submitted ? (
-                  <div className="bg-[#F9F5EE] border border-[#E8DFD0] rounded-2xl p-12 text-center">
-                    <div className="w-16 h-16 rounded-full bg-[#7A1A1A]/10 flex items-center justify-center mx-auto mb-5">
-                      <CheckCircle2 className="w-8 h-8 text-[#7A1A1A]" />
+                  <div className="border border-[#0A0806]/10 p-12 text-center bg-white">
+                    <div className="w-14 h-14 bg-[#8B1A1A]/8 flex items-center justify-center mx-auto mb-5">
+                      <CheckCircle2 className="w-7 h-7 text-[#8B1A1A]" />
                     </div>
-                    <h3 className="elegant-text text-2xl font-bold text-[#1A0D0D] mb-3">
-                      Thank You!
+                    <h3 className="elegant-text text-2xl font-bold text-[#0A0806] mb-3">
+                      Message Received
                     </h3>
                     <p className="font-body text-[#5C4A3A]">
-                      We&apos;ve received your message and will get back to you soon.
+                      We&apos;ll get back to you shortly.
                     </p>
                   </div>
                 ) : (
@@ -218,9 +176,9 @@ export default function Contact() {
 
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 bg-[#7A1A1A] text-white font-ui font-bold text-sm px-6 py-4 rounded hover:bg-[#6a1616] transition-colors shadow-md hover:shadow-lg"
+                      className="w-full flex items-center justify-center gap-2 bg-[#8B1A1A] text-white font-ui text-xs tracking-[0.3em] uppercase px-6 py-4 hover:bg-[#701515] transition-colors min-h-[44px]"
                     >
-                      <Send className="w-4 h-4" />
+                      <Send className="w-3.5 h-3.5" />
                       Send Message
                     </button>
                   </form>
@@ -229,62 +187,64 @@ export default function Contact() {
 
               {/* Map */}
               <div>
-                <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-600 mb-4">
+                <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-6">
                   Find Us
                 </p>
-                <h2 className="elegant-text text-4xl font-bold text-[#1A0D0D] mb-8">
+                <h2 className="elegant-text text-4xl font-bold text-[#0A0806] mb-10">
                   On the Map
                 </h2>
-                <div className="rounded-2xl overflow-hidden shadow-xl h-[400px] mb-6">
+
+                <div className="overflow-hidden h-[400px] mb-6">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.8372839174876!2d39.17224!3d21.543915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sKing+Abdulaziz+Branch+Road!2sJeddah+Saudi+Arabia!5e0!3m2!1sen!2ssa!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d39.19!3d21.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiAzOcKwMTEnMjQuMCJF!5e0!3m2!1sen!2ssa!4v1234567890"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     loading="lazy"
-                    title="Mazencito Pizzeria Location"
+                    title="Mazencito Pizzeria — Ash Shati, Atelier Lavie, Jeddah"
                   />
                 </div>
-                <div className="bg-[#F9F5EE] border border-[#E8DFD0] rounded-xl p-6">
-                  <div className="flex items-start gap-4">
-                    <Clock className="w-5 h-5 text-[#7A1A1A] flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-ui text-sm font-semibold text-[#1A0D0D] mb-1">Opening Hours</p>
-                      <p className="font-body text-[#5C4A3A] text-sm">
-                        Open Daily &nbsp;1:00 PM &ndash; 1:00 AM
-                      </p>
-                      <p className="font-ui text-xs text-[#5C4A3A]/60 mt-2">
-                        King Abdulaziz Branch Road, Jeddah, Saudi Arabia
-                      </p>
-                    </div>
-                  </div>
+
+                <div className="border border-[#0A0806]/8 p-6 bg-white">
+                  <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-[#5C4A3A]/50 mb-2">
+                    Opening Hours
+                  </p>
+                  <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
+                  <p className="font-body text-[#5C4A3A]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
+                  <p className="font-ui text-[10px] text-[#5C4A3A]/40 tracking-wide mt-3">
+                    Ash Shati, Atelier Lavie, Jeddah, Saudi Arabia
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* WhatsApp CTA Banner */}
-        <section className="bg-[#0C0907] py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-6">
-              <MessageCircle className="w-7 h-7 text-amber-400" />
+        {/* WhatsApp strip */}
+        <section className="bg-[#8B1A1A] py-20">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
+              <div>
+                <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30 mb-4">
+                  Instant Support
+                </p>
+                <h2
+                  className="elegant-text font-bold text-white leading-none"
+                  style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+                >
+                  Chat with us<br />
+                  on WhatsApp
+                </h2>
+              </div>
+              <a
+                href="https://wa.me/966555674383"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-ui text-xs tracking-[0.3em] uppercase bg-amber-500 text-black px-8 py-4 hover:bg-amber-400 transition-colors min-h-[44px] flex items-center justify-center sm:flex-shrink-0"
+              >
+                Open WhatsApp
+              </a>
             </div>
-            <h2 className="elegant-text text-4xl md:text-5xl font-bold text-white mb-4">
-              Get Instant Support on WhatsApp
-            </h2>
-            <p className="font-body text-white/55 text-lg mb-10 max-w-2xl mx-auto">
-              Have a quick question about our menu, reservations, or services? Message us on WhatsApp for fast and friendly support.
-            </p>
-            <a
-              href="https://wa.me/966555674383"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-amber-500 text-black font-ui font-bold text-sm px-10 py-4 uppercase tracking-widest rounded hover:bg-amber-400 transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" />
-              Message on WhatsApp
-            </a>
           </div>
         </section>
 

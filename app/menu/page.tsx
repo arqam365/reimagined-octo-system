@@ -4,13 +4,12 @@ import { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
-import { MessageCircle } from 'lucide-react'
 
 const menuCategories = {
   pizza: [
     {
       name: 'Pizza Margherita',
-      description: 'Classic pizza with fresh mozzarella, basil, and tomato sauce',
+      description: 'Classic pizza with fresh mozzarella, basil, and San Marzano tomato sauce',
       price: '25 SAR',
     },
     {
@@ -30,12 +29,12 @@ const menuCategories = {
     },
     {
       name: 'Pizza Al Tartufo',
-      description: 'Truffle-infused pizza with fresh mozzarella and gorgonzola',
+      description: 'Black truffle with fresh mozzarella, wild mushrooms, and parmesan',
       price: '45 SAR',
     },
     {
       name: 'Pizza Diavola',
-      description: 'Spicy pizza with pepperoni, chili peppers, and mozzarella',
+      description: 'Nduja, chili peppers, mozzarella, and San Marzano tomato',
       price: '32 SAR',
     },
   ],
@@ -186,124 +185,127 @@ export default function Menu() {
       <Navigation />
       <main>
 
-        {/* Page Hero */}
-        <section className="bg-[#0C0907] pt-36 pb-20 text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0C0907]/80" />
-          <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6">
-            <p className="font-ui text-xs tracking-[0.35em] uppercase text-amber-400/80 mb-5">
-              Authentic Italian Cuisine
+        {/* Dark Hero */}
+        <section className="bg-[#0A0806] pt-36 pb-20">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30 mb-6">
+              Mazencito Pizzeria
             </p>
-            <h1 className="elegant-text text-6xl md:text-7xl font-bold text-white leading-tight mb-5">
-              Our Menu
+            <h1 className="elegant-text font-bold text-white leading-none">
+              <span className="block" style={{ fontSize: 'clamp(4rem, 10vw, 8rem)' }}>Our</span>
+              <span className="block text-white/30" style={{ fontSize: 'clamp(4rem, 10vw, 8rem)' }}>Menu</span>
             </h1>
-            {/* Gold divider */}
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-16 bg-amber-500/40" />
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-500/70" />
-              <div className="h-px w-16 bg-amber-500/40" />
-            </div>
-            <p className="font-body text-white/55 text-lg">
-              Explore our authentic Italian dishes — prepared daily with fresh ingredients and traditional recipes.
+            <p className="font-body text-white/40 text-lg mt-4 max-w-sm">
+              Wood-fired pizza, handcrafted pasta, and Italian classics — prepared fresh daily.
             </p>
           </div>
         </section>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-2 justify-center py-8 bg-[#F9F5EE] sticky top-16 z-40 border-b border-[#E8DFD0] px-4">
-          {categories.map((category) => (
-            <button
-              key={category.key}
-              onClick={() => setActiveCategory(category.key)}
-              className={`font-ui text-sm px-6 py-2.5 rounded transition-all duration-200 ${
-                activeCategory === category.key
-                  ? 'bg-[#7A1A1A] text-white font-semibold shadow-sm'
-                  : 'bg-white border border-[#E8DFD0] text-[#5C4A3A] hover:border-[#7A1A1A]/40'
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
+        <div className="bg-[#F5F0E8] sticky top-16 z-40 border-b border-[#0A0806]/8 py-4">
+          <div className="flex flex-wrap gap-2 px-6 sm:px-8 max-w-7xl mx-auto">
+            {categories.map((category) => (
+              <button
+                key={category.key}
+                onClick={() => setActiveCategory(category.key)}
+                className={`font-ui text-xs px-5 py-2.5 tracking-[0.2em] uppercase transition-all min-h-[44px] ${
+                  activeCategory === category.key
+                    ? 'bg-[#0A0806] text-white'
+                    : 'text-[#5C4A3A] hover:text-[#0A0806] border border-transparent hover:border-[#0A0806]/15'
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Menu Items */}
-        <section className="bg-[#F9F5EE] py-16">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-[#F5F0E8] pt-12 pb-24">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8">
 
-            {/* Section heading */}
-            <div className="mb-10">
-              <h2 className="elegant-text text-3xl md:text-4xl text-[#1A0D0D]">
-                {categories.find((c) => c.key === activeCategory)?.label}
-              </h2>
-              <div className="h-px w-12 bg-amber-500 mt-3" />
-            </div>
+            <h2 className="elegant-text text-3xl md:text-4xl text-[#0A0806] mb-10">
+              {categories.find((c) => c.key === activeCategory)?.label}
+            </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 animate-fade-in">
+            <div className="animate-fade-in">
               {menuCategories[activeCategory].map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-between items-start pb-6 mb-6 border-b border-[#E8DFD0] last:border-0 last:mb-0 pr-4"
+                  className="flex justify-between items-baseline py-5 border-b border-[#0A0806]/8"
                 >
-                  <div className="flex-1 mr-4">
-                    <h3 className="elegant-text text-xl text-[#1A0D0D] mb-1.5">
-                      {item.name}
-                    </h3>
-                    <p className="font-body text-[#5C4A3A] text-sm leading-relaxed">
+                  <div className="flex-1 min-w-0 pr-6">
+                    <p className="elegant-text text-xl text-[#0A0806]">{item.name}</p>
+                    <p className="font-ui text-xs text-[#5C4A3A]/55 tracking-wide mt-1 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
-                  <span className="font-ui font-bold text-amber-600 text-lg whitespace-nowrap ml-4 flex-shrink-0">
+                  <span className="font-ui font-semibold text-[#8B1A1A] text-sm flex-shrink-0 ml-6">
                     {item.price}
                   </span>
                 </div>
               ))}
             </div>
+
+            {/* Tuesday Pasta Day note */}
+            {activeCategory === 'pasta' && (
+              <div className="mt-8 border border-[#8B1A1A]/20 p-6 bg-[#8B1A1A]/4">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#8B1A1A] mb-1">
+                  Tuesday Pasta Day
+                </p>
+                <p className="font-body text-[#5C4A3A] text-sm">
+                  Every Tuesday — buy one pasta, get the second free. Dine-in and delivery.
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Bottom CTA */}
-        <section className="bg-[#0C0907] py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-400/80 mb-4">
-              Ready to Order?
-            </p>
-            <h2 className="elegant-text text-4xl md:text-5xl font-bold text-white mb-4">
-              Reserve Your Table
-            </h2>
-            <p className="font-body text-white/55 text-lg mb-10 max-w-xl mx-auto">
-              Dine with us and enjoy these authentic Italian dishes prepared fresh every day with love and tradition.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-              <Link
-                href="/reservation"
-                className="w-full sm:w-auto bg-amber-500 text-black font-ui font-bold text-sm px-8 py-4 uppercase tracking-widest rounded hover:bg-amber-400 transition-colors"
-              >
-                Make a Reservation
-              </Link>
-              <a
-                href="https://wa.me/966555674383"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto border border-white/20 text-white font-ui font-semibold text-sm px-8 py-4 rounded hover:bg-white/8 transition-colors flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Order via WhatsApp
-              </a>
+        <section className="bg-[#0A0806] py-20">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8">
+
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8 mb-12">
+              <div>
+                <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30 mb-4">
+                  Ready to dine in?
+                </p>
+                <h2 className="elegant-text text-4xl md:text-5xl text-white">
+                  Reserve your<br />
+                  <em className="not-italic text-amber-500">table tonight</em>
+                </h2>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 sm:flex-shrink-0">
+                <Link
+                  href="/reservation"
+                  className="font-ui text-xs tracking-[0.3em] uppercase bg-amber-500 text-black px-7 py-4 hover:bg-amber-400 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                >
+                  Make a Reservation
+                </Link>
+                <a
+                  href="https://wa.me/966555674383"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-ui text-xs tracking-[0.3em] uppercase border border-white/20 text-white px-7 py-4 hover:bg-white/5 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                >
+                  Order via WhatsApp
+                </a>
+              </div>
             </div>
 
-            {/* Delivery platforms strip */}
-            <div className="border-t border-white/10 pt-12">
-              <p className="font-ui text-xs tracking-[0.2em] uppercase text-white/30 mb-6">
+            {/* Delivery platforms */}
+            <div className="border-t border-white/8 pt-10">
+              <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/20 mb-5">
                 Also available on delivery platforms
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                {['Lugmety', 'Jahez', 'HungerStation', 'KEeta'].map((platform) => (
-                  <span
-                    key={platform}
-                    className="font-ui text-sm font-semibold text-white/50 px-4 py-2 border border-white/10 rounded"
-                  >
-                    {platform}
-                  </span>
-                ))}
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+                <span className="elegant-text text-xl text-white/40 font-bold">HungerStation</span>
+                <span className="text-white/15 font-thin">/</span>
+                <span className="elegant-text text-xl text-white/40 font-bold">Keeta</span>
+                <span className="text-white/15 font-thin">/</span>
+                <span className="elegant-text text-xl text-white/40 font-bold">Jahez</span>
+                <span className="text-white/15 font-thin">/</span>
+                <span className="elegant-text text-xl text-white/40 font-bold">Lugmety</span>
               </div>
             </div>
           </div>

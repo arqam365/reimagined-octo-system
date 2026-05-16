@@ -2,61 +2,56 @@ import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import Image from 'next/image'
-import {
-  MapPin,
-  Phone,
-  Clock,
-  Star,
-  MessageCircle,
-  ChevronDown,
-} from 'lucide-react'
+import { Clock, Phone } from 'lucide-react'
 
 const signaturePizzas = [
   {
+    index: '01',
     name: 'Pizza Margherita',
-    description: 'Classic with fresh mozzarella, basil, and San Marzano tomato sauce',
+    desc: 'San Marzano tomato · Fior di latte · Fresh basil',
     price: '25 SAR',
-    image: '/pizza-margherita.jpg',
   },
   {
+    index: '02',
     name: 'Pizza Pepperoni',
-    description: 'Premium pepperoni with house-blend mozzarella on a hand-stretched crust',
+    desc: 'Premium pepperoni · House mozzarella',
     price: '30 SAR',
-    image: '/risotto.jpg',
   },
   {
-    name: 'Pizza Al Tartufo',
-    description: 'Truffle-infused base with fresh mozzarella, gorgonzola, and wild mushrooms',
-    price: '45 SAR',
-    image: '/tiramisu.jpg',
+    index: '03',
+    name: 'Pizza Quattro Formaggi',
+    desc: 'Mozzarella · Parmesan · Gorgonzola · Ricotta',
+    price: '35 SAR',
   },
-]
-
-const deliveryPlatforms = [
-  { name: 'Lugmety', letter: 'L' },
-  { name: 'Jahez', letter: 'J' },
-  { name: 'HungerStation', letter: 'H' },
-  { name: 'KEeta', letter: 'K' },
+  {
+    index: '04',
+    name: 'Pizza Al Tartufo',
+    desc: 'Black truffle · Wild mushrooms · Parmesan',
+    price: '45 SAR',
+  },
+  {
+    index: '05',
+    name: 'Pizza Diavola',
+    desc: 'Nduja · Chili · Mozzarella · Tomato',
+    price: '32 SAR',
+  },
 ]
 
 const reviews = [
   {
+    arabic: 'أفضل بيتزا إيطالية في جدة! الطعم أصلي والأسعار معقولة جداً.',
+    english: 'Best Italian pizza in Jeddah — authentic taste, great prices.',
     name: 'أحمد محمد',
-    comment: 'أفضل بيتزا إيطالية في جدة! الطعم أصلي والأسعار معقولة جداً.',
-    note: 'Best Italian pizza in Jeddah — authentic taste, great prices.',
-    rating: 5,
   },
   {
+    arabic: 'العائلة كلها استمتعت بالطعام. الجو دافئ وودود جداً.',
+    english: 'The whole family loved it. Warm, welcoming atmosphere.',
     name: 'فاطمة علي',
-    comment: 'العائلة كلها استمتعت بالطعام. الجو دافئ وودود جداً.',
-    note: 'The whole family loved it. Warm, welcoming atmosphere.',
-    rating: 5,
   },
   {
+    arabic: 'تجربة رائعة! الخدمة ممتازة والبيتزا طازة جداً كل مرة.',
+    english: 'Amazing experience — excellent service, always fresh.',
     name: 'محمود حسن',
-    comment: 'تجربة رائعة! الخدمة ممتازة والبيتزا طازة جداً كل مرة.',
-    note: 'Amazing experience — excellent service, always fresh pizza.',
-    rating: 5,
   },
 ]
 
@@ -66,308 +61,400 @@ export default function Home() {
       <Navigation />
       <main>
 
-        {/* ── A. HERO ── */}
-        <section className="bg-[#0C0907] min-h-screen flex items-center justify-center relative overflow-hidden">
-          <Image
-            src="/hero-pasta.jpg"
-            alt="Mazencito Pizzeria"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0C0907]/70 via-[#0C0907]/30 to-[#0C0907]/90" />
+        {/* ── A. HERO — Editorial split ── */}
+        <section className="bg-[#0A0806] min-h-screen relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] min-h-screen">
 
-          {/* Content */}
-          <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
-            <p className="font-ui text-xs tracking-[0.35em] uppercase text-amber-400/90 mb-6">
-              Authentic Italian &middot; Jeddah, Saudi Arabia
-            </p>
+            {/* LEFT COLUMN — text */}
+            <div className="relative z-10 pt-36 pb-16 px-8 sm:px-12 lg:px-20 flex flex-col justify-between min-h-screen">
 
-            <h1 className="elegant-text text-8xl sm:text-[9rem] md:text-[11rem] font-bold text-white leading-none mb-6">
-              Mazencito
-            </h1>
-
-            {/* Gold divider */}
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="h-px w-24 bg-amber-500/50" />
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-              <div className="h-px w-24 bg-amber-500/50" />
-            </div>
-
-            <p className="font-body text-xl md:text-2xl text-white/65 mb-12">
-              Fresh ingredients. Traditional recipes. Warm hospitality.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-              <Link
-                href="/menu"
-                className="w-full sm:w-auto bg-amber-500 text-black font-ui font-bold text-sm px-8 py-4 tracking-widest uppercase rounded hover:bg-amber-400 transition-colors duration-200 text-center"
-              >
-                Explore Menu
-              </Link>
-              <Link
-                href="/reservation"
-                className="w-full sm:w-auto border border-white/30 text-white font-ui font-semibold text-sm px-8 py-4 uppercase rounded hover:bg-white/10 transition-colors duration-200 text-center"
-              >
-                Reserve a Table
-              </Link>
-              <a
-                href="https://wa.me/966555674383"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto border border-amber-500/30 text-amber-400 font-ui font-semibold text-sm px-8 py-4 uppercase rounded hover:bg-amber-500/10 transition-colors duration-200 flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp Us
-              </a>
-            </div>
-
-            {/* Hours badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5">
-              <Clock className="w-3.5 h-3.5 text-amber-400/80" />
-              <span className="font-ui text-xs text-white/60">Open Daily &nbsp; 1:00 PM – 1:00 AM</span>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-            <ChevronDown className="w-6 h-6 text-white/30" />
-          </div>
-        </section>
-
-        {/* ── B. INFO STRIP ── */}
-        <section className="bg-[#7A1A1A] text-white">
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/15 max-w-7xl mx-auto">
-            <div className="flex items-center gap-4 py-5 px-8">
-              <div className="p-2.5 rounded-full bg-white/10 flex-shrink-0">
-                <MapPin className="w-4 h-4 text-amber-300" />
+              {/* TOP: location label */}
+              <div className="flex items-center gap-0">
+                <div className="w-0.5 h-full bg-amber-500 self-stretch" />
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/35 pl-3 border-l-2 border-amber-500">
+                  Ash Shati &middot; Jeddah &middot; KSA
+                </p>
               </div>
-              <div>
-                <p className="font-ui text-[10px] tracking-widest uppercase text-white/50 mb-0.5">Location</p>
-                <p className="font-ui text-sm font-semibold text-white">King Abdulaziz Rd, Jeddah</p>
+
+              {/* MIDDLE: main content */}
+              <div className="flex-1 flex flex-col justify-center py-12">
+                <p className="font-ui text-xs tracking-[0.5em] uppercase text-amber-500/70 mb-5">
+                  A Taste of Italy
+                </p>
+
+                <h1
+                  className="elegant-text font-bold text-white leading-[0.88] tracking-tight mb-0"
+                  style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}
+                >
+                  MAZEN<br />
+                  <span className="text-amber-500/90">CITO</span>
+                </h1>
+
+                <hr className="border-white/8 my-6 max-w-xs" />
+
+                <p className="font-ui text-[10px] tracking-[0.7em] uppercase text-white/20">
+                  PIZZERIA
+                </p>
+
+                <p className="font-body text-white/45 text-base leading-relaxed max-w-sm mt-6 mb-10">
+                  Wood-fired Neapolitan pizza, handcrafted pasta, and genuine Italian hospitality.
+                </p>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/menu"
+                    className="font-ui text-xs tracking-[0.3em] uppercase bg-amber-500 text-black px-7 py-4 hover:bg-amber-400 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  >
+                    Explore Menu
+                  </Link>
+                  <Link
+                    href="/reservation"
+                    className="font-ui text-xs tracking-[0.3em] uppercase border border-white/20 text-white px-7 py-4 hover:bg-white/5 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  >
+                    Reserve a Table
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-4 py-5 px-8">
-              <div className="p-2.5 rounded-full bg-white/10 flex-shrink-0">
-                <Clock className="w-4 h-4 text-amber-300" />
-              </div>
-              <div>
-                <p className="font-ui text-[10px] tracking-widest uppercase text-white/50 mb-0.5">Hours</p>
-                <p className="font-ui text-sm font-semibold text-white">Daily 1:00 PM – 1:00 AM</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 py-5 px-8">
-              <div className="p-2.5 rounded-full bg-white/10 flex-shrink-0">
-                <Phone className="w-4 h-4 text-amber-300" />
-              </div>
-              <div>
-                <p className="font-ui text-[10px] tracking-widest uppercase text-white/50 mb-0.5">Phone</p>
+
+              {/* BOTTOM: meta info */}
+              <div className="flex items-center gap-6 flex-wrap text-white/30">
+                <span className="flex items-center gap-2">
+                  <Clock className="w-3 h-3 flex-shrink-0" />
+                  <span className="font-ui text-xs">12PM&ndash;1AM &middot; Weekends 2AM</span>
+                </span>
                 <a
                   href="tel:+966555674383"
-                  className="font-ui text-sm font-semibold text-white hover:text-amber-200 transition-colors"
+                  className="flex items-center gap-2 hover:text-white/50 transition-colors min-h-[44px]"
                 >
-                  +966 55 567 4383
+                  <Phone className="w-3 h-3 flex-shrink-0" />
+                  <span className="font-ui text-xs">+966 55 567 4383</span>
                 </a>
               </div>
             </div>
+
+            {/* RIGHT COLUMN — image (desktop only) */}
+            <div className="hidden lg:block relative overflow-hidden">
+              <Image
+                src="/hero-pasta.jpg"
+                alt="Mazencito Pizzeria — wood-fired Italian cuisine"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Gradient blend into left column */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806] via-[#0A0806]/30 to-transparent" />
+            </div>
+          </div>
+
+          {/* Mobile background image (below z-10 text) */}
+          <div className="absolute inset-0 lg:hidden">
+            <Image
+              src="/hero-pasta.jpg"
+              alt=""
+              fill
+              className="object-cover opacity-[0.08]"
+              priority
+              aria-hidden="true"
+            />
+          </div>
+
+          {/* TIME OUT BADGE */}
+          <div className="absolute top-28 right-5 lg:top-auto lg:bottom-16 lg:right-0 lg:translate-x-1/4 z-20">
+            <div className="w-24 h-24 rounded-full border border-amber-500/30 bg-[#0A0806] flex flex-col items-center justify-center gap-0.5 text-center p-3">
+              <span className="font-ui text-[7px] tracking-widest text-amber-400 uppercase">Time Out</span>
+              <span className="font-ui text-[6px] text-white/40 tracking-wide uppercase">Jeddah</span>
+              <div className="h-px w-8 bg-amber-500/30 my-0.5" />
+              <span className="elegant-text text-lg font-bold text-amber-400 leading-none">2026</span>
+              <span className="font-ui text-[5px] tracking-[0.2em] uppercase text-white/35 mt-0.5">Shortlisted</span>
+            </div>
           </div>
         </section>
 
-        {/* ── C. SIGNATURE PIZZAS ── */}
-        <section className="bg-[#F9F5EE] py-24 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-600 mb-4">
-                Crafted with Passion
+        {/* ── B. BRAND PROMISE STRIP ── */}
+        <section className="bg-[#8B1A1A] py-4 overflow-hidden">
+          <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/75 text-center whitespace-nowrap">
+            Same Quality &nbsp;&middot;&nbsp; Same Fresh Ingredients &nbsp;&middot;&nbsp; Better Value &nbsp;&middot;&nbsp; Wood-Fired Since Day One &nbsp;&middot;&nbsp; Ash Shati, Jeddah
+          </p>
+        </section>
+
+        {/* ── C. CRAFT SECTION — Full-bleed, no cards ── */}
+        <section className="bg-[#F5F0E8]">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+
+            {/* LEFT: image */}
+            <div className="relative h-[55vw] lg:h-auto lg:min-h-[700px] overflow-hidden">
+              <Image
+                src="/restaurant-interior.jpg"
+                alt="Mazencito restaurant interior"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* RIGHT: text */}
+            <div className="flex flex-col justify-center px-8 sm:px-14 lg:px-20 py-20">
+              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-10">
+                Our Craft
               </p>
-              <h2 className="elegant-text text-5xl md:text-6xl text-[#1A0D0D] mb-0">
-                Signature Pizzas
+
+              <h2
+                className="elegant-text font-bold text-[#0A0806] leading-[1.05] mb-8"
+                style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
+              >
+                Wood-fired.<br />
+                <em className="italic">Hand-made.</em><br />
+                Genuine.
+              </h2>
+
+              <div className="h-px w-12 bg-[#8B1A1A]/30 mb-8" />
+
+              <p className="font-body text-[#5C4A3A] text-lg leading-relaxed max-w-sm mb-4">
+                Baked at 500&deg;C in our Morello Forni wood-fired oven. Every dough hand-stretched to order. Every ingredient chosen for flavour.
+              </p>
+
+              <p className="font-body text-[#5C4A3A]/60 text-base leading-relaxed max-w-sm mb-12">
+                This is not fast food. This is the Italian way.
+              </p>
+
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-3 group w-fit min-h-[44px]"
+              >
+                <span className="font-ui text-[10px] tracking-[0.35em] uppercase text-[#0A0806]">
+                  Our Story
+                </span>
+                <div className="h-px w-8 bg-[#0A0806] group-hover:w-16 transition-all duration-300" />
+              </Link>
+
+              {/* Stat block */}
+              <div className="grid grid-cols-2 gap-4 mt-14 pt-10 border-t border-[#0A0806]/8">
+                <div>
+                  <p className="font-ui text-xs tracking-wide text-[#0A0806]">Morello Forni</p>
+                  <p className="font-ui text-[10px] text-[#5C4A3A]/60 mt-0.5">Italian Wood-Fired Oven</p>
+                </div>
+                <div>
+                  <p className="elegant-text text-2xl text-[#8B1A1A] font-bold">46.9K</p>
+                  <p className="font-ui text-[10px] text-[#5C4A3A]/60 mt-0.5">Instagram Followers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── D. MENU SECTION — Typographic list, NO cards ── */}
+        <section className="bg-[#0A0806] py-24 md:py-32">
+
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end border-b border-white/8 pb-8 mb-0 max-w-6xl mx-auto px-6 lg:px-12 gap-4">
+            <div>
+              <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/30 mb-3">
+                From the Kitchen
+              </p>
+              <h2 className="elegant-text text-5xl md:text-6xl text-white leading-none">
+                Signature<br />
+                <em className="not-italic text-amber-500">Pizzas</em>
               </h2>
             </div>
+            <Link
+              href="/menu"
+              className="font-ui text-xs tracking-[0.3em] uppercase text-white/30 hover:text-white/60 transition-colors self-end pb-1"
+            >
+              Full Menu &rarr;
+            </Link>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {signaturePizzas.map((pizza) => (
-                <div
-                  key={pizza.name}
-                  className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="relative h-56 overflow-hidden">
-                    <Image
-                      src={pizza.image}
-                      alt={pizza.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute bottom-3 right-3">
-                      <span className="bg-amber-500 text-black font-ui font-bold text-sm px-3 py-1.5 rounded">
-                        {pizza.price}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="elegant-text text-2xl font-bold text-[#7A1A1A] mb-2">
+          {/* Pizza rows */}
+          <div className="max-w-6xl mx-auto px-6 lg:px-12">
+            {signaturePizzas.map((pizza) => (
+              <div
+                key={pizza.index}
+                className="flex items-center justify-between py-5 border-b border-white/[0.06] hover:border-white/15 transition-colors group"
+              >
+                <div className="flex items-baseline gap-4 sm:gap-6 flex-1 min-w-0">
+                  <span className="font-ui text-xs text-white/15 w-6 flex-shrink-0">{pizza.index}</span>
+                  <div className="min-w-0">
+                    <span className="elegant-text text-xl md:text-2xl text-white group-hover:text-amber-100/90 transition-colors block">
                       {pizza.name}
-                    </h3>
-                    <p className="font-body text-[#5C4A3A] text-sm leading-relaxed">
-                      {pizza.description}
-                    </p>
+                    </span>
+                    <span className="font-ui text-xs text-white/30 tracking-wide block mt-0.5 truncate">
+                      {pizza.desc}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
+                <span className="font-ui text-sm text-amber-500 font-medium flex-shrink-0 ml-4">
+                  {pizza.price}
+                </span>
+              </div>
+            ))}
 
-            <div className="text-center">
+            <div className="mt-10 flex gap-4">
               <Link
                 href="/menu"
-                className="inline-flex items-center gap-2 bg-[#7A1A1A] text-white font-ui font-semibold text-sm px-8 py-3.5 rounded hover:bg-[#6a1616] transition-colors"
+                className="font-ui text-xs tracking-[0.3em] uppercase text-amber-500 border border-amber-500/25 px-6 py-3.5 hover:bg-amber-500/8 transition-colors min-h-[44px] flex items-center"
               >
                 View Full Menu
-                <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── D. OUR STORY ── */}
-        <section className="bg-[#0C0907] py-24 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* ── E. TUESDAY PASTA DAY — Full-bleed promotional ── */}
+        <section className="bg-[#F5F0E8] grid grid-cols-1 lg:grid-cols-2">
 
-              {/* Left: text */}
-              <div>
-                <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-400 mb-5">
-                  Our Story
-                </p>
-                <h2 className="elegant-text text-5xl md:text-6xl text-white leading-tight mb-6">
-                  Where Italian Craft Meets{' '}
-                  <em className="text-amber-400 not-italic">Jeddah&apos;s Soul</em>
-                </h2>
-
-                {/* Gold divider */}
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="h-px w-16 bg-amber-500/40" />
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500/60" />
-                  <div className="h-px w-16 bg-amber-500/40" />
-                </div>
-
-                <p className="font-body text-white/60 text-lg leading-relaxed mb-5">
-                  Mazencito Pizzeria was born from a simple, passionate mission: to bring the true flavors of Italy to the heart of Jeddah. We celebrate the tradition of Italian cooking with the finest fresh ingredients and recipes passed down through generations.
-                </p>
-                <p className="font-body text-white/60 text-lg leading-relaxed mb-8">
-                  Every pizza that leaves our kitchen is a labor of love — hand-stretched dough, San Marzano tomatoes, fresh mozzarella — crafted with patience and genuine care for the people who sit at our tables.
-                </p>
-
-                <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 font-ui text-sm font-semibold text-amber-400 hover:text-amber-300 transition-colors"
-                >
-                  Read Our Story
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-
-              {/* Right: image */}
-              <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                <Image
-                  src="/restaurant-interior.jpg"
-                  alt="Mazencito Restaurant Interior"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0C0907]/40 to-transparent" />
-
-                {/* Floating stat card */}
-                <div className="absolute -bottom-0 -left-0 lg:-bottom-6 lg:-left-6 bg-[#7A1A1A] text-white p-6 rounded-xl shadow-2xl">
-                  <p className="elegant-text text-4xl font-bold text-amber-400 leading-none">25+</p>
-                  <p className="font-ui text-xs text-white/70 mt-1 tracking-wide uppercase">Signature Pizzas</p>
-                </div>
-              </div>
-            </div>
+          {/* LEFT: image */}
+          <div className="relative h-[50vw] lg:h-auto min-h-[400px] overflow-hidden">
+            <Image
+              src="/tiramisu.jpg"
+              alt="Pasta Day at Mazencito"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-[#0A0806]/20" />
           </div>
-        </section>
 
-        {/* ── E. DELIVERY ── */}
-        <section className="bg-[#F9F5EE] py-24">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-600 mb-4">
-              Order from Home
+          {/* RIGHT: promo text */}
+          <div className="bg-[#8B1A1A] flex flex-col justify-center px-10 sm:px-14 lg:px-16 py-20">
+            <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/40 mb-6">
+              Every Tuesday
             </p>
-            <h2 className="elegant-text text-5xl md:text-6xl text-[#1A0D0D] mb-4">
-              Order Delivery
+
+            <h2 className="elegant-text font-bold text-white leading-[0.95] mb-6" style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}>
+              Pasta<br />
+              Day
             </h2>
-            <p className="font-body text-[#5C4A3A] text-lg mb-14 max-w-xl mx-auto">
-              Enjoy authentic Mazencito pizza delivered to your door through your preferred platform.
+
+            <div className="h-px w-12 bg-white/20 mb-8" />
+
+            <p className="font-body text-white/65 text-xl mb-10">
+              Order one pasta, get the second completely free.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-              {deliveryPlatforms.map((platform) => (
-                <div
-                  key={platform.name}
-                  className="bg-white border border-[#E8DFD0] rounded-xl p-6 text-center hover:border-[#7A1A1A]/30 hover:shadow-md transition-all duration-200"
-                >
-                  <div className="w-12 h-12 rounded-full bg-[#7A1A1A]/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="elegant-text text-xl font-bold text-[#7A1A1A]">
-                      {platform.letter}
-                    </span>
-                  </div>
-                  <p className="font-ui text-sm font-semibold text-[#1A0D0D]">{platform.name}</p>
-                </div>
-              ))}
-            </div>
+            <Link
+              href="/menu"
+              className="font-ui text-xs tracking-[0.3em] uppercase text-black bg-amber-500 px-7 py-4 hover:bg-amber-400 transition-colors inline-block w-fit min-h-[44px] flex items-center"
+            >
+              Order Now
+            </Link>
+
+            <p className="font-ui text-[10px] text-white/30 mt-4 tracking-wide">
+              Dine-in &amp; delivery &middot; Every Tuesday
+            </p>
           </div>
         </section>
 
-        {/* ── F. GUEST REVIEWS ── */}
-        <section className="bg-white py-24 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-600 mb-4">
-                What Our Guests Say
-              </p>
-              <h2 className="elegant-text text-5xl md:text-6xl text-[#1A0D0D]">
-                Guest Reviews
-              </h2>
+        {/* ── F. LUNCH OFFER STRIP ── */}
+        <section className="bg-[#0A0806] border-y border-white/5 py-16">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+
+            <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-amber-500/70 mb-6">
+              Lunch Offer
+            </p>
+
+            <h2 className="elegant-text text-4xl md:text-5xl text-white mb-2">
+              Sunday &ndash; Thursday
+            </h2>
+
+            <p className="font-ui text-xs tracking-[0.3em] uppercase text-white/30 mb-10">
+              1:00 PM to 5:00 PM
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+              <div className="border border-white/8 p-8 text-center">
+                <p className="elegant-text text-4xl text-amber-500 font-bold">65 SAR</p>
+                <p className="font-ui text-xs text-white/30 tracking-wide uppercase mt-1">per person</p>
+                <div className="h-px bg-white/8 mt-4 mb-4" />
+                <p className="font-body text-sm text-white/45 leading-relaxed">
+                  Salad or Soup + Main Course + Soft Drink
+                </p>
+              </div>
+              <div className="border border-white/8 p-8 text-center">
+                <p className="elegant-text text-4xl text-amber-500 font-bold">85 SAR</p>
+                <p className="font-ui text-xs text-white/30 tracking-wide uppercase mt-1">per person</p>
+                <div className="h-px bg-white/8 mt-4 mb-4" />
+                <p className="font-body text-sm text-white/45 leading-relaxed">
+                  Salad + Main Course + Dessert + Beverages
+                </p>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <p className="font-ui text-[10px] text-white/25 tracking-wide mt-10">
+              Subject to availability &middot; Dine-in only
+            </p>
+          </div>
+        </section>
+
+        {/* ── G. DELIVERY — Pure typography, no cards ── */}
+        <section className="bg-[#F5F0E8] py-20 md:py-24">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8">
+
+            <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-[#8B1A1A] mb-6">
+              Order Delivery
+            </p>
+
+            <h2 className="elegant-text text-4xl md:text-5xl text-[#0A0806] font-bold mb-10">
+              We deliver<br />
+              <em className="italic text-[#8B1A1A]">everywhere.</em>
+            </h2>
+
+            <div className="h-px bg-[#0A0806]/10 mb-10" />
+
+            {/* Platforms — horizontal typographic list */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <span className="elegant-text text-2xl md:text-3xl text-[#0A0806] font-bold">HungerStation</span>
+              <span className="text-[#0A0806]/15 text-xl font-thin">/</span>
+              <span className="elegant-text text-2xl md:text-3xl text-[#0A0806] font-bold">Keeta</span>
+              <span className="text-[#0A0806]/15 text-xl font-thin">/</span>
+              <span className="elegant-text text-2xl md:text-3xl text-[#0A0806] font-bold">Jahez</span>
+              <span className="text-[#0A0806]/15 text-xl font-thin">/</span>
+              <span className="elegant-text text-2xl md:text-3xl text-[#0A0806] font-bold">Lugmety</span>
+            </div>
+
+            <p className="font-ui text-xs text-[#5C4A3A]/50 tracking-wide mt-8">
+              Available for delivery and takeaway
+            </p>
+          </div>
+        </section>
+
+        {/* ── H. GUEST REVIEWS — Editorial pull quote style ── */}
+        <section className="bg-[#0A0806] py-24 md:py-32">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8">
+
+            {/* Header */}
+            <div className="flex justify-between items-end mb-16">
+              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-white/30">
+                Guest Reviews
+              </p>
+              <span className="text-amber-500 text-sm tracking-widest">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+
+            {/* Reviews — stacked, editorial */}
+            <div className="space-y-16">
               {reviews.map((review, idx) => (
-                <div
-                  key={idx}
-                  className="bg-[#F9F5EE] rounded-2xl p-8 border border-[#E8DFD0]"
-                >
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-5">
-                    {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
+                <div key={idx}>
+                  {/* Giant quote mark */}
+                  <div className="elegant-text text-8xl text-white/5 leading-none font-bold -mb-6 ml-4 select-none" aria-hidden="true">
+                    &ldquo;
                   </div>
 
-                  {/* Arabic comment */}
+                  {/* Arabic quote */}
                   <p
                     dir="rtl"
-                    className="font-body text-[#1A0D0D] text-base leading-relaxed mb-3"
+                    className="elegant-text text-2xl md:text-3xl text-white/75 leading-relaxed italic font-normal pl-6 border-l border-white/10"
                   >
-                    &ldquo;{review.comment}&rdquo;
+                    {review.arabic}
                   </p>
 
                   {/* English translation */}
-                  <p className="font-body text-[#5C4A3A] text-sm italic mb-6">
-                    &ldquo;{review.note}&rdquo;
+                  <p className="font-body text-white/35 text-base italic mt-3 pl-6">
+                    &ldquo;{review.english}&rdquo;
                   </p>
 
-                  {/* Guest */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#7A1A1A]/10 flex items-center justify-center flex-shrink-0">
-                      <span className="elegant-text text-sm font-bold text-[#7A1A1A]">
-                        {review.name.charAt(0)}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="font-ui text-sm font-semibold text-[#1A0D0D]">{review.name}</p>
-                      <p className="font-ui text-xs text-[#5C4A3A]">Verified Guest</p>
-                    </div>
+                  {/* Attribution */}
+                  <div className="flex items-center gap-3 mt-6 pl-6">
+                    <div className="h-px w-8 bg-white/15" />
+                    <span className="font-ui text-xs tracking-[0.2em] text-white/40 uppercase">{review.name}</span>
+                    <span className="font-ui text-[10px] text-white/20">Verified Guest</span>
                   </div>
                 </div>
               ))}
@@ -375,113 +462,83 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── G. RESERVE CTA ── */}
-        <section className="bg-[#7A1A1A] py-24 md:py-32 text-white text-center">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-300/80 mb-6">
-              Limited Tables Available
-            </p>
+        {/* ── I. LOCATION — Clean minimal ── */}
+        <section className="bg-[#F5F0E8] py-20 md:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 items-start">
 
-            <h2 className="elegant-text text-6xl md:text-7xl font-bold leading-tight mb-6">
-              Reserve Your Table Tonight
-            </h2>
-
-            {/* Gold divider */}
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="h-px w-20 bg-amber-400/30 mx-auto" />
-            </div>
-
-            <p className="font-body text-white/65 text-xl mb-12 max-w-2xl mx-auto">
-              Join us for an evening of authentic Italian pizza, warm hospitality, and unforgettable flavors on King Abdulaziz Branch Road.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/reservation"
-                className="w-full sm:w-auto bg-amber-500 text-black font-ui font-bold text-sm px-10 py-4 uppercase tracking-widest rounded hover:bg-amber-400 transition-colors"
-              >
-                Book a Table
-              </Link>
-              <a
-                href="https://wa.me/966555674383"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto border border-white/30 text-white font-ui font-semibold text-sm px-10 py-4 uppercase rounded hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp Us
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── H. LOCATION ── */}
-        <section className="bg-[#F9F5EE] py-24 md:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <p className="font-ui text-xs tracking-[0.3em] uppercase text-amber-600 mb-4">
-                Find Us
+            {/* LEFT: info */}
+            <div>
+              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#8B1A1A] mb-8">
+                Visit Us
               </p>
-              <h2 className="elegant-text text-5xl md:text-6xl text-[#1A0D0D]">
-                Visit Us in Jeddah
+
+              <h2 className="elegant-text text-4xl font-bold text-[#0A0806] mb-8">
+                Ash Shati,<br />
+                Jeddah
               </h2>
-            </div>
 
-            {/* 3 info cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-              <div className="bg-white border border-[#E8DFD0] rounded-2xl p-8 text-center">
-                <div className="w-14 h-14 rounded-full bg-[#7A1A1A]/8 flex items-center justify-center mx-auto mb-5">
-                  <MapPin className="w-6 h-6 text-[#7A1A1A]" />
+              <div className="space-y-6">
+                <div>
+                  <p className="font-ui text-xs uppercase tracking-widest text-[#5C4A3A]/50 mb-1">Address</p>
+                  <p className="font-body text-[#0A0806]">
+                    Ash Shati, Atelier Lavie<br />
+                    Jeddah, Saudi Arabia
+                  </p>
                 </div>
-                <h3 className="elegant-text text-xl font-bold text-[#1A0D0D] mb-3">Location</h3>
-                <p className="font-body text-[#5C4A3A] text-sm leading-relaxed">
-                  King Abdulaziz Branch Road<br />
-                  Jeddah, Saudi Arabia
-                </p>
-              </div>
 
-              <div className="bg-white border border-[#E8DFD0] rounded-2xl p-8 text-center">
-                <div className="w-14 h-14 rounded-full bg-[#7A1A1A]/8 flex items-center justify-center mx-auto mb-5">
-                  <Phone className="w-6 h-6 text-[#7A1A1A]" />
+                <div>
+                  <p className="font-ui text-xs uppercase tracking-widest text-[#5C4A3A]/50 mb-1">Hours</p>
+                  <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
+                  <p className="font-body text-[#5C4A3A]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
                 </div>
-                <h3 className="elegant-text text-xl font-bold text-[#1A0D0D] mb-3">Call Us</h3>
-                <div className="space-y-2">
+
+                <div>
+                  <p className="font-ui text-xs uppercase tracking-widest text-[#5C4A3A]/50 mb-1">Phone</p>
                   <a
                     href="tel:+966555674383"
-                    className="block font-body text-sm text-[#7A1A1A] hover:text-[#5a1414] font-medium transition-colors"
+                    className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors min-h-[44px] flex items-center"
                   >
                     +966 55 567 4383
                   </a>
                   <a
                     href="tel:+966554430556"
-                    className="block font-body text-sm text-[#7A1A1A] hover:text-[#5a1414] font-medium transition-colors"
+                    className="block font-body text-[#0A0806] hover:text-[#8B1A1A] transition-colors"
                   >
                     +966 55 443 0556
                   </a>
                 </div>
+
+                <div>
+                  <a
+                    href="https://wa.me/966555674383"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-ui text-xs tracking-[0.2em] uppercase text-amber-600 hover:text-amber-700 transition-colors"
+                  >
+                    Chat on WhatsApp &rarr;
+                  </a>
+                </div>
               </div>
 
-              <div className="bg-white border border-[#E8DFD0] rounded-2xl p-8 text-center">
-                <div className="w-14 h-14 rounded-full bg-[#7A1A1A]/8 flex items-center justify-center mx-auto mb-5">
-                  <Clock className="w-6 h-6 text-[#7A1A1A]" />
-                </div>
-                <h3 className="elegant-text text-xl font-bold text-[#1A0D0D] mb-3">Hours</h3>
-                <p className="font-body text-[#5C4A3A] text-sm leading-relaxed">
-                  Open Daily<br />
-                  1:00 PM &ndash; 1:00 AM
-                </p>
+              <div className="mt-8">
+                <Link
+                  href="/reservation"
+                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] text-white px-6 py-3.5 hover:bg-[#8B1A1A] transition-colors inline-block min-h-[44px] flex items-center"
+                >
+                  Reserve a Table
+                </Link>
               </div>
             </div>
 
-            {/* Map embed */}
-            <div className="rounded-2xl overflow-hidden shadow-xl h-[400px]">
+            {/* RIGHT: map */}
+            <div className="overflow-hidden h-[400px] lg:h-[500px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.8372839174876!2d39.17224!3d21.543915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sKing+Abdulaziz+Branch+Road!2sJeddah+Saudi+Arabia!5e0!3m2!1sen!2ssa!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d39.19!3d21.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiAzOcKwMTEnMjQuMCJF!5e0!3m2!1sen!2ssa!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 loading="lazy"
-                title="Mazencito Pizzeria Location"
+                title="Mazencito Pizzeria — Ash Shati, Atelier Lavie, Jeddah"
               />
             </div>
           </div>

@@ -1,41 +1,37 @@
 'use client'
 
 import Link from 'next/link'
-import { MapPin, Phone, Clock, Instagram, MessageCircle } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0C0907] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+    <footer className="bg-[#0A0806] text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-14 pb-10">
 
-        {/* 4-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
-
-          {/* Col 1: Brand */}
-          <div className="lg:col-span-1">
-            <div className="mb-5">
-              <p className="elegant-text text-2xl font-bold text-white leading-none">Mazencito</p>
-              <p className="font-ui text-[10px] tracking-[0.3em] text-amber-400/70 uppercase mt-1">Pizzeria</p>
-            </div>
-            <p className="font-body text-white/55 text-sm leading-relaxed mb-6">
-              Authentic Italian pizza and cuisine in the heart of Jeddah. Fresh ingredients, traditional recipes, warm hospitality — every single day.
-            </p>
-            <a
-              href="https://www.instagram.com/mazencito.ksa"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-ui text-sm text-amber-400/80 hover:text-amber-400 transition-colors"
-            >
-              <Instagram className="w-4 h-4" />
-              @mazencito.ksa
-            </a>
+        {/* Top row: Logo + Instagram */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <div className="flex flex-col items-start leading-none">
+            <span className="elegant-text text-xl font-bold text-white">Mazencito</span>
+            <span className="font-ui text-[9px] tracking-[0.4em] text-amber-500/60 uppercase mt-0.5">Pizzeria</span>
           </div>
+          <a
+            href="https://www.instagram.com/mazencito.ksa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-ui text-xs tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors"
+          >
+            46.9K on Instagram &nbsp;@mazencito.ksa
+          </a>
+        </div>
 
-          {/* Col 2: Navigation */}
+        {/* Thin rule */}
+        <div className="h-px bg-white/8 mb-10" />
+
+        {/* 3-column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-12">
+
+          {/* Quick Links */}
           <div>
-            <h4 className="font-ui text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-5">
-              Navigation
-            </h4>
+            <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/25 mb-5">Quick Links</p>
             <ul className="space-y-3">
               {[
                 { href: '/', label: 'Home' },
@@ -47,7 +43,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-ui text-sm text-white/60 hover:text-white transition-colors"
+                    className="font-ui text-xs tracking-[0.15em] text-white/45 hover:text-white/80 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -56,70 +52,54 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Contact */}
+          {/* Contact */}
           <div>
-            <h4 className="font-ui text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-5">
-              Contact
-            </h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400/80" />
-                </div>
-                <div>
-                  <p className="font-ui text-xs text-white/40 mb-0.5">Address</p>
-                  <p className="font-body text-sm text-white/70 leading-snug">
-                    King Abdulaziz Branch Road<br />
-                    Jeddah, Saudi Arabia
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Phone className="w-3.5 h-3.5 text-amber-400/80" />
-                </div>
-                <div>
-                  <p className="font-ui text-xs text-white/40 mb-0.5">Phone</p>
-                  <a
-                    href="tel:+966555674383"
-                    className="block font-body text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    +966 55 567 4383
-                  </a>
-                  <a
-                    href="tel:+966554430556"
-                    className="block font-body text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    +966 55 443 0556
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full bg-white/8 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Clock className="w-3.5 h-3.5 text-amber-400/80" />
-                </div>
-                <div>
-                  <p className="font-ui text-xs text-white/40 mb-0.5">Hours</p>
-                  <p className="font-body text-sm text-white/70">
-                    Daily 1:00 PM – 1:00 AM
-                  </p>
-                </div>
-              </li>
-            </ul>
+            <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/25 mb-5">Contact</p>
+            <div className="space-y-4">
+              <div>
+                <p className="font-ui text-[10px] tracking-widest uppercase text-white/20 mb-1">Address</p>
+                <p className="font-ui text-xs text-white/50 leading-relaxed">
+                  Ash Shati, Atelier Lavie<br />
+                  Jeddah, Saudi Arabia
+                </p>
+              </div>
+              <div>
+                <p className="font-ui text-[10px] tracking-widest uppercase text-white/20 mb-1">Phone</p>
+                <a
+                  href="tel:+966555674383"
+                  className="block font-ui text-xs text-white/50 hover:text-white/80 transition-colors"
+                >
+                  +966 55 567 4383
+                </a>
+                <a
+                  href="tel:+966554430556"
+                  className="block font-ui text-xs text-white/50 hover:text-white/80 transition-colors mt-0.5"
+                >
+                  +966 55 443 0556
+                </a>
+              </div>
+              <div>
+                <p className="font-ui text-[10px] tracking-widest uppercase text-white/20 mb-1">Hours</p>
+                <p className="font-ui text-xs text-white/50">
+                  Daily 12:00 PM &ndash; 1:00 AM
+                </p>
+                <p className="font-ui text-xs text-white/30 mt-0.5">
+                  Weekends till 2:00 AM
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Col 4: Reserve */}
+          {/* Reserve */}
           <div>
-            <h4 className="font-ui text-xs font-semibold tracking-[0.2em] uppercase text-white/40 mb-5">
-              Reserve
-            </h4>
-            <p className="font-body text-sm text-white/55 leading-relaxed mb-6">
-              Secure your table and enjoy an unforgettable evening of authentic Italian pizza in Jeddah.
+            <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/25 mb-5">Reserve</p>
+            <p className="font-ui text-xs text-white/35 leading-relaxed mb-6 max-w-[180px]">
+              Secure your table for an evening of authentic Italian hospitality.
             </p>
             <div className="space-y-3">
               <Link
                 href="/reservation"
-                className="block w-full text-center bg-amber-500 text-black font-ui font-bold text-sm px-5 py-3 rounded hover:bg-amber-400 transition-colors"
+                className="block w-full text-center bg-amber-500 text-black font-ui text-xs tracking-[0.25em] uppercase px-5 py-3.5 hover:bg-amber-400 transition-colors min-h-[44px] flex items-center justify-center"
               >
                 Reserve a Table
               </Link>
@@ -127,22 +107,18 @@ export default function Footer() {
                 href="https://wa.me/966555674383"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full text-center border border-white/20 text-white/80 font-ui font-semibold text-sm px-5 py-3 rounded hover:border-white/40 hover:text-white transition-colors"
+                className="block w-full text-center border border-white/15 text-white/50 font-ui text-xs tracking-[0.2em] uppercase px-5 py-3.5 hover:border-white/30 hover:text-white/70 transition-colors min-h-[44px] flex items-center justify-center"
               >
-                <MessageCircle className="w-4 h-4" />
                 Chat on WhatsApp
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-ui text-xs text-white/35">
-            &copy; 2025 Mazencito Pizzeria. All rights reserved.
-          </p>
-          <p className="font-ui text-xs text-white/35">
-            Jeddah, Saudi Arabia
+        {/* Bottom */}
+        <div className="border-t border-white/8 pt-8">
+          <p className="font-ui text-[10px] tracking-[0.2em] text-white/20">
+            &copy; 2025 Mazencito Pizzeria &nbsp;&middot;&nbsp; Ash Shati, Atelier Lavie, Jeddah
           </p>
         </div>
       </div>
