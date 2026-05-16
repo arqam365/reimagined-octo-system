@@ -156,14 +156,22 @@ export default function Home() {
             />
           </div>
 
-          {/* TIME OUT BADGE */}
-          <div className="absolute top-28 right-5 lg:top-auto lg:bottom-16 lg:right-0 lg:translate-x-1/4 z-20">
-            <div className="w-24 h-24 rounded-full border border-amber-500/30 bg-[#0A0806] flex flex-col items-center justify-center gap-0.5 text-center p-3">
-              <span className="font-ui text-[7px] tracking-widest text-amber-400 uppercase">Time Out</span>
-              <span className="font-ui text-[6px] text-white/40 tracking-wide uppercase">Jeddah</span>
-              <div className="h-px w-8 bg-amber-500/30 my-0.5" />
-              <span className="elegant-text text-lg font-bold text-amber-400 leading-none">2026</span>
-              <span className="font-ui text-[5px] tracking-[0.2em] uppercase text-white/35 mt-0.5">Shortlisted</span>
+          {/* TIME OUT BADGE — premium circular award badge */}
+          <div className="absolute top-24 right-4 md:top-auto md:bottom-14 md:right-10 z-20">
+            <div className="relative w-36 h-36 md:w-44 md:h-44">
+              {/* Outer gold ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-amber-500/60" />
+              {/* Inner ring */}
+              <div className="absolute inset-[6px] rounded-full border border-amber-500/25" />
+              {/* Badge body */}
+              <div className="absolute inset-0 rounded-full bg-[#0D0B08]/95 flex flex-col items-center justify-center gap-0 text-center px-4">
+                <span className="font-ui text-[9px] md:text-[10px] tracking-[0.35em] text-amber-400 uppercase leading-none">Time Out</span>
+                <span className="font-ui text-[8px] md:text-[9px] tracking-[0.25em] text-white/50 uppercase leading-none mt-1">Jeddah</span>
+                <div className="h-px w-10 bg-amber-500/50 my-2" />
+                <span className="elegant-text text-3xl md:text-4xl font-bold text-amber-400 leading-none">2026</span>
+                <div className="h-px w-10 bg-amber-500/25 mt-2 mb-1.5" />
+                <span className="font-ui text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-white/45 leading-none">Shortlisted</span>
+              </div>
             </div>
           </div>
         </section>
@@ -303,7 +311,7 @@ export default function Home() {
           <div className="relative h-[50vw] lg:h-auto min-h-[400px] overflow-hidden">
             <Image
               src="/tiramisu.jpg"
-              alt="Pasta Day at Mazencito"
+              alt="Tiramisu dessert at Mazencito Pizzeria"
               fill
               className="object-cover"
             />
@@ -413,7 +421,127 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── H. GUEST REVIEWS — Editorial pull quote style ── */}
+        {/* ── H. FUTURE ORDERING CONCEPT ── */}
+        <section className="bg-[#0A0806] py-24 md:py-32 relative overflow-hidden">
+
+          {/* Background texture — large faint letterform */}
+          <div
+            className="absolute right-0 top-1/2 -translate-y-1/2 elegant-text font-bold text-white/[0.025] leading-none select-none pointer-events-none hidden lg:block"
+            style={{ fontSize: 'clamp(16rem, 28vw, 28rem)' }}
+            aria-hidden="true"
+          >
+            QR
+          </div>
+
+          <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+
+            {/* Header */}
+            <div className="mb-16 md:mb-20">
+              <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-amber-500/60 mb-5">
+                Coming Soon
+              </p>
+              <h2
+                className="elegant-text font-bold text-white leading-[1.0]"
+                style={{ fontSize: 'clamp(2.8rem, 6vw, 5.5rem)' }}
+              >
+                Order Direct.<br />
+                <em className="text-amber-500/90">No Middleman.</em>
+              </h2>
+              <p className="font-body text-white/35 text-lg max-w-lg mt-6 leading-relaxed">
+                We are building our own ordering experience — faster, smarter, and built entirely around you.
+              </p>
+            </div>
+
+            {/* Three concept pillars */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/8">
+
+              {/* 1 — QR Table Ordering */}
+              <div className="p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/8 group hover:bg-white/[0.025] transition-colors">
+                <div className="w-10 h-10 border border-amber-500/30 flex items-center justify-center mb-8">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <rect x="1" y="1" width="6" height="6" stroke="#E8970F" strokeOpacity="0.7" strokeWidth="1.5"/>
+                    <rect x="11" y="1" width="6" height="6" stroke="#E8970F" strokeOpacity="0.7" strokeWidth="1.5"/>
+                    <rect x="1" y="11" width="6" height="6" stroke="#E8970F" strokeOpacity="0.7" strokeWidth="1.5"/>
+                    <rect x="3" y="3" width="2" height="2" fill="#E8970F" fillOpacity="0.7"/>
+                    <rect x="13" y="3" width="2" height="2" fill="#E8970F" fillOpacity="0.7"/>
+                    <rect x="3" y="13" width="2" height="2" fill="#E8970F" fillOpacity="0.7"/>
+                    <rect x="11" y="11" width="2" height="2" fill="#E8970F" fillOpacity="0.5"/>
+                    <rect x="14" y="11" width="2" height="2" fill="#E8970F" fillOpacity="0.5"/>
+                    <rect x="11" y="14" width="2" height="2" fill="#E8970F" fillOpacity="0.5"/>
+                    <rect x="14" y="14" width="2" height="2" fill="#E8970F" fillOpacity="0.5"/>
+                  </svg>
+                </div>
+                <p className="font-ui text-[9px] tracking-[0.4em] uppercase text-amber-500/50 mb-3">01 &nbsp;/&nbsp; QR Ordering</p>
+                <h3 className="elegant-text text-2xl text-white font-bold mb-4 leading-tight">
+                  Scan.<br />Browse.<br />Order.
+                </h3>
+                <p className="font-body text-white/40 text-sm leading-relaxed">
+                  Every table gets its own QR code. Scan from your phone, browse the full menu in Arabic and English, and place your order without waiting for a waiter.
+                </p>
+              </div>
+
+              {/* 2 — Mazencito App */}
+              <div className="p-8 md:p-10 border-b md:border-b-0 md:border-r border-white/8 group hover:bg-white/[0.025] transition-colors">
+                <div className="w-10 h-10 border border-amber-500/30 flex items-center justify-center mb-8">
+                  <svg width="16" height="20" viewBox="0 0 16 20" fill="none" aria-hidden="true">
+                    <rect x="1" y="1" width="14" height="18" rx="2" stroke="#E8970F" strokeOpacity="0.7" strokeWidth="1.5"/>
+                    <rect x="6" y="16" width="4" height="1.5" rx="0.75" fill="#E8970F" fillOpacity="0.5"/>
+                    <rect x="4" y="5" width="8" height="1" fill="#E8970F" fillOpacity="0.4"/>
+                    <rect x="4" y="8" width="8" height="1" fill="#E8970F" fillOpacity="0.4"/>
+                    <rect x="4" y="11" width="5" height="1" fill="#E8970F" fillOpacity="0.4"/>
+                  </svg>
+                </div>
+                <p className="font-ui text-[9px] tracking-[0.4em] uppercase text-amber-500/50 mb-3">02 &nbsp;/&nbsp; Our App</p>
+                <h3 className="elegant-text text-2xl text-white font-bold mb-4 leading-tight">
+                  Mazencito<br />Platform
+                </h3>
+                <p className="font-body text-white/40 text-sm leading-relaxed">
+                  Our own mobile app — launching soon. Order dine-in or delivery, track your meals in real time, and unlock member-only offers. No third-party fees.
+                </p>
+                <div className="mt-6 inline-flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-amber-500 animate-pulse" aria-hidden="true" />
+                  <span className="font-ui text-[9px] tracking-[0.3em] uppercase text-amber-500/60">In Development</span>
+                </div>
+              </div>
+
+              {/* 3 — Direct Delivery */}
+              <div className="p-8 md:p-10 group hover:bg-white/[0.025] transition-colors">
+                <div className="w-10 h-10 border border-amber-500/30 flex items-center justify-center mb-8">
+                  <svg width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+                    <path d="M1 6H14V13H1V6Z" stroke="#E8970F" strokeOpacity="0.7" strokeWidth="1.5"/>
+                    <path d="M14 4L19 6V13H14V4Z" stroke="#E8970F" strokeOpacity="0.7" strokeWidth="1.5"/>
+                    <circle cx="5" cy="13.5" r="1.5" stroke="#E8970F" strokeOpacity="0.6" strokeWidth="1.2"/>
+                    <circle cx="17" cy="13.5" r="1.5" stroke="#E8970F" strokeOpacity="0.6" strokeWidth="1.2"/>
+                  </svg>
+                </div>
+                <p className="font-ui text-[9px] tracking-[0.4em] uppercase text-amber-500/50 mb-3">03 &nbsp;/&nbsp; Direct Delivery</p>
+                <h3 className="elegant-text text-2xl text-white font-bold mb-4 leading-tight">
+                  Order Direct.<br />Save More.
+                </h3>
+                <p className="font-body text-white/40 text-sm leading-relaxed">
+                  When we launch our own platform, every direct order means zero platform commission — which means better prices and exclusive loyalty rewards for you.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom strip — early access CTA */}
+            <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 border-t border-white/8 pt-8">
+              <p className="font-body text-white/30 text-sm italic">
+                Be the first to experience the new Mazencito — follow us on Instagram for the launch.
+              </p>
+              <a
+                href="https://www.instagram.com/mazencito.ksa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-ui text-xs tracking-[0.3em] uppercase text-amber-500 border border-amber-500/25 px-6 py-3.5 hover:bg-amber-500/8 transition-colors min-h-[44px] flex items-center justify-center sm:flex-shrink-0 w-fit"
+              >
+                Follow @mazencito.ksa
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── I. GUEST REVIEWS — Editorial pull quote style ── */}
         <section className="bg-[#0A0806] py-24 md:py-32">
           <div className="max-w-5xl mx-auto px-6 sm:px-8">
 
