@@ -16,7 +16,7 @@ export default function Footer() {
               alt="Mazencito Pizzeria"
               width={140}
               height={70}
-              className="h-12 w-auto object-contain brightness-0 invert opacity-70 hover:opacity-90 transition-opacity duration-200"
+              className="h-12 w-auto object-contain invert mix-blend-screen opacity-70 hover:opacity-90 transition-opacity duration-200"
             />
           </Link>
           <a

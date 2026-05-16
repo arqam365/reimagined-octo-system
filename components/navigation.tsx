@@ -41,7 +41,7 @@ export default function Navigation() {
               alt="Mazencito Pizzeria"
               width={120}
               height={60}
-              className="h-10 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+              className="h-10 w-auto object-contain invert mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity duration-200"
               priority
             />
           </Link>
