@@ -1,11 +1,14 @@
-import React from "react"
+import React from 'react'
 import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Mazencito - Premium Italian Restaurant',
-  description: 'Experience authentic Italian cuisine at Mazencito. Fine dining with traditional recipes and modern ambiance.',
-  generator: 'v0.app',
+  title: {
+    default: 'Mazencito Pizzeria — Authentic Italian in Jeddah',
+    template: '%s | Mazencito Pizzeria',
+  },
+  description:
+    'Experience authentic Italian pizza and cuisine at Mazencito Pizzeria, located on King Abdulaziz Branch Road, Jeddah. Open daily 1PM–1AM.',
 }
 
 export default function RootLayout({
@@ -14,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en">
       <body className="antialiased">{children}</body>
     </html>
   )
