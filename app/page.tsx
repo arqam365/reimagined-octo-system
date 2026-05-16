@@ -80,11 +80,10 @@ export default function Home() {
                 </p>
 
                 <h1
-                  className="elegant-text font-bold text-white leading-[0.88] tracking-tight mb-0"
-                  style={{ fontSize: 'clamp(3.5rem, 9vw, 8rem)' }}
+                  className="elegant-text font-bold leading-[0.88] tracking-tight mb-0 whitespace-nowrap"
+                  style={{ fontSize: 'clamp(2.6rem, 9vw, 8rem)' }}
                 >
-                  MAZEN<br />
-                  <span className="text-amber-500/90">CITO</span>
+                  <span className="text-white">MAZEN</span><span className="text-amber-500/90">CITO</span>
                 </h1>
 
                 <hr className="border-white/8 my-6 max-w-xs" />
@@ -157,20 +156,20 @@ export default function Home() {
           </div>
 
           {/* TIME OUT BADGE — premium circular award badge */}
-          <div className="absolute top-24 right-4 md:top-auto md:bottom-14 md:right-10 z-20">
-            <div className="relative w-36 h-36 md:w-44 md:h-44">
+          <div className="absolute bottom-28 right-5 md:top-auto md:bottom-14 md:right-10 z-20">
+            <div className="relative w-28 h-28 md:w-44 md:h-44">
               {/* Outer gold ring */}
               <div className="absolute inset-0 rounded-full border-2 border-amber-500/60" />
               {/* Inner ring */}
               <div className="absolute inset-[6px] rounded-full border border-amber-500/25" />
               {/* Badge body */}
               <div className="absolute inset-0 rounded-full bg-[#0D0B08]/95 flex flex-col items-center justify-center gap-0 text-center px-4">
-                <span className="font-ui text-[9px] md:text-[10px] tracking-[0.35em] text-amber-400 uppercase leading-none">Time Out</span>
-                <span className="font-ui text-[8px] md:text-[9px] tracking-[0.25em] text-white/50 uppercase leading-none mt-1">Jeddah</span>
-                <div className="h-px w-10 bg-amber-500/50 my-2" />
-                <span className="elegant-text text-3xl md:text-4xl font-bold text-amber-400 leading-none">2026</span>
-                <div className="h-px w-10 bg-amber-500/25 mt-2 mb-1.5" />
-                <span className="font-ui text-[7px] md:text-[8px] tracking-[0.3em] uppercase text-white/45 leading-none">Shortlisted</span>
+                <span className="font-ui text-[7px] md:text-[10px] tracking-[0.3em] md:tracking-[0.35em] text-amber-400 uppercase leading-none">Time Out</span>
+                <span className="font-ui text-[6px] md:text-[9px] tracking-[0.2em] text-white/50 uppercase leading-none mt-1">Jeddah</span>
+                <div className="h-px w-7 md:w-10 bg-amber-500/50 my-1.5 md:my-2" />
+                <span className="elegant-text text-2xl md:text-4xl font-bold text-amber-400 leading-none">2026</span>
+                <div className="h-px w-7 md:w-10 bg-amber-500/25 mt-1.5 md:mt-2 mb-1" />
+                <span className="font-ui text-[5px] md:text-[8px] tracking-[0.25em] md:tracking-[0.3em] uppercase text-white/45 leading-none">Shortlisted</span>
               </div>
             </div>
           </div>
