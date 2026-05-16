@@ -17,14 +17,6 @@ export default function NotFound() {
         <div className="flex-1 bg-[#009246]" />
       </div>
 
-      {/* Faint brand logo watermark */}
-      <div
-        className="absolute bottom-0 right-0 w-[500px] h-[350px] opacity-[0.03] pointer-events-none select-none"
-        aria-hidden="true"
-      >
-        <Image src="/mazencito-brand-logo.jpg" alt="" fill className="object-contain object-bottom-right" />
-      </div>
-
       {/* Giant 404 letterform watermark */}
       <div
         className="absolute inset-0 flex items-center justify-center font-brand font-bold text-white/[0.025] leading-none select-none pointer-events-none"
@@ -106,9 +98,36 @@ export default function NotFound() {
           </Link>
         </div>
 
-        <p className="font-ui text-[9px] tracking-[0.35em] uppercase text-white/15 mt-16">
-          Mazencito Pizzeria &nbsp;&middot;&nbsp; Ash Shati, Atelier Lavie &nbsp;&middot;&nbsp; Jeddah
-        </p>
+        {/* Tech support */}
+        <div className="mt-16 flex flex-col items-center gap-4">
+          <p className="font-ui text-[9px] tracking-[0.35em] uppercase text-white/15">
+            Mazencito Pizzeria &nbsp;&middot;&nbsp; Ash Shati, Atelier Lavie &nbsp;&middot;&nbsp; Jeddah
+          </p>
+          <div className="h-px w-12 bg-white/8" />
+          <p className="font-ui text-[9px] tracking-[0.25em] uppercase text-white/20">
+            Experiencing a technical issue?
+          </p>
+          <a
+            href="https://revzion.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 opacity-40 hover:opacity-100 transition-opacity duration-200"
+          >
+            <Image
+              src="/revzion-icon.png"
+              alt="Revzion"
+              width={60}
+              height={60}
+              className="h-5 w-auto object-contain"
+            />
+            <span className="font-ui text-[10px] tracking-[0.15em] uppercase text-white font-medium">
+              Revzion
+            </span>
+            <span className="font-ui text-[9px] tracking-[0.2em] uppercase text-white/50">
+              &mdash; Tech Support
+            </span>
+          </a>
+        </div>
       </div>
 
     </main>

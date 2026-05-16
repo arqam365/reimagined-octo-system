@@ -122,10 +122,30 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-white/8 pt-8">
+        <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="font-ui text-[10px] tracking-[0.2em] text-white/20">
             &copy; 2025 Mazencito Pizzeria &nbsp;&middot;&nbsp; Ash Shati, Atelier Lavie, Jeddah
           </p>
+          <a
+            href="https://revzion.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 hover:opacity-100 transition-opacity duration-200 opacity-60"
+          >
+            <span className="font-ui text-[10px] tracking-[0.2em] uppercase text-white/50 group-hover:text-white/80 transition-colors duration-200">
+              Designed &amp; Developed by
+            </span>
+            <Image
+              src="/revzion-icon.png"
+              alt="Revzion"
+              width={60}
+              height={60}
+              className="h-6 w-auto object-contain"
+            />
+            <span className="font-ui text-[11px] tracking-[0.15em] uppercase text-white group-hover:text-white transition-colors duration-200 font-medium">
+              Revzion
+            </span>
+          </a>
         </div>
       </div>
     </footer>
