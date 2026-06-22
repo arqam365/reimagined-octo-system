@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { apiFetch } from '@/lib/api'
 import TableOrderClient from './client'
 
 interface Table {
@@ -20,22 +21,16 @@ interface MenuItem {
 }
 
 async function getTable(uuid: string): Promise<Table | null> {
-  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
   try {
-    const res = await fetch(`${base}/api/tables/${uuid}`, { cache: 'no-store' })
-    if (!res.ok) return null
-    return res.json()
+    return await apiFetch(`/tables/by-uuid/${uuid}`)
   } catch {
     return null
   }
 }
 
-async function getMenu(): Promise<MenuItem[]> {
-  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
+async function getMenu(outletSlug: string): Promise<MenuItem[]> {
   try {
-    const res = await fetch(`${base}/api/menu`, { cache: 'no-store' })
-    if (!res.ok) return []
-    return res.json()
+    return await apiFetch(`/menu?outlet=${outletSlug}`)
   } catch {
     return []
   }
@@ -47,7 +42,8 @@ export default async function TablePage({
   params: Promise<{ uuid: string }>
 }) {
   const { uuid } = await params
-  const [table, menu] = await Promise.all([getTable(uuid), getMenu()])
+  const table = await getTable(uuid)
   if (!table) notFound()
+  const menu = await getMenu(table.outlet.slug)
   return <TableOrderClient table={table} menu={menu} />
 }
