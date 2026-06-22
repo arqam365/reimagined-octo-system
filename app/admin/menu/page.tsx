@@ -139,16 +139,14 @@ export default function AdminMenu() {
 
   const filtered = activeCategory === 'ALL' ? items : items.filter((i) => i.category === activeCategory)
 
-  const inputClass = 'w-full px-4 py-3 border border-[#0A0806]/12 dark:border-white/10 bg-white dark:bg-white/6 text-[#0A0806] dark:text-white/85 font-body text-sm focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20 dark:placeholder-white/20'
+  const inputClass = 'w-full px-4 py-3 border border-[var(--adm-border-md)] bg-[var(--adm-input)] text-[var(--adm-text)] font-body text-sm focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20 placeholder:text-[var(--adm-text-faint)]'
 
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 dark:text-white/25 mb-2">
-            Inventory
-          </p>
-          <h1 className="elegant-text text-4xl font-bold text-[#0A0806] dark:text-white/88">Menu</h1>
+          <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[var(--adm-text-dim)] mb-2">Inventory</p>
+          <h1 className="elegant-text text-4xl font-bold text-[var(--adm-text)]">Menu</h1>
         </div>
         <button
           onClick={() => setShowAdd(true)}
@@ -168,7 +166,7 @@ export default function AdminMenu() {
             className={`font-ui text-xs px-4 py-2 tracking-[0.2em] uppercase transition-all whitespace-nowrap ${
               activeCategory === cat
                 ? 'bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806]'
-                : 'text-[#0A0806] dark:text-white/40 border border-transparent hover:border-[#0A0806]/15 dark:hover:border-white/15 hover:text-[#0A0806] dark:hover:text-white/65'
+                : 'text-[var(--adm-text-sub)] border border-transparent hover:border-[var(--adm-border)] hover:text-[var(--adm-text)]'
             }`}
           >
             {cat === 'ALL' ? 'All' : cat.charAt(0) + cat.slice(1).toLowerCase()}
@@ -178,22 +176,22 @@ export default function AdminMenu() {
 
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="w-6 h-6 animate-spin text-[#0A0806]/30 dark:text-white/20" />
+          <Loader2 className="w-6 h-6 animate-spin text-[var(--adm-text-faint)]" />
         </div>
       ) : (
-        <div className="border border-[#0A0806]/8 dark:border-white/8 divide-y divide-[#0A0806]/8 dark:divide-white/5">
+        <div className="border border-[var(--adm-border)] divide-y divide-[var(--adm-divide)]">
           {filtered.length === 0 && (
-            <p className="font-body text-[#0A0806]/40 dark:text-white/30 px-6 py-8">No items in this category.</p>
+            <p className="font-body text-[var(--adm-text-dim)] px-6 py-8">No items in this category.</p>
           )}
           {filtered.map((item) => (
             <div key={item.id} className={`flex items-center justify-between px-6 py-4 gap-4 ${!item.available ? 'opacity-50' : ''}`}>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className="font-body text-[#0A0806] dark:text-white/80">{item.nameEn}</p>
+                  <p className="font-body text-[var(--adm-text)]">{item.nameEn}</p>
                   {item.nameAr && (
-                    <p className="font-body text-sm text-[#0A0806]/40 dark:text-white/30" dir="rtl">{item.nameAr}</p>
+                    <p className="font-body text-sm text-[var(--adm-text-dim)]" dir="rtl">{item.nameAr}</p>
                   )}
-                  <span className="font-ui text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 bg-[#0A0806]/6 dark:bg-white/6 text-[#0A0806]/50 dark:text-white/35">
+                  <span className="font-ui text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 bg-[var(--adm-tint)] text-[var(--adm-text-sub)]">
                     {item.category}
                   </span>
                 </div>
@@ -201,22 +199,22 @@ export default function AdminMenu() {
               </div>
               <div className="flex items-center gap-3 flex-shrink-0">
                 {toggling === item.id ? (
-                  <Loader2 className="w-4 h-4 animate-spin text-[#0A0806]/30 dark:text-white/25" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[var(--adm-text-faint)]" />
                 ) : (
                   <>
                     <button
                       onClick={() => toggleAvailable(item)}
                       className={`font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 border transition-colors ${
                         item.available
-                          ? 'border-green-300 dark:border-green-500/40 text-green-700 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-500/10'
-                          : 'border-[#0A0806]/15 dark:border-white/10 text-[#0A0806]/50 dark:text-white/35 hover:bg-[#0A0806]/5 dark:hover:bg-white/5'
+                          ? 'border-green-300 dark:border-[rgba(34,197,94,0.4)] text-green-700 dark:text-green-400 hover:bg-green-50 dark:hover:bg-[rgba(34,197,94,0.08)]'
+                          : 'border-[var(--adm-border-md)] text-[var(--adm-text-sub)] hover:bg-[var(--adm-hover)]'
                       }`}
                     >
                       {item.available ? 'Available' : 'Hidden'}
                     </button>
                     <button
                       onClick={() => deleteItem(item)}
-                      className="p-1.5 text-[#0A0806]/30 dark:text-white/25 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                      className="p-1.5 text-[var(--adm-text-faint)] hover:text-red-500 dark:hover:text-red-400 transition-colors"
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -235,14 +233,14 @@ export default function AdminMenu() {
           onClick={() => { setShowAdd(false); setForm(BLANK_FORM) }}
         >
           <div
-            className="bg-white dark:bg-[#110F0C] border border-transparent dark:border-white/8 p-8 max-w-md w-full max-h-[90vh] overflow-y-auto"
+            className="bg-[var(--adm-modal)] border border-[var(--adm-border)] p-8 max-w-md w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="elegant-text text-2xl font-bold text-[#0A0806] dark:text-white/85">Add Menu Item</h2>
+              <h2 className="elegant-text text-2xl font-bold text-[var(--adm-text)]">Add Menu Item</h2>
               <button
                 onClick={() => { setShowAdd(false); setForm(BLANK_FORM) }}
-                className="p-1.5 text-[#0A0806]/40 dark:text-white/30 hover:text-[#0A0806] dark:hover:text-white/65"
+                className="p-1.5 text-[var(--adm-text-dim)] hover:text-[var(--adm-text)] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -250,7 +248,7 @@ export default function AdminMenu() {
 
             <form onSubmit={addItem} className="space-y-4">
               <div>
-                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
+                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[var(--adm-text-sub)] mb-1.5">
                   Name (English) *
                 </label>
                 <input
@@ -264,7 +262,7 @@ export default function AdminMenu() {
               </div>
 
               <div>
-                <label className="flex items-center gap-2 font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
+                <label className="flex items-center gap-2 font-ui text-[10px] tracking-[0.3em] uppercase text-[var(--adm-text-sub)] mb-1.5">
                   <span>Name (Arabic) *</span>
                   {translating === 'nameAr' && (
                     <span className="flex items-center gap-1 text-[#CC2229]/70 normal-case tracking-normal">
@@ -291,7 +289,7 @@ export default function AdminMenu() {
               </div>
 
               <div>
-                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
+                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[var(--adm-text-sub)] mb-1.5">
                   Description
                 </label>
                 <input
@@ -304,7 +302,7 @@ export default function AdminMenu() {
               </div>
 
               <div>
-                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
+                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[var(--adm-text-sub)] mb-1.5">
                   Price (SAR) *
                 </label>
                 <input
@@ -320,7 +318,7 @@ export default function AdminMenu() {
               </div>
 
               <div>
-                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
+                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[var(--adm-text-sub)] mb-1.5">
                   Category *
                 </label>
                 <select
