@@ -202,7 +202,7 @@ export default function Menu() {
         </section>
 
         {/* Category Tabs */}
-        <div className="bg-[#FFFFFF] sticky top-0 md:top-16 lg:top-20 z-40 border-b border-[#0A0806]/8 py-4">
+        <div className="bg-[#FAF8F5] sticky top-0 md:top-16 lg:top-20 z-40 border-b border-[#0A0806]/8 py-4">
           <div className="flex flex-wrap gap-2 px-6 sm:px-8 max-w-7xl mx-auto">
             {categories.map((category) => (
               <button
@@ -221,7 +221,7 @@ export default function Menu() {
         </div>
 
         {/* Menu Items */}
-        <section className="bg-[#FFFFFF] pt-12 pb-24">
+        <section className="bg-[#FAF8F5] pt-12 pb-24">
           <div className="max-w-4xl mx-auto px-6 sm:px-8">
 
             <h2 className="elegant-text text-3xl md:text-4xl text-[#0A0806] mb-10">
@@ -249,12 +249,13 @@ export default function Menu() {
 
             {/* Tuesday Pasta Day note */}
             {activeCategory === 'pasta' && (
-              <div className="mt-8 border border-[#CC2229]/20 p-6 bg-[#CC2229]/4">
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#CC2229] mb-1">
-                  Tuesday Pasta Day
+              <div className="mt-10 pt-8 border-t border-[#0A0806]/8">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#CC2229] mb-2">
+                  Every Tuesday
                 </p>
-                <p className="font-body text-[#0A0806] text-sm">
-                  Every Tuesday — buy one pasta, get the second free. Dine-in and delivery.
+                <p className="elegant-text text-2xl font-bold text-[#0A0806] mb-1">Pasta Day</p>
+                <p className="font-body text-[#0A0806]/55 text-sm">
+                  Buy one pasta, get the second free. Dine-in and delivery.
                 </p>
               </div>
             )}

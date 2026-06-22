@@ -59,7 +59,7 @@ export default function About() {
         </section>
 
         {/* Story Section */}
-        <section className="bg-[#FFFFFF]">
+        <section className="bg-[#FAF8F5]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
 
             {/* Text */}
@@ -140,7 +140,7 @@ export default function About() {
         </section>
 
         {/* Values — stacked list, NOT cards */}
-        <section className="bg-[#FFFFFF] py-24 md:py-32">
+        <section className="bg-[#FAF8F5] py-24 md:py-32">
           <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
 
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">

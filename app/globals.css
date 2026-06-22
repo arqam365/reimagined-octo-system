@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +8,7 @@
   :root {
     --primary: 357 72% 47%;
     --primary-foreground: 0 0% 100%;
-    --background: 0 0% 100%;
+    --background: 38 25% 97%;
     --foreground: 20 40% 6%;
     --card: 0 0% 100%;
     --card-foreground: 20 40% 6%;
@@ -86,7 +86,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', 'Georgia', serif;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
     @apply font-bold;
   }
 }
@@ -101,11 +101,11 @@
   }
 
   .elegant-text {
-    font-family: 'Playfair Display', 'Georgia', serif;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
   }
 
   .font-display {
-    font-family: 'Playfair Display', 'Georgia', serif;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
   }
 
   .font-body {
