@@ -60,83 +60,143 @@ export default function Home() {
       <Navigation />
       <main>
 
-        {/* ── A. HERO — Full editorial luxury ── */}
-        <section className="bg-[#0A0806] min-h-screen relative overflow-hidden">
+        {/* ── A. HERO — Editorial split: type left · photo mosaic right ── */}
+        <section className="bg-[#0A0806] h-screen min-h-[640px] max-h-[1080px] overflow-hidden relative">
 
-          {/* Full-bleed atmosphere image */}
-          <div className="absolute inset-0">
+          {/* Mobile: exterior night full-bleed under the text */}
+          <div className="absolute inset-0 lg:hidden">
             <Image
-              src="/restaurant-interior.jpg"
-              alt="Mazencito — Italian dining experience, Jeddah"
+              src="/mz-exterior.png"
+              alt="Mazencito Pizzeria — Ash Shati, Jeddah"
               fill
               className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806] via-[#0A0806]/80 to-[#0A0806]/35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0806]/65 via-transparent to-[#0A0806]/15" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/80 via-[#0A0806]/70 to-[#0A0806]/90" />
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 min-h-screen flex flex-col px-8 sm:px-12 lg:px-20">
+          {/* Layout grid */}
+          <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-[1fr_42%]">
 
-            {/* Top — location */}
-            <div className="pt-32 flex-shrink-0">
-              <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30">
-                Ash Shati &middot; Jeddah &middot; KSA
-              </p>
-            </div>
+            {/* ── LEFT: Typography panel ── */}
+            <div className="flex flex-col justify-between h-full px-8 sm:px-12 lg:px-14 pt-28 sm:pt-32 pb-10">
 
-            {/* Center — editorial headline */}
-            <div className="flex-1 flex flex-col justify-center py-12 max-w-5xl">
-
-              <h1
-                className="font-brand leading-[0.85] tracking-[0.04em] text-white mb-8"
-                style={{ fontSize: 'clamp(3.5rem, 9vw, 11rem)' }}
-              >
-                MAZENCITO
-              </h1>
-
-              <div className="h-px w-14 bg-white/12 mb-8" />
-
-              <p
-                className="elegant-text italic text-white/55 leading-relaxed mb-12 font-light"
-                style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.75rem)' }}
-              >
-                A Taste of Italy.<br />
-                In The Heart of Jeddah.
+              {/* Location label */}
+              <p className="font-ui text-[10px] tracking-[0.55em] uppercase text-white/30">
+                Ash Shati &nbsp;&middot;&nbsp; Jeddah &nbsp;&middot;&nbsp; KSA
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/reservation"
-                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#CC2229] text-white px-8 py-4 hover:bg-[#B01E24] transition-colors text-center min-h-[44px] flex items-center justify-center"
+              {/* Central content */}
+              <div>
+                {/* Big mark — Italian tricolore stripe above name */}
+                <div className="flex gap-1 mb-5">
+                  <div className="w-6 h-1 bg-white/40" />
+                  <div className="w-6 h-1 bg-[#CC2229]" />
+                  <div className="w-6 h-1 bg-[#009246]" />
+                </div>
+
+                <h1
+                  className="font-brand text-white leading-[0.82] tracking-[0.02em] mb-7"
+                  style={{ fontSize: 'clamp(3.8rem, 8.5vw, 10.5rem)' }}
                 >
-                  Reserve A Table
-                </Link>
-                <Link
-                  href="/about"
-                  className="font-ui text-xs tracking-[0.3em] uppercase border border-white/20 text-white px-8 py-4 hover:bg-white/5 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  MAZENCITO
+                </h1>
+
+                <p
+                  className="elegant-text italic text-white/45 font-light leading-snug mb-10"
+                  style={{ fontSize: 'clamp(1.1rem, 2vw, 1.55rem)' }}
                 >
-                  Our Story
-                </Link>
+                  A Taste of Italy.<br />
+                  In The Heart of Jeddah.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/reservation"
+                    className="font-ui text-xs tracking-[0.3em] uppercase bg-[#CC2229] text-white px-8 py-4 hover:bg-[#B01E24] transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  >
+                    Reserve A Table
+                  </Link>
+                  <Link
+                    href="/menu"
+                    className="font-ui text-xs tracking-[0.3em] uppercase border border-white/20 text-white px-8 py-4 hover:bg-white/5 transition-colors text-center min-h-[44px] flex items-center justify-center"
+                  >
+                    View Menu
+                  </Link>
+                </div>
+              </div>
+
+              {/* Bottom info bar */}
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div className="flex flex-col gap-1">
+                  <span className="font-ui text-[10px] text-white/25 tracking-wide">
+                    12PM &ndash; 1AM &nbsp;&middot;&nbsp; Weekends 2AM
+                  </span>
+                  <a
+                    href="tel:+966555674383"
+                    className="font-ui text-[10px] text-white/20 hover:text-white/45 transition-colors tracking-wide"
+                  >
+                    +966 55 567 4383
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-px w-4 bg-[#CC2229]/50" />
+                  <p className="font-ui text-[9px] tracking-[0.3em] uppercase text-white/20">
+                    Time Out Jeddah &nbsp;&middot;&nbsp; 2026 Shortlisted
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Bottom — trust + info */}
-            <div className="flex-shrink-0 pb-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <div className="flex items-center gap-6 flex-wrap">
-                <span className="font-ui text-xs text-white/25">12PM &ndash; 1AM &nbsp;&middot;&nbsp; Weekends 2AM</span>
-                <a
-                  href="tel:+966555674383"
-                  className="font-ui text-xs text-white/25 hover:text-white/50 transition-colors"
-                >
-                  +966 55 567 4383
-                </a>
+            {/* ── RIGHT: Photo mosaic — desktop only ── */}
+            <div className="hidden lg:grid grid-rows-[58%_42%] h-full border-l border-white/5">
+
+              {/* Top photo: exterior night — full drama */}
+              <div className="relative overflow-hidden">
+                <Image
+                  src="/mz-exterior.png"
+                  alt="Mazencito Pizzeria — storefront, Jeddah"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                />
+                {/* Subtle vignette */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/10 to-[#0A0806]/30" />
+                {/* Pizzeria tag */}
+                <div className="absolute bottom-4 left-4">
+                  <span className="font-ui text-[9px] tracking-[0.35em] uppercase text-white/50 bg-[#0A0806]/60 px-2.5 py-1.5">
+                    Atelier Lavie · Ash Shati
+                  </span>
+                </div>
               </div>
-              <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-white/20">
-                Time Out Jeddah &nbsp;&middot;&nbsp; Restaurant Awards 2026 &nbsp;&middot;&nbsp; Shortlisted
-              </p>
+
+              {/* Bottom: two photos side by side */}
+              <div className="grid grid-cols-2 border-t border-white/5">
+
+                {/* Interior dining room */}
+                <div className="relative overflow-hidden border-r border-white/5">
+                  <Image
+                    src="/mz-dining.png"
+                    alt="Mazencito — dining room interior"
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-[#0A0806]/10" />
+                </div>
+
+                {/* Window table — elegant daylight */}
+                <div className="relative overflow-hidden">
+                  <Image
+                    src="/mz-window.png"
+                    alt="Mazencito — table by the window"
+                    fill
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-[#0A0806]/10" />
+                </div>
+              </div>
             </div>
+
           </div>
         </section>
 
@@ -154,10 +214,10 @@ export default function Home() {
             {/* LEFT: image */}
             <div className="relative h-[55vw] lg:h-auto lg:min-h-[700px] overflow-hidden">
               <Image
-                src="/gallery-IMG-20240413-WA0026.jpg"
-                alt="Mazencito Pizzeria — risotto and dining table"
+                src="/mz-bar.png"
+                alt="Mazencito Pizzeria — interior, full view"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
 
@@ -275,10 +335,10 @@ export default function Home() {
           {/* LEFT: image */}
           <div className="relative h-[50vw] lg:h-auto min-h-[400px] overflow-hidden">
             <Image
-              src="/gallery-IMG-20240413-WA0040.jpg"
-              alt="Penne al pesto at Mazencito Pizzeria"
+              src="/mz-arches.png"
+              alt="Mazencito Pizzeria — evening dining atmosphere"
               fill
-              className="object-cover"
+              className="object-cover object-center"
             />
             <div className="absolute inset-0 bg-[#0A0806]/20" />
           </div>
@@ -408,7 +468,129 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── H. FUTURE ORDERING CONCEPT ── */}
+        {/* ── H. PHOTO GALLERY — Real restaurant photography ── */}
+        <section className="bg-[#0A0806]">
+
+          {/* Section label */}
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-10">
+            <div className="flex items-end justify-between">
+              <div>
+                <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30 mb-3">
+                  Inside Mazencito
+                </p>
+                <h2 className="elegant-text text-4xl md:text-5xl text-white leading-none">
+                  Two Locations.<br />
+                  <em className="not-italic text-[#CC2229]">One Experience.</em>
+                </h2>
+              </div>
+              <a
+                href="https://www.instagram.com/mazencito.ksa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-ui text-xs tracking-[0.3em] uppercase text-white/25 hover:text-white/50 transition-colors hidden sm:block pb-1"
+              >
+                @mazencito.ksa &rarr;
+              </a>
+            </div>
+          </div>
+
+          {/* Photo grid — editorial asymmetric */}
+          <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 h-[80vw] md:h-[55vw] max-h-[700px]">
+
+            {/* 1 — Exterior night (tall, spans 2 rows on left) */}
+            <div className="relative row-span-2 overflow-hidden group">
+              <Image
+                src="/mz-exterior.png"
+                alt="Mazencito Pizzeria — Ash Shati storefront at night"
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[#0A0806]/15" />
+              <div className="absolute bottom-4 left-4">
+                <span className="font-ui text-[9px] tracking-[0.3em] uppercase text-white/60 bg-[#0A0806]/60 px-2 py-1">
+                  Ash Shati
+                </span>
+              </div>
+            </div>
+
+            {/* 2 — Interior dining (top centre) */}
+            <div className="relative overflow-hidden group">
+              <Image
+                src="/mz-dining.png"
+                alt="Mazencito Pizzeria — warm dining room interior"
+                fill
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[#0A0806]/10" />
+            </div>
+
+            {/* 3 — Chef / modern location (top, spans 2 cols) */}
+            <div className="relative col-span-2 overflow-hidden group">
+              <Image
+                src="/mz-chef.png"
+                alt="Mazencito Pizzeria — chef in the dining room"
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[#0A0806]/10" />
+              <div className="absolute bottom-4 right-4">
+                <span className="font-ui text-[9px] tracking-[0.3em] uppercase text-white/60 bg-[#0A0806]/60 px-2 py-1">
+                  Al Zahra
+                </span>
+              </div>
+            </div>
+
+            {/* 4 — Booth seating (bottom centre) */}
+            <div className="relative overflow-hidden group">
+              <Image
+                src="/mz-booth.png"
+                alt="Mazencito Pizzeria — booth seating with arched walls"
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[#0A0806]/10" />
+            </div>
+
+            {/* 5 — Terrace exterior (bottom right, spans 2 cols) */}
+            <div className="relative col-span-2 overflow-hidden group">
+              <Image
+                src="/mz-terrace.png"
+                alt="Mazencito Pizzeria — outdoor terrace seating"
+                fill
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-[#0A0806]/15" />
+              <div className="absolute bottom-4 left-4">
+                <span className="font-ui text-[9px] tracking-[0.3em] uppercase text-white/60 bg-[#0A0806]/60 px-2 py-1">
+                  Terrace · 15 Seats
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Second row — 3 smaller photos */}
+          <div className="grid grid-cols-3 h-[30vw] max-h-[280px] border-t border-white/5">
+            {[
+              { src: '/mz-window.png', alt: 'Mazencito — window table, Ash Shati' },
+              { src: '/mz-table.png', alt: 'Mazencito — marble table, Al Zahra' },
+              { src: '/mz-exterior2.png', alt: 'Mazencito — daytime exterior, Al Zahra' },
+            ].map(({ src, alt }, i) => (
+              <div key={i} className={`relative overflow-hidden group ${i < 2 ? 'border-r border-white/5' : ''}`}>
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-[#0A0806]/10" />
+              </div>
+            ))}
+          </div>
+
+        </section>
+
+        {/* ── I. FUTURE ORDERING CONCEPT ── */}
         <section className="bg-[#0A0806] py-24 md:py-32 relative overflow-hidden">
 
           <div
@@ -641,85 +823,91 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── I. LOCATION — Clean minimal ── */}
+        {/* ── I. LOCATIONS — Two branches ── */}
         <section className="bg-[#FAF8F5] py-20 md:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 items-start">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
-            {/* LEFT: info */}
-            <div>
-              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#CC2229] mb-8">
-                Visit Us
-              </p>
+            <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-[#CC2229] mb-8">
+              Visit Us
+            </p>
+            <h2 className="elegant-text text-4xl md:text-5xl font-bold text-[#0A0806] mb-14 leading-none">
+              Two Locations<br />
+              <em className="italic text-[#0A0806]/35">across Jeddah</em>
+            </h2>
 
-              <h2 className="elegant-text text-4xl font-bold text-[#0A0806] mb-8">
-                Ash Shati,<br />
-                Jeddah
-              </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-              <div className="space-y-6">
-                <div>
-                  <p className="font-ui text-xs uppercase tracking-widest text-[#0A0806]/50 mb-1">Address</p>
-                  <p className="font-body text-[#0A0806]">
-                    Ash Shati, Atelier Lavie<br />
-                    Jeddah, Saudi Arabia
-                  </p>
+              {/* Branch 1 — Ash Shati */}
+              <div className="border border-[#0A0806]/8 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src="/mz-exterior.png"
+                    alt="Mazencito Pizzeria — Ash Shati"
+                    fill
+                    className="object-cover object-center"
+                  />
                 </div>
-
-                <div>
-                  <p className="font-ui text-xs uppercase tracking-widest text-[#0A0806]/50 mb-1">Hours</p>
-                  <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
-                  <p className="font-body text-[#0A0806]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
-                </div>
-
-                <div>
-                  <p className="font-ui text-xs uppercase tracking-widest text-[#0A0806]/50 mb-1">Phone</p>
-                  <a
-                    href="tel:+966555674383"
-                    className="font-body text-[#0A0806] hover:text-[#CC2229] transition-colors min-h-[44px] flex items-center"
-                  >
-                    +966 55 567 4383
-                  </a>
-                  <a
-                    href="tel:+966554430556"
-                    className="block font-body text-[#0A0806] hover:text-[#CC2229] transition-colors"
-                  >
-                    +966 55 443 0556
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    href="https://wa.me/966555674383"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-ui text-xs tracking-[0.2em] uppercase text-[#009246] hover:text-[#007B38] transition-colors"
-                  >
-                    Chat on WhatsApp &rarr;
-                  </a>
+                <div className="p-8">
+                  <p className="font-ui text-[10px] tracking-[0.35em] uppercase text-[#CC2229] mb-3">Branch 01</p>
+                  <h3 className="elegant-text text-2xl font-bold text-[#0A0806] mb-5">Ash Shati</h3>
+                  <div className="space-y-3 text-sm">
+                    <p className="font-body text-[#0A0806]/70">Atelier Lavie, Ash Shati<br />Jeddah, Saudi Arabia</p>
+                    <p className="font-body text-[#0A0806]/70">Open Daily &mdash; 12PM &ndash; 1AM &nbsp;&middot;&nbsp; Weekends 2AM</p>
+                    <div className="flex gap-4 pt-1">
+                      <a href="tel:+966555674383" className="font-ui text-xs text-[#0A0806] hover:text-[#CC2229] transition-colors">+966 55 567 4383</a>
+                      <a href="tel:+966554430556" className="font-ui text-xs text-[#0A0806] hover:text-[#CC2229] transition-colors">+966 55 443 0556</a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-8">
-                <Link
-                  href="/reservation"
-                  className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] text-white px-6 py-3.5 hover:bg-[#CC2229] transition-colors min-h-[44px] flex items-center"
-                >
-                  Reserve a Table
-                </Link>
+              {/* Branch 2 — Al Zahra */}
+              <div className="border border-[#0A0806]/8 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
+                  <Image
+                    src="/mz-exterior2.png"
+                    alt="Mazencito Pizzeria — Al Zahra"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="p-8">
+                  <p className="font-ui text-[10px] tracking-[0.35em] uppercase text-[#CC2229] mb-3">Branch 02</p>
+                  <h3 className="elegant-text text-2xl font-bold text-[#0A0806] mb-5">Al Zahra</h3>
+                  <div className="space-y-3 text-sm">
+                    <p className="font-body text-[#0A0806]/70">Al Batarji Street, Al Zahra<br />Jeddah, Saudi Arabia</p>
+                    <p className="font-body text-[#0A0806]/70">Open Daily &mdash; 12PM &ndash; 1AM &nbsp;&middot;&nbsp; Weekends 2AM</p>
+                    <a
+                      href="https://wa.me/966555674383"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-ui text-xs text-[#009246] hover:text-[#007B38] transition-colors inline-block pt-1"
+                    >
+                      Chat on WhatsApp &rarr;
+                    </a>
+                  </div>
+                </div>
               </div>
+
             </div>
 
-            {/* RIGHT: map */}
-            <div className="overflow-hidden h-[400px] lg:h-[500px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.872!2d39.1726!3d21.6226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d14e7e5c5555%3A0x0!2sMazencito%20Pizzeria!5e0!3m2!1sen!2ssa!4v1716900000000"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                title="Mazencito Pizzeria — Ash Shati, Atelier Lavie, Jeddah"
-              />
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/reservation"
+                className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] text-white px-8 py-4 hover:bg-[#CC2229] transition-colors min-h-[44px] flex items-center justify-center w-fit"
+              >
+                Reserve a Table
+              </Link>
+              <a
+                href="https://wa.me/966555674383"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-ui text-xs tracking-[0.3em] uppercase border border-[#0A0806]/15 text-[#0A0806] px-8 py-4 hover:bg-[#0A0806]/5 transition-colors min-h-[44px] flex items-center justify-center w-fit"
+              >
+                WhatsApp Us
+              </a>
             </div>
+
           </div>
         </section>
 
