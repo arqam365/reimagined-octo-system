@@ -35,11 +35,11 @@ async function getStats() {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  RECEIVED:   'bg-amber-100 text-amber-800',
-  PREPARING:  'bg-blue-100 text-blue-800',
-  READY:      'bg-green-100 text-green-800',
-  SERVED:     'bg-[#0A0806]/8 text-[#0A0806]/50',
-  CANCELLED:  'bg-red-100 text-red-700',
+  RECEIVED:   'bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300',
+  PREPARING:  'bg-blue-100 text-blue-800 dark:bg-blue-500/15 dark:text-blue-300',
+  READY:      'bg-green-100 text-green-800 dark:bg-green-500/15 dark:text-green-300',
+  SERVED:     'bg-[#0A0806]/8 text-[#0A0806]/50 dark:bg-white/5 dark:text-white/30',
+  CANCELLED:  'bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-400',
 }
 
 export default async function AdminDashboard() {
@@ -48,30 +48,36 @@ export default async function AdminDashboard() {
   return (
     <div>
       <div className="mb-8">
-        <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">
+        <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 dark:text-white/25 mb-2">
           Overview
         </p>
-        <h1 className="elegant-text text-4xl font-bold text-[#0A0806]">Dashboard</h1>
+        <h1 className="elegant-text text-4xl font-bold text-[#0A0806] dark:text-white/88">Dashboard</h1>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
         {[
-          { label: 'Pending Orders', value: pendingOrders, href: '/admin/orders?status=RECEIVED', urgent: pendingOrders > 0 },
-          { label: 'Total Orders Today', value: totalOrders, href: '/admin/orders', urgent: false },
-          { label: "Today's Reservations", value: todayReservations, href: '/admin/reservations', urgent: false },
+          { label: 'Pending Orders',       value: pendingOrders,      href: '/admin/orders?status=RECEIVED', urgent: pendingOrders > 0 },
+          { label: 'Total Orders Today',   value: totalOrders,        href: '/admin/orders',                 urgent: false },
+          { label: "Today's Reservations", value: todayReservations,  href: '/admin/reservations',           urgent: false },
         ].map(({ label, value, href, urgent }) => (
           <Link
             key={label}
             href={href}
-            className={`p-6 border transition-all hover:shadow-sm ${
-              urgent ? 'border-[#CC2229]/30 bg-[#CC2229]/4' : 'border-[#0A0806]/8 bg-white'
+            className={`p-6 border transition-all ${
+              urgent
+                ? 'border-[#CC2229]/30 bg-[#CC2229]/4 dark:bg-[#CC2229]/8'
+                : 'border-[#0A0806]/8 dark:border-white/8 bg-white dark:bg-white/4 hover:dark:bg-white/6'
             }`}
           >
-            <p className={`font-ui text-[10px] tracking-[0.3em] uppercase mb-3 ${urgent ? 'text-[#CC2229]' : 'text-[#0A0806]/40'}`}>
+            <p className={`font-ui text-[10px] tracking-[0.3em] uppercase mb-3 ${
+              urgent ? 'text-[#CC2229]' : 'text-[#0A0806]/40 dark:text-white/30'
+            }`}>
               {label}
             </p>
-            <p className={`elegant-text text-4xl font-bold ${urgent ? 'text-[#CC2229]' : 'text-[#0A0806]'}`}>
+            <p className={`elegant-text text-4xl font-bold ${
+              urgent ? 'text-[#CC2229]' : 'text-[#0A0806] dark:text-white/85'
+            }`}>
               {value}
             </p>
           </Link>
@@ -81,32 +87,38 @@ export default async function AdminDashboard() {
       {/* Recent Orders */}
       <div>
         <div className="flex items-center justify-between mb-5">
-          <h2 className="elegant-text text-2xl font-bold text-[#0A0806]">Recent Orders</h2>
-          <Link href="/admin/orders" className="font-ui text-xs tracking-[0.3em] uppercase text-[#0A0806]/40 hover:text-[#CC2229] transition-colors">
+          <h2 className="elegant-text text-2xl font-bold text-[#0A0806] dark:text-white/85">Recent Orders</h2>
+          <Link
+            href="/admin/orders"
+            className="font-ui text-xs tracking-[0.3em] uppercase text-[#0A0806]/40 dark:text-white/25 hover:text-[#CC2229] dark:hover:text-[#CC2229] transition-colors"
+          >
             View All
           </Link>
         </div>
+
         {recentOrders.length === 0 ? (
-          <p className="font-body text-[#0A0806]/40 py-8">No orders yet.</p>
+          <p className="font-body text-[#0A0806]/40 dark:text-white/30 py-8">No orders yet.</p>
         ) : (
-          <div className="border border-[#0A0806]/8">
+          <div className="border border-[#0A0806]/8 dark:border-white/8">
             {recentOrders.map((order, idx) => (
               <div
                 key={order.id}
-                className={`flex items-center justify-between px-5 py-4 ${idx < recentOrders.length - 1 ? 'border-b border-[#0A0806]/8' : ''}`}
+                className={`flex items-center justify-between px-5 py-4 ${
+                  idx < recentOrders.length - 1 ? 'border-b border-[#0A0806]/8 dark:border-white/5' : ''
+                }`}
               >
                 <div>
-                  <p className="font-ui text-sm font-semibold text-[#0A0806]">{order.orderNum}</p>
-                  <p className="font-ui text-xs text-[#0A0806]/40">
+                  <p className="font-ui text-sm font-semibold text-[#0A0806] dark:text-white/80">{order.orderNum}</p>
+                  <p className="font-ui text-xs text-[#0A0806]/40 dark:text-white/28">
                     {order.table ? `Table ${order.table.number}` : 'Takeaway'} &middot;{' '}
                     {new Date(order.createdAt).toLocaleTimeString('en-SA', { hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="font-ui font-semibold text-sm text-[#0A0806]">
+                  <span className="font-ui font-semibold text-sm text-[#0A0806] dark:text-white/75">
                     {order.total.toFixed(0)} SAR
                   </span>
-                  <span className={`font-ui text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 ${STATUS_COLORS[order.status] ?? 'bg-gray-100 text-gray-600'}`}>
+                  <span className={`font-ui text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 ${STATUS_COLORS[order.status] ?? 'bg-gray-100 text-gray-600 dark:bg-white/5 dark:text-white/40'}`}>
                     {order.status}
                   </span>
                 </div>

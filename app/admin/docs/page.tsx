@@ -200,7 +200,7 @@ export default function AdminDocs() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#0A0806] -mx-6 -mt-8 px-0">
+    <div className="min-h-screen bg-[#0A0806] -mx-5 sm:-mx-8 -mt-7 px-0">
 
       {/* ── Page header ── */}
       <div className="border-b border-white/8 px-8 sm:px-12 lg:px-16 py-10">

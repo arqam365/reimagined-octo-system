@@ -11,15 +11,16 @@ interface Table {
   uuid: string
 }
 
-const STATUS_STYLES: Record<string, string> = {
-  AVAILABLE: 'bg-green-50 border-green-200',
-  OCCUPIED:  'bg-amber-50 border-amber-200',
-  RESERVED:  'bg-blue-50 border-blue-200',
+const STATUS_CARD: Record<string, string> = {
+  AVAILABLE: 'bg-green-50 border-green-200 dark:bg-green-500/8 dark:border-green-500/25',
+  OCCUPIED:  'bg-amber-50 border-amber-200 dark:bg-amber-500/8 dark:border-amber-500/25',
+  RESERVED:  'bg-blue-50 border-blue-200 dark:bg-blue-500/8 dark:border-blue-500/25',
 }
-const BADGE_STYLES: Record<string, string> = {
-  AVAILABLE: 'bg-green-100 text-green-800',
-  OCCUPIED:  'bg-amber-100 text-amber-800',
-  RESERVED:  'bg-blue-100 text-blue-800',
+
+const STATUS_BADGE: Record<string, string> = {
+  AVAILABLE: 'bg-green-100 text-green-800 dark:bg-green-500/15 dark:text-green-300',
+  OCCUPIED:  'bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300',
+  RESERVED:  'bg-blue-100 text-blue-800 dark:bg-blue-500/15 dark:text-blue-300',
 }
 
 export default function AdminTables() {
@@ -114,13 +115,15 @@ export default function AdminTables() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Floor Plan</p>
-          <h1 className="elegant-text text-4xl font-bold text-[#0A0806]">Tables</h1>
+          <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 dark:text-white/25 mb-2">
+            Floor Plan
+          </p>
+          <h1 className="elegant-text text-4xl font-bold text-[#0A0806] dark:text-white/88">Tables</h1>
         </div>
         <div className="flex gap-2">
           <button
             onClick={fetchTables}
-            className="flex items-center gap-2 font-ui text-xs tracking-[0.3em] uppercase text-[#0A0806]/40 hover:text-[#0A0806] transition-colors px-3 py-2.5"
+            className="flex items-center gap-2 font-ui text-xs tracking-[0.3em] uppercase text-[#0A0806]/40 dark:text-white/30 hover:text-[#0A0806] dark:hover:text-white/65 transition-colors px-3 py-2.5"
           >
             <RefreshCw className="w-3.5 h-3.5" />
           </button>
@@ -136,14 +139,14 @@ export default function AdminTables() {
 
       {loading && tables.length === 0 ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="w-6 h-6 animate-spin text-[#0A0806]/30" />
+          <Loader2 className="w-6 h-6 animate-spin text-[#0A0806]/30 dark:text-white/20" />
         </div>
       ) : tables.length === 0 ? (
         <div className="py-20 text-center">
-          <p className="font-body text-[#0A0806]/40 mb-4">No tables yet.</p>
+          <p className="font-body text-[#0A0806]/40 dark:text-white/30 mb-4">No tables yet.</p>
           <button
             onClick={() => setShowAdd(true)}
-            className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] text-white px-6 py-3 hover:bg-[#1a1410] transition-colors"
+            className="font-ui text-xs tracking-[0.3em] uppercase bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806] px-6 py-3 hover:bg-[#1a1410] dark:hover:bg-white/85 transition-colors"
           >
             Add Your First Table
           </button>
@@ -153,39 +156,39 @@ export default function AdminTables() {
           {tables.map((table) => (
             <div
               key={table.id}
-              className={`border p-4 ${STATUS_STYLES[table.status] ?? 'bg-white border-[#0A0806]/8'}`}
+              className={`border p-4 ${STATUS_CARD[table.status] ?? 'bg-white dark:bg-white/4 border-[#0A0806]/8 dark:border-white/8'}`}
             >
               <div className="flex items-start justify-between mb-1">
                 <div>
-                  <p className="font-ui font-semibold text-xl text-[#0A0806]">T{table.number}</p>
-                  <p className="font-ui text-xs text-[#0A0806]/40">{table.capacity} seats</p>
+                  <p className="font-ui font-semibold text-xl text-[#0A0806] dark:text-white/85">T{table.number}</p>
+                  <p className="font-ui text-xs text-[#0A0806]/40 dark:text-white/30">{table.capacity} seats</p>
                 </div>
                 <div className="flex gap-1">
                   <button
                     onClick={() => setQrModal(table)}
-                    className="p-1.5 hover:bg-black/5 transition-colors rounded"
+                    className="p-1.5 hover:bg-black/5 dark:hover:bg-white/8 transition-colors"
                     title="QR Code"
                   >
-                    <QrCode className="w-3.5 h-3.5 text-[#0A0806]/40" />
+                    <QrCode className="w-3.5 h-3.5 text-[#0A0806]/40 dark:text-white/35" />
                   </button>
                   <button
                     onClick={() => deleteTable(table)}
-                    className="p-1.5 hover:bg-red-50 transition-colors rounded"
+                    className="p-1.5 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
                     title="Remove table"
                   >
-                    <Trash2 className="w-3.5 h-3.5 text-[#0A0806]/25 hover:text-red-500" />
+                    <Trash2 className="w-3.5 h-3.5 text-[#0A0806]/25 dark:text-white/25 hover:text-red-500 dark:hover:text-red-400" />
                   </button>
                 </div>
               </div>
 
-              <span className={`inline-block font-ui text-[10px] tracking-[0.2em] uppercase px-2 py-1 mb-3 ${BADGE_STYLES[table.status]}`}>
+              <span className={`inline-block font-ui text-[10px] tracking-[0.2em] uppercase px-2 py-1 mb-3 ${STATUS_BADGE[table.status]}`}>
                 {table.status}
               </span>
 
               <div className="space-y-1.5">
                 {working === table.id ? (
                   <div className="flex justify-center py-1">
-                    <Loader2 className="w-4 h-4 animate-spin text-[#0A0806]/30" />
+                    <Loader2 className="w-4 h-4 animate-spin text-[#0A0806]/30 dark:text-white/25" />
                   </div>
                 ) : (
                   (['AVAILABLE', 'OCCUPIED', 'RESERVED'] as const)
@@ -194,7 +197,7 @@ export default function AdminTables() {
                       <button
                         key={s}
                         onClick={() => setStatus(table, s)}
-                        className="w-full font-ui text-[10px] tracking-[0.15em] uppercase px-2 py-1.5 border border-[#0A0806]/15 text-[#0A0806]/60 hover:bg-[#0A0806]/5 transition-colors"
+                        className="w-full font-ui text-[10px] tracking-[0.15em] uppercase px-2 py-1.5 border border-[#0A0806]/15 dark:border-white/10 text-[#0A0806]/60 dark:text-white/35 hover:bg-[#0A0806]/5 dark:hover:bg-white/6 transition-colors"
                       >
                         → {s.toLowerCase()}
                       </button>
@@ -206,25 +209,25 @@ export default function AdminTables() {
         </div>
       )}
 
-      {/* Add Table Modal */}
+      {/* ── Add Table Modal ── */}
       {showAdd && (
         <div
           className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-6"
           onClick={() => { setShowAdd(false); setAddError('') }}
         >
           <div
-            className="bg-white p-8 max-w-xs w-full"
+            className="bg-white dark:bg-[#110F0C] border border-transparent dark:border-white/8 p-8 max-w-xs w-full"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="elegant-text text-2xl font-bold text-[#0A0806]">Add Table</h2>
-              <button onClick={() => { setShowAdd(false); setAddError('') }} className="p-1.5 text-[#0A0806]/40">
+              <h2 className="elegant-text text-2xl font-bold text-[#0A0806] dark:text-white/85">Add Table</h2>
+              <button onClick={() => { setShowAdd(false); setAddError('') }} className="p-1.5 text-[#0A0806]/40 dark:text-white/30 hover:text-[#0A0806] dark:hover:text-white/65">
                 <X className="w-5 h-5" />
               </button>
             </div>
             <form onSubmit={addTable} className="space-y-4">
               <div>
-                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 mb-1.5">
+                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
                   Table Number *
                 </label>
                 <input
@@ -235,11 +238,11 @@ export default function AdminTables() {
                   required
                   placeholder="e.g. 13"
                   autoFocus
-                  className="w-full px-4 py-3 border border-[#0A0806]/12 bg-white text-[#0A0806] font-body text-sm focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20"
+                  className="w-full px-4 py-3 border border-[#0A0806]/12 dark:border-white/10 bg-white dark:bg-white/6 text-[#0A0806] dark:text-white/85 font-body text-sm focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20 dark:placeholder-white/20"
                 />
               </div>
               <div>
-                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 mb-1.5">
+                <label className="block font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/60 dark:text-white/40 mb-1.5">
                   Capacity (seats) *
                 </label>
                 <input
@@ -249,7 +252,7 @@ export default function AdminTables() {
                   value={addForm.capacity}
                   onChange={(e) => setAddForm((p) => ({ ...p, capacity: e.target.value }))}
                   required
-                  className="w-full px-4 py-3 border border-[#0A0806]/12 bg-white text-[#0A0806] font-body text-sm focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20"
+                  className="w-full px-4 py-3 border border-[#0A0806]/12 dark:border-white/10 bg-white dark:bg-white/6 text-[#0A0806] dark:text-white/85 font-body text-sm focus:outline-none focus:ring-2 focus:ring-[#CC2229]/20"
                 />
               </div>
               {addError && <p className="font-ui text-xs text-[#CC2229]">{addError}</p>}
@@ -265,28 +268,29 @@ export default function AdminTables() {
         </div>
       )}
 
-      {/* QR Modal */}
+      {/* ── QR Modal ── */}
       {qrModal && (
         <div
           className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-6"
           onClick={() => { setQrModal(null); setRegenConfirm(false); setRegenInput('') }}
         >
           <div
-            className="bg-white p-8 max-w-xs w-full text-center relative"
+            className="bg-white dark:bg-[#110F0C] border border-transparent dark:border-white/8 p-8 max-w-xs w-full text-center relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => { setQrModal(null); setRegenConfirm(false); setRegenInput('') }}
-              className="absolute top-4 right-4 p-1.5 text-[#0A0806]/30 hover:text-[#0A0806] transition-colors"
+              className="absolute top-4 right-4 p-1.5 text-[#0A0806]/30 dark:text-white/25 hover:text-[#0A0806] dark:hover:text-white/65 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
+
             {!regenConfirm ? (
               <>
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">
+                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 dark:text-white/25 mb-2">
                   Table {qrModal.number}
                 </p>
-                <h2 className="elegant-text text-2xl font-bold text-[#0A0806] mb-6">QR Code</h2>
+                <h2 className="elegant-text text-2xl font-bold text-[#0A0806] dark:text-white/85 mb-6">QR Code</h2>
                 <img
                   src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`${appUrl}/table/${qrModal.uuid}`)}`}
                   alt={`QR for Table ${qrModal.number}`}
@@ -294,20 +298,20 @@ export default function AdminTables() {
                   width={200}
                   height={200}
                 />
-                <p className="font-ui text-[10px] text-[#0A0806]/35 tracking-wide mb-6 break-all">
+                <p className="font-ui text-[10px] text-[#0A0806]/35 dark:text-white/25 tracking-wide mb-6 break-all">
                   {appUrl}/table/{qrModal.uuid}
                 </p>
                 <div className="flex gap-2">
                   <a
                     href={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(`${appUrl}/table/${qrModal.uuid}`)}&format=png`}
                     download={`table-${qrModal.number}-qr.png`}
-                    className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 bg-[#0A0806] text-white hover:bg-[#1a1410] transition-colors text-center"
+                    className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806] hover:bg-[#1a1410] dark:hover:bg-white/85 transition-colors text-center"
                   >
                     Download
                   </a>
                   <button
                     onClick={() => setRegenConfirm(true)}
-                    className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 border border-[#0A0806]/15 text-[#0A0806]/40 hover:border-red-300 hover:text-red-500 transition-colors"
+                    className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 border border-[#0A0806]/15 dark:border-white/10 text-[#0A0806]/40 dark:text-white/35 hover:border-red-300 dark:hover:border-red-500/40 hover:text-red-500 dark:hover:text-red-400 transition-colors"
                   >
                     Regenerate
                   </button>
@@ -315,17 +319,17 @@ export default function AdminTables() {
               </>
             ) : (
               <>
-                <div className="w-10 h-10 bg-red-100 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-red-500 text-lg font-bold">!</span>
+                <div className="w-10 h-10 bg-red-100 dark:bg-red-500/15 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-red-500 dark:text-red-400 text-lg font-bold">!</span>
                 </div>
-                <h2 className="elegant-text text-xl font-bold text-[#0A0806] mb-2">Are you sure?</h2>
-                <p className="font-body text-sm text-[#0A0806]/60 mb-1">
+                <h2 className="elegant-text text-xl font-bold text-[#0A0806] dark:text-white/85 mb-2">Are you sure?</h2>
+                <p className="font-body text-sm text-[#0A0806]/60 dark:text-white/40 mb-1">
                   Regenerating will <strong>permanently invalidate</strong> the QR sticker on Table {qrModal.number}.
                 </p>
-                <p className="font-body text-sm text-[#0A0806]/60 mb-5">
+                <p className="font-body text-sm text-[#0A0806]/60 dark:text-white/40 mb-5">
                   The printed QR will stop working and must be reprinted.
                 </p>
-                <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/50 mb-2">
+                <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/50 dark:text-white/35 mb-2">
                   Type REGENERATE to confirm
                 </p>
                 <input
@@ -334,12 +338,12 @@ export default function AdminTables() {
                   onChange={(e) => setRegenInput(e.target.value)}
                   placeholder="REGENERATE"
                   autoFocus
-                  className="w-full px-4 py-3 border border-[#0A0806]/12 text-[#0A0806] font-ui text-sm text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-red-300 mb-4"
+                  className="w-full px-4 py-3 border border-[#0A0806]/12 dark:border-white/10 bg-white dark:bg-white/6 text-[#0A0806] dark:text-white/85 font-ui text-sm text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-red-300 dark:focus:ring-red-500/30 mb-4 dark:placeholder-white/20"
                 />
                 <div className="flex gap-2">
                   <button
                     onClick={() => { setRegenConfirm(false); setRegenInput('') }}
-                    className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 border border-[#0A0806]/15 text-[#0A0806]/50 hover:bg-[#0A0806]/5 transition-colors"
+                    className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 border border-[#0A0806]/15 dark:border-white/10 text-[#0A0806]/50 dark:text-white/35 hover:bg-[#0A0806]/5 dark:hover:bg-white/5 transition-colors"
                   >
                     Cancel
                   </button>

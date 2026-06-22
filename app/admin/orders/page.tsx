@@ -25,6 +25,7 @@ interface Order {
 }
 
 const STATUSES = ['RECEIVED', 'PREPARING', 'READY', 'SERVED', 'CANCELLED'] as const
+
 const NEXT_STATUS: Record<string, string | null> = {
   RECEIVED:  'PREPARING',
   PREPARING: 'READY',
@@ -32,19 +33,21 @@ const NEXT_STATUS: Record<string, string | null> = {
   SERVED:    null,
   CANCELLED: null,
 }
-const STATUS_COLORS: Record<string, string> = {
-  RECEIVED:   'bg-amber-50 border-amber-200',
-  PREPARING:  'bg-blue-50 border-blue-200',
-  READY:      'bg-green-50 border-green-200',
-  SERVED:     'bg-white border-[#0A0806]/8 opacity-60',
-  CANCELLED:  'bg-red-50 border-red-200 opacity-60',
+
+const STATUS_CARD: Record<string, string> = {
+  RECEIVED:   'bg-amber-50 border-amber-200 dark:bg-amber-500/8 dark:border-amber-500/25',
+  PREPARING:  'bg-blue-50 border-blue-200 dark:bg-blue-500/8 dark:border-blue-500/25',
+  READY:      'bg-green-50 border-green-200 dark:bg-green-500/8 dark:border-green-500/25',
+  SERVED:     'bg-white border-[#0A0806]/8 opacity-60 dark:bg-white/3 dark:border-white/8',
+  CANCELLED:  'bg-red-50 border-red-200 opacity-60 dark:bg-red-500/8 dark:border-red-500/25',
 }
-const BADGE_COLORS: Record<string, string> = {
-  RECEIVED:   'bg-amber-100 text-amber-800',
-  PREPARING:  'bg-blue-100 text-blue-800',
-  READY:      'bg-green-100 text-green-800',
-  SERVED:     'bg-[#0A0806]/8 text-[#0A0806]/50',
-  CANCELLED:  'bg-red-100 text-red-700',
+
+const STATUS_BADGE: Record<string, string> = {
+  RECEIVED:   'bg-amber-100 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300',
+  PREPARING:  'bg-blue-100 text-blue-800 dark:bg-blue-500/15 dark:text-blue-300',
+  READY:      'bg-green-100 text-green-800 dark:bg-green-500/15 dark:text-green-300',
+  SERVED:     'bg-[#0A0806]/8 text-[#0A0806]/50 dark:bg-white/5 dark:text-white/30',
+  CANCELLED:  'bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-400',
 }
 
 export default function AdminOrders() {
@@ -104,12 +107,14 @@ export default function AdminOrders() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Kitchen Display</p>
-          <h1 className="elegant-text text-4xl font-bold text-[#0A0806]">Orders</h1>
+          <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 dark:text-white/25 mb-2">
+            Kitchen Display
+          </p>
+          <h1 className="elegant-text text-4xl font-bold text-[#0A0806] dark:text-white/88">Orders</h1>
         </div>
         <button
           onClick={fetchOrders}
-          className="flex items-center gap-2 font-ui text-xs tracking-[0.3em] uppercase text-[#0A0806]/40 hover:text-[#0A0806] transition-colors"
+          className="flex items-center gap-2 font-ui text-xs tracking-[0.3em] uppercase text-[#0A0806]/40 dark:text-white/30 hover:text-[#0A0806] dark:hover:text-white/65 transition-colors"
         >
           <RefreshCw className="w-3.5 h-3.5" />
           Refresh
@@ -126,7 +131,9 @@ export default function AdminOrders() {
             key={key}
             onClick={() => setFilter(key)}
             className={`font-ui text-xs px-4 py-2 tracking-[0.2em] uppercase transition-all whitespace-nowrap ${
-              filter === key ? 'bg-[#0A0806] text-white' : 'text-[#0A0806] border border-transparent hover:border-[#0A0806]/15'
+              filter === key
+                ? 'bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806]'
+                : 'text-[#0A0806] dark:text-white/40 border border-transparent hover:border-[#0A0806]/15 dark:hover:border-white/15 hover:text-[#0A0806] dark:hover:text-white/65'
             }`}
           >
             {label}
@@ -136,26 +143,26 @@ export default function AdminOrders() {
 
       {loading && orders.length === 0 ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="w-6 h-6 animate-spin text-[#0A0806]/30" />
+          <Loader2 className="w-6 h-6 animate-spin text-[#0A0806]/30 dark:text-white/20" />
         </div>
       ) : orders.length === 0 ? (
-        <p className="font-body text-[#0A0806]/40 py-8">No orders found.</p>
+        <p className="font-body text-[#0A0806]/40 dark:text-white/30 py-8">No orders found.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {orders.map((order) => (
             <div
               key={order.id}
-              className={`border p-5 ${STATUS_COLORS[order.status] ?? 'bg-white border-[#0A0806]/8'}`}
+              className={`border p-5 ${STATUS_CARD[order.status] ?? 'bg-white dark:bg-white/4 border-[#0A0806]/8 dark:border-white/8'}`}
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <p className="font-ui font-semibold text-lg text-[#0A0806]">{order.orderNum}</p>
-                  <p className="font-ui text-xs text-[#0A0806]/50">
+                  <p className="font-ui font-semibold text-lg text-[#0A0806] dark:text-white/85">{order.orderNum}</p>
+                  <p className="font-ui text-xs text-[#0A0806]/50 dark:text-white/35">
                     {order.table ? `Table ${order.table.number}` : order.type} &middot;{' '}
                     {new Date(order.createdAt).toLocaleTimeString('en-SA', { hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
-                <span className={`font-ui text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 ${BADGE_COLORS[order.status]}`}>
+                <span className={`font-ui text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 ${STATUS_BADGE[order.status]}`}>
                   {order.status}
                 </span>
               </div>
@@ -163,10 +170,10 @@ export default function AdminOrders() {
               <div className="mb-4 space-y-1.5">
                 {order.items.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm">
-                    <span className="font-body text-[#0A0806]">
+                    <span className="font-body text-[#0A0806] dark:text-white/75">
                       {item.quantity}× {item.menuItem.nameEn}
                     </span>
-                    <span className="font-ui text-[#0A0806]/50">
+                    <span className="font-ui text-[#0A0806]/50 dark:text-white/35">
                       {(item.quantity * item.unitPrice).toFixed(0)} SAR
                     </span>
                   </div>
@@ -174,11 +181,11 @@ export default function AdminOrders() {
               </div>
 
               {order.notes && (
-                <p className="font-body text-xs text-[#0A0806]/50 mb-4 italic">{order.notes}</p>
+                <p className="font-body text-xs text-[#0A0806]/50 dark:text-white/35 mb-4 italic">{order.notes}</p>
               )}
 
               <div className="flex items-center justify-between pt-3 border-t border-current/10">
-                <span className="font-ui font-semibold text-sm text-[#0A0806]">
+                <span className="font-ui font-semibold text-sm text-[#0A0806] dark:text-white/80">
                   {order.total.toFixed(0)} SAR
                 </span>
                 <div className="flex gap-2">
@@ -186,7 +193,7 @@ export default function AdminOrders() {
                     <button
                       onClick={() => cancel(order)}
                       disabled={advancing === order.id}
-                      className="font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 border border-red-300 text-red-600 hover:bg-red-50 transition-colors disabled:opacity-50"
+                      className="font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 border border-red-300 dark:border-red-500/40 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors disabled:opacity-50"
                     >
                       Cancel
                     </button>
@@ -195,7 +202,7 @@ export default function AdminOrders() {
                     <button
                       onClick={() => advance(order)}
                       disabled={advancing === order.id}
-                      className="font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 bg-[#0A0806] text-white hover:bg-[#1a1410] transition-colors disabled:opacity-50 flex items-center gap-1.5"
+                      className="font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-1.5 bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806] hover:bg-[#1a1410] dark:hover:bg-white/85 transition-colors disabled:opacity-50 flex items-center gap-1.5"
                     >
                       {advancing === order.id ? (
                         <Loader2 className="w-3 h-3 animate-spin" />
