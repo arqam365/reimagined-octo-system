@@ -70,15 +70,15 @@ export default function Home() {
               src="/mz-exterior.png"
               alt=""
               fill
-              className="object-cover object-center grayscale brightness-[0.22] contrast-[1.15] saturate-0"
+              className="object-cover object-center grayscale brightness-[0.42] contrast-[1.1] saturate-0"
               priority
             />
-            {/* Left-to-right gradient: text zone dark, fades fully before food strips */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806]/60 via-[#0A0806]/45 to-[#0A0806]" />
+            {/* Left-to-right gradient: readable left, fades fully before food strips */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806]/55 via-[#0A0806]/30 to-[#0A0806]" />
             {/* Bottom vignette */}
             <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0806] to-transparent" />
             {/* Top vignette */}
-            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0A0806] to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0A0806] to-transparent" />
           </div>
 
           {/* Mobile: overhead pizza full-bleed under the text */}
@@ -100,29 +100,29 @@ export default function Home() {
             <div className="flex flex-col justify-between h-full px-8 sm:px-12 lg:px-14 pt-28 sm:pt-32 pb-10">
 
               {/* Location label */}
-              <p className="font-ui text-[10px] tracking-[0.55em] uppercase text-white/30">
+              <p className="font-ui text-[11px] tracking-[0.55em] uppercase text-white/50">
                 Ash Shati &nbsp;&middot;&nbsp; Jeddah &nbsp;&middot;&nbsp; KSA
               </p>
 
               {/* Central content */}
               <div>
                 {/* Big mark — Italian tricolore stripe above name */}
-                <div className="flex gap-1 mb-5">
-                  <div className="w-6 h-1 bg-white/40" />
-                  <div className="w-6 h-1 bg-[#CC2229]" />
-                  <div className="w-6 h-1 bg-[#009246]" />
+                <div className="flex gap-1.5 mb-6">
+                  <div className="w-8 h-[3px] bg-white/50" />
+                  <div className="w-8 h-[3px] bg-[#CC2229]" />
+                  <div className="w-8 h-[3px] bg-[#009246]" />
                 </div>
 
                 <h1
-                  className="font-brand text-white leading-[0.82] tracking-[0.02em] mb-7"
-                  style={{ fontSize: 'clamp(3.8rem, 8.5vw, 10.5rem)' }}
+                  className="font-brand text-white leading-[0.82] tracking-[0.02em] mb-8"
+                  style={{ fontSize: 'clamp(4.5rem, 10.5vw, 13rem)' }}
                 >
                   MAZENCITO
                 </h1>
 
                 <p
-                  className="elegant-text italic text-white/45 font-light leading-snug mb-10"
-                  style={{ fontSize: 'clamp(1.1rem, 2vw, 1.55rem)' }}
+                  className="elegant-text italic text-white/65 font-light leading-snug mb-11"
+                  style={{ fontSize: 'clamp(1.2rem, 2.2vw, 1.8rem)' }}
                 >
                   A Taste of Italy.<br />
                   In The Heart of Jeddah.
@@ -147,19 +147,19 @@ export default function Home() {
               {/* Bottom info bar */}
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div className="flex flex-col gap-1">
-                  <span className="font-ui text-[10px] text-white/25 tracking-wide">
+                  <span className="font-ui text-[11px] text-white/40 tracking-wide">
                     12PM &ndash; 1AM &nbsp;&middot;&nbsp; Weekends 2AM
                   </span>
                   <a
                     href="tel:+966555674383"
-                    className="font-ui text-[10px] text-white/20 hover:text-white/45 transition-colors tracking-wide"
+                    className="font-ui text-[11px] text-white/30 hover:text-white/60 transition-colors tracking-wide"
                   >
                     +966 55 567 4383
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-px w-4 bg-[#CC2229]/50" />
-                  <p className="font-ui text-[9px] tracking-[0.3em] uppercase text-white/20">
+                  <div className="h-px w-6 bg-[#CC2229]/60" />
+                  <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-white/35">
                     Time Out Jeddah &nbsp;&middot;&nbsp; 2026 Shortlisted
                   </p>
                 </div>
