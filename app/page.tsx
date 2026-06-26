@@ -64,16 +64,16 @@ export default function Home() {
         {/* ── A. HERO — Editorial split: type left · photo mosaic right ── */}
         <section className="bg-[#0A0806] h-screen min-h-[640px] max-h-[1080px] overflow-hidden relative">
 
-          {/* Mobile: exterior night full-bleed under the text */}
+          {/* Mobile: food hero full-bleed under the text */}
           <div className="absolute inset-0 lg:hidden">
             <Image
-              src="/mz-exterior.png"
+              src="/food-margherita.jpg"
               alt="Mazencito Pizzeria — Ash Shati, Jeddah"
               fill
-              className="object-cover object-center"
+              className="object-cover object-center scale-[1.08]"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/80 via-[#0A0806]/70 to-[#0A0806]/90" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/85 via-[#0A0806]/60 to-[#0A0806]/92" />
           </div>
 
           {/* Layout grid */}
@@ -149,52 +149,67 @@ export default function Home() {
               </div>
             </div>
 
-            {/* ── RIGHT: Photo mosaic — desktop only ── */}
-            <div className="hidden lg:grid grid-rows-[58%_42%] h-full border-l border-white/5">
+            {/* ── RIGHT: Kinetic film strips — desktop only ── */}
+            <div className="hidden lg:flex h-full border-l border-white/5 overflow-hidden gap-px bg-white/[0.03]">
 
-              {/* Top photo: exterior night — full drama */}
-              <div className="relative overflow-hidden">
-                <Image
-                  src="/mz-exterior.png"
-                  alt="Mazencito Pizzeria — storefront, Jeddah"
-                  fill
-                  className="object-cover object-center"
-                  priority
-                />
-                {/* Subtle vignette */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0A0806]/10 to-[#0A0806]/30" />
-                {/* Pizzeria tag */}
-                <div className="absolute bottom-4 left-4">
-                  <span className="font-ui text-[9px] tracking-[0.35em] uppercase text-white/50 bg-[#0A0806]/60 px-2.5 py-1.5">
-                    Atelier Lavie · Ash Shati
-                  </span>
+              {/* Strip A — scrolls upward */}
+              <div className="flex-1 overflow-hidden relative">
+                <div className="flex flex-col gap-px animate-strip-up will-change-transform hover:[animation-play-state:paused]">
+                  {[
+                    { src: '/food-margherita.jpg',       alt: 'Pizza Margherita' },
+                    { src: '/food-spaghetti-seafood.jpg', alt: 'Spaghetti ai Frutti di Mare' },
+                    { src: '/food-schnitzel.jpg',         alt: 'Cotoletta alla Milanese' },
+                    { src: '/food-mini-pizzas.jpg',       alt: 'Pizzette Assortite' },
+                    { src: '/food-margherita.jpg',       alt: 'Pizza Margherita' },
+                    { src: '/food-spaghetti-seafood.jpg', alt: 'Spaghetti ai Frutti di Mare' },
+                    { src: '/food-schnitzel.jpg',         alt: 'Cotoletta alla Milanese' },
+                    { src: '/food-mini-pizzas.jpg',       alt: 'Pizzette Assortite' },
+                  ].map((photo, i) => (
+                    <div key={i} className="relative flex-shrink-0" style={{ height: 260 }}>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover object-center"
+                        sizes="21vw"
+                        priority={i < 2}
+                      />
+                    </div>
+                  ))}
                 </div>
+                {/* Top + bottom fade masks */}
+                <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0A0806] to-transparent pointer-events-none z-10" />
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0806] to-transparent pointer-events-none z-10" />
               </div>
 
-              {/* Bottom: two photos side by side */}
-              <div className="grid grid-cols-2 border-t border-white/5">
-
-                {/* Interior dining room */}
-                <div className="relative overflow-hidden border-r border-white/5">
-                  <Image
-                    src="/mz-dining.png"
-                    alt="Mazencito — dining room interior"
-                    fill
-                    className="object-cover object-top"
-                  />
-                  <div className="absolute inset-0 bg-[#0A0806]/10" />
+              {/* Strip B — scrolls downward */}
+              <div className="flex-1 overflow-hidden relative">
+                <div className="flex flex-col gap-px animate-strip-down will-change-transform hover:[animation-play-state:paused]">
+                  {[
+                    { src: '/food-fettuccine.jpg',       alt: 'Fettuccine ai Funghi' },
+                    { src: '/food-fritto-misto.jpg',     alt: 'Fritto Misto' },
+                    { src: '/food-pasta-baked.jpg',      alt: 'Pasta al Forno' },
+                    { src: '/food-spaghetti-shrimp.jpg', alt: 'Spaghetti al Limone e Gamberi' },
+                    { src: '/food-fettuccine.jpg',       alt: 'Fettuccine ai Funghi' },
+                    { src: '/food-fritto-misto.jpg',     alt: 'Fritto Misto' },
+                    { src: '/food-pasta-baked.jpg',      alt: 'Pasta al Forno' },
+                    { src: '/food-spaghetti-shrimp.jpg', alt: 'Spaghetti al Limone e Gamberi' },
+                  ].map((photo, i) => (
+                    <div key={i} className="relative flex-shrink-0" style={{ height: 260 }}>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        className="object-cover object-center"
+                        sizes="21vw"
+                        priority={i < 2}
+                      />
+                    </div>
+                  ))}
                 </div>
-
-                {/* Window table — elegant daylight */}
-                <div className="relative overflow-hidden">
-                  <Image
-                    src="/mz-window.png"
-                    alt="Mazencito — table by the window"
-                    fill
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-[#0A0806]/10" />
-                </div>
+                {/* Top + bottom fade masks */}
+                <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#0A0806] to-transparent pointer-events-none z-10" />
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0A0806] to-transparent pointer-events-none z-10" />
               </div>
             </div>
 

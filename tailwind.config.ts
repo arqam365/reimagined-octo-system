@@ -84,12 +84,22 @@ const config: Config = {
           '0%':   { transform: 'translateX(-50%)' },
           '100%': { transform: 'translateX(0)' },
         },
+        'strip-up': {
+          '0%':   { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-50%)' },
+        },
+        'strip-down': {
+          '0%':   { transform: 'translateY(-50%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up':   'accordion-up 0.2s ease-out',
         'marquee-ltr':    'marquee-ltr 55s linear infinite',
         'marquee-rtl':    'marquee-rtl 55s linear infinite',
+        'strip-up':       'strip-up 42s linear infinite',
+        'strip-down':     'strip-down 54s linear infinite',
       },
     },
   },
