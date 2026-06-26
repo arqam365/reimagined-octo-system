@@ -16,10 +16,15 @@ const navLinks = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
+      const doc = document.documentElement
+      const scrollTop = window.scrollY
+      const total = doc.scrollHeight - doc.clientHeight
+      setProgress(total > 0 ? (scrollTop / total) * 100 : 0)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -31,6 +36,12 @@ export default function Navigation() {
         scrolled ? 'bg-[#0A0806]' : 'bg-[#0A0806]/85 backdrop-blur-sm'
       }`}
     >
+      {/* Scroll progress bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] bg-[#CC2229] transition-none z-10"
+        style={{ width: `${progress}%` }}
+        aria-hidden="true"
+      />
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
 

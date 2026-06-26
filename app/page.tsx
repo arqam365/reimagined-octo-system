@@ -1,5 +1,6 @@
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import FoodMarquee from '@/components/food-marquee'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -207,6 +208,9 @@ export default function Home() {
           <div className="flex-1 bg-[#009246]" />
         </div>
 
+        {/* ── B.5. FOOD MARQUEE — auto-scrolling dish ticker ── */}
+        <FoodMarquee />
+
         {/* ── C. CRAFT SECTION — Full-bleed, no cards ── */}
         <section className="bg-[#FAF8F5]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -257,16 +261,123 @@ export default function Home() {
               </Link>
 
               {/* Stat block */}
-              <div className="grid grid-cols-2 gap-4 mt-14 pt-10 border-t border-[#0A0806]/8">
+              <div className="grid grid-cols-3 gap-6 mt-14 pt-10 border-t border-[#0A0806]/8">
                 <div>
-                  <p className="font-ui text-xs tracking-wide text-[#0A0806]">Morello Forni</p>
-                  <p className="font-ui text-[10px] text-[#0A0806]/60 mt-0.5">Italian Wood-Fired Oven</p>
+                  <p className="elegant-text text-2xl text-[#CC2229] font-bold">500°</p>
+                  <p className="font-ui text-[10px] text-[#0A0806]/60 mt-0.5">Celsius — Morello Forni</p>
+                </div>
+                <div>
+                  <p className="elegant-text text-2xl text-[#CC2229] font-bold">24h</p>
+                  <p className="font-ui text-[10px] text-[#0A0806]/60 mt-0.5">Slow-proofed dough</p>
                 </div>
                 <div>
                   <p className="elegant-text text-2xl text-[#CC2229] font-bold">46.9K</p>
                   <p className="font-ui text-[10px] text-[#0A0806]/60 mt-0.5">Instagram Followers</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── C.5. THE KITCHEN — Editorial food photo grid ── */}
+        <section className="bg-[#0A0806] py-16 px-6 lg:px-12">
+          <div className="max-w-6xl mx-auto">
+
+            {/* Section label */}
+            <div className="flex items-center justify-between mb-8">
+              <p className="font-ui text-[10px] tracking-[0.45em] uppercase text-white/30">The Kitchen</p>
+              <div className="h-px flex-1 bg-white/8 mx-6" />
+              <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-white/20">Fresh Daily</p>
+            </div>
+
+            {/* Grid: large left + 2 stacked right */}
+            <div className="grid grid-cols-[3fr_2fr] gap-2 mb-2">
+
+              {/* Large hero — spaghetti seafood */}
+              <div className="relative overflow-hidden group" style={{ aspectRatio: '4/3' }}>
+                <Image
+                  src="/food-spaghetti-seafood.jpg"
+                  alt="Spaghetti ai Frutti di Mare"
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6">
+                  <p className="font-ui text-[8px] tracking-[0.4em] uppercase text-white/40 mb-1">Pasta</p>
+                  <p className="elegant-text text-xl text-white">Spaghetti ai Frutti di Mare</p>
+                </div>
+              </div>
+
+              {/* Stacked right column */}
+              <div className="flex flex-col gap-2">
+                <div className="relative overflow-hidden group flex-1">
+                  <Image
+                    src="/food-fritto-misto.jpg"
+                    alt="Fritto Misto"
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-4">
+                    <p className="font-ui text-[8px] tracking-[0.4em] uppercase text-white/40 mb-0.5">Starters</p>
+                    <p className="elegant-text text-sm text-white">Fritto Misto</p>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden group flex-1">
+                  <Image
+                    src="/food-spaghetti-shrimp.jpg"
+                    alt="Spaghetti al Limone e Gamberi"
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-4">
+                    <p className="font-ui text-[8px] tracking-[0.4em] uppercase text-white/40 mb-0.5">Pasta</p>
+                    <p className="elegant-text text-sm text-white">Spaghetti al Limone e Gamberi</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom row — 3 equal */}
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { src: '/food-schnitzel.jpg',   label: 'Cotoletta alla Milanese', cat: 'Mains' },
+                { src: '/food-fettuccine.jpg',  label: 'Fettuccine ai Funghi',    cat: 'Pasta' },
+                { src: '/food-mini-pizzas.jpg', label: 'Pizzette Assortite',       cat: 'Pizza' },
+              ].map((item) => (
+                <div key={item.src} className="relative overflow-hidden group" style={{ aspectRatio: '4/3' }}>
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-4">
+                    <p className="font-ui text-[8px] tracking-[0.4em] uppercase text-white/40 mb-0.5">{item.cat}</p>
+                    <p className="elegant-text text-sm text-white leading-tight">{item.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8 text-center">
+              <Link
+                href="/menu"
+                className="inline-flex items-center gap-3 group min-h-[44px]"
+              >
+                <div className="h-px w-8 bg-[#CC2229] group-hover:w-14 transition-all duration-300" />
+                <span className="font-ui text-[10px] tracking-[0.35em] uppercase text-white/50 group-hover:text-white/80 transition-colors">
+                  Explore the Full Menu
+                </span>
+                <div className="h-px w-8 bg-[#CC2229] group-hover:w-14 transition-all duration-300" />
+              </Link>
             </div>
           </div>
         </section>
@@ -335,8 +446,8 @@ export default function Home() {
           {/* LEFT: image */}
           <div className="relative h-[50vw] lg:h-auto min-h-[400px] overflow-hidden">
             <Image
-              src="/mz-arches.png"
-              alt="Mazencito Pizzeria — evening dining atmosphere"
+              src="/food-pasta-baked.jpg"
+              alt="Pasta al Forno — baked penne, Tuesday Pasta Day"
               fill
               className="object-cover object-center"
             />
