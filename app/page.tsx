@@ -64,19 +64,21 @@ export default function Home() {
         {/* ── A. HERO — Editorial split: type left · photo mosaic right ── */}
         <section className="bg-[#0A0806] h-screen min-h-[640px] max-h-[1080px] overflow-hidden relative">
 
-          {/* Desktop background: restaurant exterior behind MAZENCITO text */}
+          {/* Desktop background: dark-treated restaurant exterior behind MAZENCITO text */}
           <div className="absolute inset-0 hidden lg:block">
             <Image
               src="/mz-exterior.png"
               alt=""
               fill
-              className="object-cover object-center"
+              className="object-cover object-center grayscale brightness-[0.22] contrast-[1.15] saturate-0"
               priority
             />
-            {/* Gradient: readable on left, fades out before right panel */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806]/88 via-[#0A0806]/70 to-[#0A0806]" />
-            {/* Subtle bottom darkening for info bar readability */}
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0A0806] to-transparent" />
+            {/* Left-to-right gradient: text zone dark, fades fully before food strips */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806]/60 via-[#0A0806]/45 to-[#0A0806]" />
+            {/* Bottom vignette */}
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0A0806] to-transparent" />
+            {/* Top vignette */}
+            <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#0A0806] to-transparent" />
           </div>
 
           {/* Mobile: overhead pizza full-bleed under the text */}
