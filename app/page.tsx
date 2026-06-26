@@ -64,7 +64,22 @@ export default function Home() {
         {/* ── A. HERO — Editorial split: type left · photo mosaic right ── */}
         <section className="bg-[#0A0806] h-screen min-h-[640px] max-h-[1080px] overflow-hidden relative">
 
-          {/* Mobile: food hero full-bleed under the text */}
+          {/* Desktop background: restaurant exterior behind MAZENCITO text */}
+          <div className="absolute inset-0 hidden lg:block">
+            <Image
+              src="/mz-exterior.png"
+              alt=""
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            {/* Gradient: readable on left, fades out before right panel */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0806]/88 via-[#0A0806]/70 to-[#0A0806]" />
+            {/* Subtle bottom darkening for info bar readability */}
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0A0806] to-transparent" />
+          </div>
+
+          {/* Mobile: overhead pizza full-bleed under the text */}
           <div className="absolute inset-0 lg:hidden">
             <Image
               src="/food-margherita.jpg"
