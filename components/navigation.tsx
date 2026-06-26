@@ -48,11 +48,11 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group" aria-label="Mazencito Pizzeria — Home">
             <Image
-              src="/mazencito-brand-logo.jpg"
+              src="/mazencito-logo.png"
               alt="Mazencito Pizzeria"
-              width={160}
-              height={112}
-              className="h-14 md:h-16 w-auto object-contain invert mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+              width={220}
+              height={100}
+              className="h-10 md:h-12 w-auto object-contain invert mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity duration-200"
               priority
             />
           </Link>

@@ -97,7 +97,7 @@ export default function Home() {
           <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-[1fr_42%]">
 
             {/* ── LEFT: Typography panel ── */}
-            <div className="flex flex-col justify-between h-full px-8 sm:px-12 lg:px-14 pt-28 sm:pt-32 pb-10">
+            <div className="flex flex-col justify-between h-full px-5 sm:px-12 lg:px-14 pt-28 sm:pt-32 pb-10">
 
               {/* Location label */}
               <p className="font-ui text-[11px] tracking-[0.55em] uppercase text-white/50">
@@ -115,7 +115,7 @@ export default function Home() {
 
                 <h1
                   className="font-brand text-white leading-[0.82] tracking-[0.02em] mb-8"
-                  style={{ fontSize: 'clamp(2.2rem, 10.5vw, 13rem)' }}
+                  style={{ fontSize: 'clamp(1.9rem, 10.5vw, 13rem)' }}
                 >
                   MAZENCITO
                 </h1>
@@ -253,7 +253,7 @@ export default function Home() {
                 src="/mz-bar.png"
                 alt="Mazencito Pizzeria — interior, full view"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-center"
               />
             </div>
 

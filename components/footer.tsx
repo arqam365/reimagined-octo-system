@@ -12,11 +12,11 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <Link href="/" aria-label="Mazencito Pizzeria — Home">
             <Image
-              src="/mazencito-brand-logo.jpg"
+              src="/mazencito-logo.png"
               alt="Mazencito Pizzeria"
-              width={160}
-              height={112}
-              className="h-14 w-auto object-contain invert mix-blend-screen opacity-70 hover:opacity-90 transition-opacity duration-200"
+              width={220}
+              height={100}
+              className="h-10 w-auto object-contain invert mix-blend-screen opacity-75 hover:opacity-95 transition-opacity duration-200"
             />
           </Link>
           <a
