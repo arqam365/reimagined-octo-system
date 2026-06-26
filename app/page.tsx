@@ -115,13 +115,13 @@ export default function Home() {
 
                 <h1
                   className="font-brand text-white leading-[0.82] tracking-[0.02em] mb-8"
-                  style={{ fontSize: 'clamp(4.5rem, 10.5vw, 13rem)' }}
+                  style={{ fontSize: 'clamp(2.2rem, 10.5vw, 13rem)' }}
                 >
                   MAZENCITO
                 </h1>
 
                 <p
-                  className="elegant-text italic text-white/65 font-light leading-snug mb-11"
+                  className="elegant-text italic text-white/65 font-light leading-snug mb-7 sm:mb-11"
                   style={{ fontSize: 'clamp(1.2rem, 2.2vw, 1.8rem)' }}
                 >
                   A Taste of Italy.<br />
@@ -323,10 +323,10 @@ export default function Home() {
             </div>
 
             {/* Grid: large left + 2 stacked right */}
-            <div className="grid grid-cols-[3fr_2fr] gap-2 mb-2">
+            <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-2 mb-2">
 
               {/* Large hero — spaghetti seafood */}
-              <div className="relative overflow-hidden group" style={{ aspectRatio: '4/3' }}>
+              <div className="relative overflow-hidden group aspect-[4/3]">
                 <Image
                   src="/food-spaghetti-seafood.jpg"
                   alt="Spaghetti ai Frutti di Mare"
@@ -342,8 +342,8 @@ export default function Home() {
               </div>
 
               {/* Stacked right column */}
-              <div className="flex flex-col gap-2">
-                <div className="relative overflow-hidden group flex-1">
+              <div className="grid grid-cols-2 gap-2 md:flex md:flex-col md:gap-2">
+                <div className="relative overflow-hidden group aspect-[4/3] md:aspect-auto md:flex-1">
                   <Image
                     src="/food-fritto-misto.jpg"
                     alt="Fritto Misto"
@@ -357,7 +357,7 @@ export default function Home() {
                     <p className="elegant-text text-sm text-white">Fritto Misto</p>
                   </div>
                 </div>
-                <div className="relative overflow-hidden group flex-1">
+                <div className="relative overflow-hidden group aspect-[4/3] md:aspect-auto md:flex-1">
                   <Image
                     src="/food-spaghetti-shrimp.jpg"
                     alt="Spaghetti al Limone e Gamberi"
@@ -374,14 +374,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Bottom row — 3 equal */}
-            <div className="grid grid-cols-3 gap-2">
+            {/* Bottom row — 2 cols mobile, 3 cols desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {[
                 { src: '/food-schnitzel.jpg',   label: 'Cotoletta alla Milanese', cat: 'Mains' },
                 { src: '/food-fettuccine.jpg',  label: 'Fettuccine ai Funghi',    cat: 'Pasta' },
                 { src: '/food-mini-pizzas.jpg', label: 'Pizzette Assortite',       cat: 'Pizza' },
-              ].map((item) => (
-                <div key={item.src} className="relative overflow-hidden group" style={{ aspectRatio: '4/3' }}>
+              ].map((item, idx) => (
+                <div key={item.src} className={`relative overflow-hidden group aspect-[4/3] ${idx === 2 ? 'col-span-2 md:col-span-1' : ''}`}>
                   <Image
                     src={item.src}
                     alt={item.label}
@@ -638,7 +638,25 @@ export default function Home() {
           </div>
 
           {/* Photo grid — editorial asymmetric */}
-          <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 h-[80vw] md:h-[55vw] max-h-[700px]">
+
+          {/* Mobile: simple 2-col grid */}
+          <div className="md:hidden grid grid-cols-2 gap-px">
+            {[
+              { src: '/mz-exterior.png',  alt: 'Mazencito — Ash Shati storefront' },
+              { src: '/mz-dining.png',    alt: 'Mazencito — dining room' },
+              { src: '/mz-chef.png',      alt: 'Mazencito — chef, Al Zahra' },
+              { src: '/mz-booth.png',     alt: 'Mazencito — booth seating' },
+              { src: '/mz-terrace.png',   alt: 'Mazencito — terrace' },
+              { src: '/mz-bar.png',       alt: 'Mazencito — bar area' },
+            ].map(({ src, alt }, i) => (
+              <div key={i} className="relative aspect-[4/3] overflow-hidden">
+                <Image src={src} alt={alt} fill className="object-cover object-center" sizes="50vw" />
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: editorial asymmetric grid */}
+          <div className="hidden md:grid md:grid-cols-4 md:grid-rows-2 md:h-[55vw] md:max-h-[700px]">
 
             {/* 1 — Exterior night (tall, spans 2 rows on left) */}
             <div className="relative row-span-2 overflow-hidden group">
@@ -713,7 +731,7 @@ export default function Home() {
           </div>
 
           {/* Second row — 3 smaller photos */}
-          <div className="grid grid-cols-3 h-[30vw] max-h-[280px] border-t border-white/5">
+          <div className="grid grid-cols-3 h-[42vw] md:h-[30vw] max-h-[280px] border-t border-white/5">
             {[
               { src: '/mz-window.png', alt: 'Mazencito — window table, Ash Shati' },
               { src: '/mz-table.png', alt: 'Mazencito — marble table, Al Zahra' },
