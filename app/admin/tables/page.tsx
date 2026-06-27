@@ -62,14 +62,15 @@ export default function AdminTables() {
   }
 
   async function downloadQR(table: Table) {
-    const ts = qrTimestamp || Date.now()
-    const url = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(`${appUrl}/order/${table.uuid}?t=${ts}`)}&format=png`
-    const res = await fetch(url)
-    const blob = await res.blob()
-    const objUrl = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = objUrl
-    a.download = `table-${table.number}-qr.png`
+    const ts       = qrTimestamp || Date.now()
+    const data     = `${appUrl}/order/${table.uuid}?t=${ts}`
+    const filename = `table-${table.number}-qr.png`
+    const res      = await fetch(`/api/admin/qr?data=${encodeURIComponent(data)}&filename=${encodeURIComponent(filename)}`)
+    const blob     = await res.blob()
+    const objUrl   = URL.createObjectURL(blob)
+    const a        = document.createElement('a')
+    a.href         = objUrl
+    a.download     = filename
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
