@@ -60,6 +60,20 @@ export default function AdminTables() {
     setWorking(null)
   }
 
+  async function downloadQR(table: Table) {
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(`${appUrl}/order/${table.uuid}`)}&format=png`
+    const res = await fetch(url)
+    const blob = await res.blob()
+    const objUrl = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = objUrl
+    a.download = `table-${table.number}-qr.png`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(objUrl)
+  }
+
   async function regenQR(table: Table) {
     setWorking(table.id)
     setRegenConfirm(false)
@@ -232,9 +246,9 @@ export default function AdminTables() {
                 <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`${appUrl}/table/${qrModal.uuid}`)}`} alt={`QR for Table ${qrModal.number}`} className="mx-auto mb-4" width={200} height={200} />
                 <p className="font-ui text-[10px] text-[var(--adm-text-faint)] tracking-wide mb-6 break-all">{appUrl}/table/{qrModal.uuid}</p>
                 <div className="flex gap-2">
-                  <a href={`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(`${appUrl}/table/${qrModal.uuid}`)}&format=png`} download={`table-${qrModal.number}-qr.png`} className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806] hover:opacity-85 transition-opacity text-center">
+                  <button onClick={() => downloadQR(qrModal)} className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806] hover:opacity-85 transition-opacity text-center">
                     Download
-                  </a>
+                  </button>
                   <button onClick={() => setRegenConfirm(true)} className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 border border-[var(--adm-border)] text-[var(--adm-text-sub)] hover:border-red-300 hover:text-red-500 transition-colors">
                     Regenerate
                   </button>
