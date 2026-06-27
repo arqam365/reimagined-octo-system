@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { ShoppingCart, Plus, Minus, X, ChevronRight, Utensils, CheckCircle, Loader2, QrCode } from 'lucide-react'
-import { tablesApi, menuApi } from '@/lib/api'
 import type { MenuItem, Table, Outlet } from '@/lib/api'
 
 type MenuCategory = 'PIZZA' | 'PASTA' | 'SOUPS' | 'SALADS' | 'DESSERTS' | 'BEVERAGES'
@@ -60,10 +59,15 @@ export default function OrderPage() {
       }
 
       try {
-        const t = await tablesApi.byUuid(tableId)
+        const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+        const tRes = await fetch(`${API}/tables/by-uuid/${tableId}`)
+        if (!tRes.ok) throw new Error('Table not found')
+        const t: Table & { outlet: Pick<Outlet, 'id' | 'name' | 'slug' | 'currency'> } = await tRes.json()
         setTable(t)
-        const items = await menuApi.list(t.outlet.slug)
-        setMenu(items.filter(i => i.available))
+        const mRes = await fetch(`${API}/menu?outlet=${t.outlet.slug}`)
+        if (!mRes.ok) throw new Error('Menu unavailable')
+        const items: MenuItem[] = await mRes.json()
+        setMenu(Array.isArray(items) ? items.filter(i => i.available) : [])
         setStep('menu')
       } catch {
         setErrorMsg('Table not found or menu unavailable.')

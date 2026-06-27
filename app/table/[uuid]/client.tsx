@@ -95,8 +95,10 @@ export default function TableOrderClient({
         }),
       })
       if (!res.ok) {
-        const err = await res.json()
-        throw new Error(err.error ?? 'Failed to place order')
+        const text = await res.text().catch(() => `HTTP ${res.status}`)
+        let msg = text
+        try { msg = (JSON.parse(text) as { error?: string }).error ?? text } catch { /* text wasn't JSON */ }
+        throw new Error(msg || 'Failed to place order')
       }
       const data = await res.json()
       setOrderNum(data.orderNum)
