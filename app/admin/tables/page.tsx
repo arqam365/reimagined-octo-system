@@ -28,6 +28,7 @@ export default function AdminTables() {
   const [loading, setLoading] = useState(true)
   const [working, setWorking] = useState<string | null>(null)
   const [qrModal, setQrModal] = useState<Table | null>(null)
+  const [qrTimestamp, setQrTimestamp] = useState(0)
   const [regenConfirm, setRegenConfirm] = useState(false)
   const [regenInput, setRegenInput] = useState('')
   const [showAdd, setShowAdd] = useState(false)
@@ -61,7 +62,8 @@ export default function AdminTables() {
   }
 
   async function downloadQR(table: Table) {
-    const url = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(`${appUrl}/order/${table.uuid}`)}&format=png`
+    const ts = qrTimestamp || Date.now()
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(`${appUrl}/order/${table.uuid}?t=${ts}`)}&format=png`
     const res = await fetch(url)
     const blob = await res.blob()
     const objUrl = URL.createObjectURL(blob)
@@ -166,7 +168,7 @@ export default function AdminTables() {
                   <p className="font-ui text-xs text-[var(--adm-text-dim)]">{table.capacity} seats</p>
                 </div>
                 <div className="flex gap-1">
-                  <button onClick={() => setQrModal(table)} className="p-1.5 hover:bg-[var(--adm-hover)] transition-colors" title="QR Code">
+                  <button onClick={() => { setQrModal(table); setQrTimestamp(Date.now()) }} className="p-1.5 hover:bg-[var(--adm-hover)] transition-colors" title="QR Code">
                     <QrCode className="w-3.5 h-3.5 text-[var(--adm-text-dim)]" />
                   </button>
                   <button onClick={() => deleteTable(table)} className="p-1.5 hover:bg-red-50 dark:hover:bg-[rgba(239,68,68,0.08)] transition-colors" title="Remove">
@@ -243,8 +245,8 @@ export default function AdminTables() {
               <>
                 <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[var(--adm-text-dim)] mb-2">Table {qrModal.number}</p>
                 <h2 className="elegant-text text-2xl font-bold text-[var(--adm-text)] mb-6">QR Code</h2>
-                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`${appUrl}/table/${qrModal.uuid}`)}`} alt={`QR for Table ${qrModal.number}`} className="mx-auto mb-4" width={200} height={200} />
-                <p className="font-ui text-[10px] text-[var(--adm-text-faint)] tracking-wide mb-6 break-all">{appUrl}/table/{qrModal.uuid}</p>
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`${appUrl}/order/${qrModal.uuid}?t=${qrTimestamp}`)}`} alt={`QR for Table ${qrModal.number}`} className="mx-auto mb-4" width={200} height={200} />
+                <p className="font-ui text-[10px] text-[var(--adm-text-faint)] tracking-wide mb-6 break-all">{appUrl}/order/{qrModal.uuid}</p>
                 <div className="flex gap-2">
                   <button onClick={() => downloadQR(qrModal)} className="flex-1 font-ui text-[10px] tracking-[0.2em] uppercase px-3 py-2.5 bg-[#0A0806] dark:bg-white text-white dark:text-[#0A0806] hover:opacity-85 transition-opacity text-center">
                     Download
