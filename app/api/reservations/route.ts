@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const data = await apiFetch('/reservations', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...body, outletSlug: process.env.OUTLET_SLUG }),
+      body: JSON.stringify({ ...body, outletSlug: process.env.OUTLET_SLUG ?? process.env.NEXT_PUBLIC_OUTLET_SLUG ?? 'mazencito-jeddah' }),
     })
     return NextResponse.json(data, { status: 201 })
   } catch (err: unknown) {

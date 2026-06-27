@@ -1,5 +1,5 @@
-const BASE = process.env.API_URL!
-const KEY  = process.env.API_KEY!
+const BASE = process.env.API_URL ?? process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
+const KEY  = process.env.API_KEY ?? process.env.NEXT_PUBLIC_API_KEY ?? ''
 
 export async function apiFetch(path: string, init?: RequestInit) {
   const res = await fetch(`${BASE}${path}`, {

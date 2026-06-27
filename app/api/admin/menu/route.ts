@@ -3,7 +3,7 @@ import { adminFetch } from '@/lib/api'
 
 export async function GET() {
   try {
-    const slug = process.env.OUTLET_SLUG!
+    const slug = process.env.OUTLET_SLUG ?? process.env.NEXT_PUBLIC_OUTLET_SLUG ?? 'mazencito-jeddah'
     const data = await adminFetch(`/menu?outlet=${slug}`)
     return NextResponse.json(data)
   } catch (err: unknown) {

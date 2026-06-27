@@ -4,7 +4,7 @@ import { apiFetch } from '@/lib/api'
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const category = searchParams.get('category')
-  const slug = process.env.OUTLET_SLUG!
+  const slug = process.env.OUTLET_SLUG ?? process.env.NEXT_PUBLIC_OUTLET_SLUG ?? 'mazencito-jeddah'
   const qs = category ? `?outlet=${slug}&category=${category}` : `?outlet=${slug}`
   try {
     const data = await apiFetch(`/menu${qs}`)
