@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import { ShoppingCart, Plus, Minus, X, ChevronRight, Utensils, CheckCircle, Loader2 } from 'lucide-react'
+import { ShoppingCart, Plus, Minus, X, ChevronRight, Utensils, CheckCircle, Loader2, QrCode } from 'lucide-react'
 import { tablesApi, menuApi } from '@/lib/api'
 import type { MenuItem, Table, Outlet } from '@/lib/api'
 
@@ -22,7 +22,7 @@ const CATEGORIES: { key: MenuCategory; labelEn: string; labelAr: string }[] = [
   { key: 'BEVERAGES', labelEn: 'Drinks',   labelAr: 'مشروبات' },
 ]
 
-type Step = 'loading' | 'error' | 'menu' | 'cart' | 'info' | 'placing' | 'confirm'
+type Step = 'loading' | 'error' | 'no-session' | 'menu' | 'cart' | 'info' | 'placing' | 'confirm'
 
 export default function OrderPage() {
   const { tableId } = useParams<{ tableId: string }>()
@@ -41,6 +41,24 @@ export default function OrderPage() {
 
   useEffect(() => {
     async function load() {
+      // Security: only allow ordering from a real QR scan.
+      // QR codes embed ?t=<timestamp>. We store it in sessionStorage so refreshing still works.
+      // Anyone who just pastes the base URL (no token, no stored session) sees "scan the QR" screen.
+      const urlParams = new URLSearchParams(window.location.search)
+      const scanToken = urlParams.get('t')
+      const sessionKey = `mz-order-${tableId}`
+      const MAX_AGE = 8 * 60 * 60 * 1000 // 8 hours
+
+      if (scanToken) {
+        sessionStorage.setItem(sessionKey, scanToken)
+      }
+
+      const stored = sessionStorage.getItem(sessionKey)
+      if (!stored || Date.now() - Number(stored) > MAX_AGE) {
+        setStep('no-session')
+        return
+      }
+
       try {
         const t = await tablesApi.byUuid(tableId)
         setTable(t)
@@ -82,6 +100,15 @@ export default function OrderPage() {
 
   async function placeOrder() {
     if (!table) return
+    if (!guestName.trim()) {
+      setErrorMsg('Please enter your name.')
+      return
+    }
+    if (!guestPhone.trim()) {
+      setErrorMsg('Please enter your phone number.')
+      return
+    }
+    setErrorMsg('')
     setStep('placing')
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'}/orders`, {
@@ -126,6 +153,16 @@ export default function OrderPage() {
     return (
       <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center justify-center px-6 text-center">
         <p className="text-white/40 text-sm font-mono">{errorMsg}</p>
+      </div>
+    )
+  }
+
+  if (step === 'no-session') {
+    return (
+      <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center justify-center px-6 text-center">
+        <QrCode className="w-12 h-12 text-white/10 mb-6" />
+        <p className="text-white/50 text-sm font-mono mb-2">Scan the QR code at your table to order</p>
+        <p className="text-white/20 text-[10px] font-mono tracking-widest">امسح رمز QR على طاولتك</p>
       </div>
     )
   }
@@ -224,7 +261,7 @@ export default function OrderPage() {
         </div>
         <div className="px-5 pb-safe-bottom pb-8">
           <button
-            disabled={!guestName.trim() || !guestPhone.trim() || step === 'placing'}
+            disabled={step === 'placing'}
             onClick={placeOrder}
             className="w-full bg-[#CC2229] text-white font-mono text-xs tracking-[0.3em] uppercase py-4 disabled:opacity-30 active:opacity-80 transition-opacity flex items-center justify-center gap-2"
           >
