@@ -33,12 +33,13 @@ export function adminFetch(path: string, init?: RequestInit) {
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
-export type OrderStatus = 'RECEIVED' | 'PREPARING' | 'READY' | 'SERVED'
+export type OrderStatus = 'RECEIVED' | 'PREPARING' | 'READY' | 'SERVED' | 'CANCELLED'
 
 export interface Outlet {
   id: string
   slug: string
   name: string
+  currency: string
 }
 
 export interface Table {
@@ -54,21 +55,36 @@ export interface MenuItem {
   nameAr: string
   descEn?: string
   descAr?: string
+  description?: string
   price: number
   category: string
   available: boolean
+  special?: boolean
   imageUrl?: string
 }
 
+export interface OrderItem {
+  id:        string
+  menuItem:  MenuItem
+  quantity:  number
+  unitPrice: number
+  notes?:    string
+}
+
 export interface Order {
-  id: string
-  status: OrderStatus
-  tableId: string
-  table?: Table
-  items: Array<{ id: string; menuItem: MenuItem; quantity: number; notes?: string }>
-  total: number
-  createdAt: string
-  updatedAt: string
+  id:         string
+  orderNum:   string
+  status:     OrderStatus
+  type:       string
+  tableId?:   string
+  table?:     Table & { number: number }
+  guestName?: string
+  guestPhone?: string
+  notes?:     string
+  items:      OrderItem[]
+  total:      number
+  createdAt:  string
+  updatedAt:  string
 }
 
 // ── API helpers ────────────────────────────────────────────────────────────
@@ -89,5 +105,5 @@ export const ordersApi = {
 }
 
 export const reservationsApi = {
-  create: (body: unknown): Promise<{ id: string }> => apiFetch('/reservations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
+  create: (body: unknown): Promise<{ id: string; refNum: string }> => apiFetch('/reservations', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }),
 }
