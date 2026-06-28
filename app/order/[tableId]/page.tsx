@@ -40,62 +40,37 @@ export default function OrderPage() {
 
   useEffect(() => {
     async function load() {
-      console.log('[order] load() start, tableId=', tableId)
-
       const urlParams = new URLSearchParams(window.location.search)
       const scanToken = urlParams.get('t')
       const sessionKey = `mz-order-${tableId}`
       const MAX_AGE = 8 * 60 * 60 * 1000
 
-      console.log('[order] scanToken=', scanToken, 'sessionKey=', sessionKey)
-
       if (scanToken) {
         sessionStorage.setItem(sessionKey, scanToken)
-        console.log('[order] stored token in sessionStorage')
       }
 
       const stored = sessionStorage.getItem(sessionKey)
-      const age = stored ? Date.now() - Number(stored) : null
-      console.log('[order] stored=', stored, 'age(ms)=', age, 'MAX_AGE=', MAX_AGE)
 
       if (!stored || Date.now() - Number(stored) > MAX_AGE) {
-        console.log('[order] no valid session → showing no-session screen')
         setStep('no-session')
         return
       }
 
       const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000'
-      console.log('[order] NEXT_PUBLIC_API_URL=', API)
 
       try {
-        console.log('[order] fetching table:', `${API}/tables/by-uuid/${tableId}`)
         const tRes = await fetch(`${API}/tables/by-uuid/${tableId}`)
-        console.log('[order] table response status=', tRes.status, tRes.statusText)
-        if (!tRes.ok) {
-          const body = await tRes.text()
-          console.error('[order] table fetch failed, body=', body)
-          throw new Error('Table not found')
-        }
+        if (!tRes.ok) throw new Error('Table not found')
         const t: Table & { outlet: Pick<Outlet, 'id' | 'name' | 'slug' | 'currency'> } = await tRes.json()
-        console.log('[order] table=', t)
         setTable(t)
 
-        console.log('[order] fetching menu:', `${API}/menu?outlet=${t.outlet.slug}`)
         const mRes = await fetch(`${API}/menu?outlet=${t.outlet.slug}`)
-        console.log('[order] menu response status=', mRes.status, mRes.statusText)
-        if (!mRes.ok) {
-          const body = await mRes.text()
-          console.error('[order] menu fetch failed, body=', body)
-          throw new Error('Menu unavailable')
-        }
+        if (!mRes.ok) throw new Error('Menu unavailable')
         const items: MenuItem[] = await mRes.json()
-        console.log('[order] menu items count=', items.length)
         setMenu(Array.isArray(items) ? items.filter(i => i.available) : [])
-        console.log('[order] setting step → menu')
         setStep('menu')
       } catch (err) {
-        console.error('[order] caught error:', err)
-        setErrorMsg('Table not found or menu unavailable.')
+        setErrorMsg(err instanceof Error ? err.message : 'Table not found or menu unavailable.')
         setStep('error')
       }
     }
