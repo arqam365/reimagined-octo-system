@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { restaurant } from '@/lib/restaurant'
 
 export default function Footer() {
   return (
@@ -25,7 +26,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="font-ui text-xs tracking-[0.2em] uppercase text-white/40 hover:text-white/70 transition-colors"
           >
-            46.9K on Instagram &nbsp;@mazencito.ksa
+            Instagram &nbsp;@mazencito.ksa
           </a>
         </div>
 
@@ -65,32 +66,27 @@ export default function Footer() {
               <div>
                 <p className="font-ui text-[10px] tracking-widest uppercase text-white/20 mb-1">Address</p>
                 <p className="font-ui text-xs text-white/50 leading-relaxed">
-                  Ash Shati, Atelier Lavie<br />
-                  Jeddah, Saudi Arabia
+                  {restaurant.addressLines[0]}<br />
+                  {restaurant.addressLines[1]}
                 </p>
               </div>
               <div>
                 <p className="font-ui text-[10px] tracking-widest uppercase text-white/20 mb-1">Phone</p>
-                <a
-                  href="tel:+966555674383"
-                  className="block font-ui text-xs text-white/50 hover:text-white/80 transition-colors"
-                >
-                  +966 55 567 4383
-                </a>
-                <a
-                  href="tel:+966554430556"
-                  className="block font-ui text-xs text-white/50 hover:text-white/80 transition-colors mt-0.5"
-                >
-                  +966 55 443 0556
-                </a>
+                {restaurant.phones.map((p) => (
+                  <a
+                    key={p.tel}
+                    href={`tel:${p.tel}`}
+                    className="block font-ui text-xs text-white/50 hover:text-white/80 transition-colors mt-0.5"
+                  >
+                    {p.display}
+                  </a>
+                ))}
+                <p className="font-ui text-xs text-white/30 mt-1">Reservations only</p>
               </div>
               <div>
                 <p className="font-ui text-[10px] tracking-widest uppercase text-white/20 mb-1">Hours</p>
                 <p className="font-ui text-xs text-white/50">
-                  Daily 12:00 PM &ndash; 1:00 AM
-                </p>
-                <p className="font-ui text-xs text-white/30 mt-0.5">
-                  Weekends till 2:00 AM
+                  Daily {restaurant.hours}
                 </p>
               </div>
             </div>
@@ -109,14 +105,12 @@ export default function Footer() {
               >
                 Reserve a Table
               </Link>
-              <a
-                href="https://wa.me/966555674383"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/#order"
                 className="w-full text-center border border-white/15 text-white/50 font-ui text-xs tracking-[0.2em] uppercase px-5 py-3.5 hover:border-white/30 hover:text-white/70 transition-colors min-h-[44px] flex items-center justify-center"
               >
-                Chat on WhatsApp
-              </a>
+                Order Delivery
+              </Link>
             </div>
           </div>
         </div>
@@ -124,7 +118,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="font-ui text-[10px] tracking-[0.2em] text-white/20">
-            &copy; 2025 Mazencito Pizzeria &nbsp;&middot;&nbsp; Ash Shati, Atelier Lavie, Jeddah
+            &copy; 2025 Mazencito Pizzeria &nbsp;&middot;&nbsp; {restaurant.addressOneLine}
           </p>
           <a
             href="https://revzion.in"

@@ -202,7 +202,7 @@ export default function TrackOrder() {
       {/* Footer */}
       <div className="text-center pb-12">
         <div className="w-8 h-px bg-white/10 mx-auto mb-4" />
-        <p className="font-ui text-[9px] tracking-[0.4em] uppercase text-white/15">Mazencito Pizzeria · Ash Shati · Jeddah</p>
+        <p className="font-ui text-[9px] tracking-[0.4em] uppercase text-white/15">Mazencito Pizzeria · Jeddah</p>
       </div>
     </div>
   )
