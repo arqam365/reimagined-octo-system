@@ -101,7 +101,7 @@ export default function NotFound() {
         {/* Tech support */}
         <div className="mt-16 flex flex-col items-center gap-4">
           <p className="font-ui text-[9px] tracking-[0.35em] uppercase text-white/15">
-            Mazencito Pizzeria &nbsp;&middot;&nbsp; Ash Shati, Atelier Lavie &nbsp;&middot;&nbsp; Jeddah
+            Mazencito Pizzeria &nbsp;&middot;&nbsp; King Abdulaziz Branch Road &nbsp;&middot;&nbsp; Jeddah
           </p>
           <div className="h-px w-12 bg-white/8" />
           <p className="font-ui text-[9px] tracking-[0.25em] uppercase text-white/20">

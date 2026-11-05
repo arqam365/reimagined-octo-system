@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
+import { restaurant } from '@/lib/restaurant'
 
 interface MenuItem {
   id: string
@@ -104,18 +105,6 @@ export default function MenuClient({ items }: { items: MenuItem[] }) {
               )}
             </div>
 
-            {/* Tuesday Pasta Day note */}
-            {activeCategory === 'PASTA' && (
-              <div className="mt-10 pt-8 border-t border-[#0A0806]/8">
-                <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#CC2229] mb-2">
-                  Every Tuesday
-                </p>
-                <p className="elegant-text text-2xl font-bold text-[#0A0806] mb-1">Pasta Day</p>
-                <p className="font-body text-[#0A0806]/55 text-sm">
-                  Buy one pasta, get the second free. Dine-in and delivery.
-                </p>
-              </div>
-            )}
           </div>
         </section>
 
@@ -140,30 +129,27 @@ export default function MenuClient({ items }: { items: MenuItem[] }) {
                 >
                   Make a Reservation
                 </Link>
-                <a
-                  href="https://wa.me/966555674383"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-ui text-xs tracking-[0.3em] uppercase border border-white/20 text-white px-7 py-4 hover:bg-white/5 transition-colors text-center min-h-[44px] flex items-center justify-center"
-                >
-                  Order via WhatsApp
-                </a>
+
               </div>
             </div>
 
             {/* Delivery platforms */}
             <div className="border-t border-white/8 pt-10">
               <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-white/20 mb-5">
-                Also available on delivery platforms
+                Order delivery
               </p>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                <span className="elegant-text text-xl text-white/40 font-bold">HungerStation</span>
-                <span className="text-white/15 font-thin">/</span>
-                <span className="elegant-text text-xl text-white/40 font-bold">Keeta</span>
-                <span className="text-white/15 font-thin">/</span>
-                <span className="elegant-text text-xl text-white/40 font-bold">Jahez</span>
-                <span className="text-white/15 font-thin">/</span>
-                <span className="elegant-text text-xl text-white/40 font-bold">Lugmety</span>
+                {restaurant.delivery.map(({ name, url }) => (
+                  <a
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="elegant-text text-xl text-white/60 hover:text-white font-bold transition-colors min-h-[44px] flex items-center"
+                  >
+                    {name}
+                  </a>
+                ))}
               </div>
             </div>
           </div>

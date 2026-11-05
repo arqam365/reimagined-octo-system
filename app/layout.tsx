@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: '%s | Mazencito Pizzeria',
   },
   description:
-    'Experience authentic Italian pizza and cuisine at Mazencito Pizzeria, Ash Shati, Atelier Lavie, Jeddah. Open daily 12PM–1AM, weekends till 2AM.',
+    'Experience authentic Italian pizza and cuisine at Mazencito Pizzeria, King Abdulaziz Branch Road, Jeddah. Open daily 1PM–1AM.',
   icons: {
     icon: [
       { url: '/logo.png', type: 'image/png' },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Mazencito Pizzeria — Authentic Italian in Jeddah',
-    description: 'Wood-fired Neapolitan pizza and Italian cuisine. Ash Shati, Atelier Lavie, Jeddah.',
+    description: 'Wood-fired Neapolitan pizza and Italian cuisine. King Abdulaziz Branch Road, Jeddah.',
     images: [{ url: '/logo.png' }],
     type: 'website',
   },

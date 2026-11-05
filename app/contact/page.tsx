@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import { restaurant } from '@/lib/restaurant'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -63,31 +64,28 @@ export default function Contact() {
               <div className="py-8 sm:pr-12">
                 <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Address</p>
                 <p className="font-body text-[#0A0806] text-base">
-                  Ash Shati, Atelier Lavie<br />
-                  Jeddah, Saudi Arabia
+                  {restaurant.addressLines[0]}<br />
+                  {restaurant.addressLines[1]}
                 </p>
               </div>
 
               <div className="py-8 sm:px-12">
                 <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Phone</p>
-                <a
-                  href="tel:+966555674383"
-                  className="font-body text-[#0A0806] hover:text-[#CC2229] transition-colors min-h-[44px] flex items-center"
-                >
-                  +966 55 567 4383
-                </a>
-                <a
-                  href="tel:+966554430556"
-                  className="font-body text-[#0A0806] hover:text-[#CC2229] transition-colors min-h-[44px] flex items-center"
-                >
-                  +966 55 443 0556
-                </a>
+                {restaurant.phones.map((p) => (
+                  <a
+                    key={p.tel}
+                    href={`tel:${p.tel}`}
+                    className="font-body text-[#0A0806] hover:text-[#CC2229] transition-colors min-h-[44px] flex items-center"
+                  >
+                    {p.display}
+                  </a>
+                ))}
+                <p className="font-ui text-[10px] text-[#0A0806]/40 tracking-wide">Reservations only &mdash; no phone or WhatsApp orders</p>
               </div>
 
               <div className="py-8 sm:pl-12">
                 <p className="font-ui text-[10px] tracking-[0.4em] uppercase text-[#0A0806]/40 mb-2">Hours</p>
-                <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
-                <p className="font-body text-[#0A0806]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
+                <p className="font-body text-[#0A0806]">Open Daily &mdash; {restaurant.hours}</p>
               </div>
             </div>
           </div>
@@ -193,12 +191,12 @@ export default function Contact() {
 
                 <div className="overflow-hidden h-[400px] mb-6">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.872!2d39.1726!3d21.6226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d14e7e5c5555%3A0x0!2sMazencito%20Pizzeria!5e0!3m2!1sen!2ssa!4v1716900000000"
+                    src="https://www.google.com/maps?q=Mazencito+Pizzeria+King+Abdulaziz+Branch+Road+Jeddah&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     loading="lazy"
-                    title="Mazencito Pizzeria — Ash Shati, Atelier Lavie, Jeddah"
+                    title="Mazencito Pizzeria — King Abdulaziz Branch Road, Jeddah"
                   />
                 </div>
 
@@ -206,10 +204,9 @@ export default function Contact() {
                   <p className="font-ui text-[10px] tracking-[0.3em] uppercase text-[#0A0806]/40 mb-2">
                     Opening Hours
                   </p>
-                  <p className="font-body text-[#0A0806]">Open Daily &mdash; 12:00 PM &ndash; 1:00 AM</p>
-                  <p className="font-body text-[#0A0806]/60 text-sm mt-0.5">Weekends till 2:00 AM</p>
+                  <p className="font-body text-[#0A0806]">Open Daily &mdash; {restaurant.hours}</p>
                   <p className="font-ui text-[10px] text-[#0A0806]/35 tracking-wide mt-3">
-                    Ash Shati, Atelier Lavie, Jeddah, Saudi Arabia
+                    {restaurant.addressLines.join(', ')}
                   </p>
                 </div>
               </div>
@@ -217,33 +214,6 @@ export default function Contact() {
           </div>
         </section>
 
-        {/* WhatsApp strip */}
-        <section className="bg-[#CC2229] py-20">
-          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
-              <div>
-                <p className="font-ui text-[10px] tracking-[0.5em] uppercase text-white/30 mb-4">
-                  Instant Support
-                </p>
-                <h2
-                  className="elegant-text font-bold text-white leading-none"
-                  style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-                >
-                  Chat with us<br />
-                  on WhatsApp
-                </h2>
-              </div>
-              <a
-                href="https://wa.me/966555674383"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-ui text-xs tracking-[0.3em] uppercase border border-white/30 text-white px-8 py-4 hover:bg-white/10 transition-colors min-h-[44px] flex items-center justify-center sm:flex-shrink-0"
-              >
-                Open WhatsApp
-              </a>
-            </div>
-          </div>
-        </section>
 
       </main>
       <Footer />

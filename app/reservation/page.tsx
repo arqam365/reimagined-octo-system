@@ -20,7 +20,7 @@ import {
 type Step = 'form' | 'availability' | 'submitting' | 'success'
 type BookingType = 'table' | 'catering'
 
-const LUNCH_SLOTS  = ['12:00 PM', '1:00 PM', '2:00 PM']
+const LUNCH_SLOTS  = ['1:00 PM', '2:00 PM']
 const DINNER_SLOTS = ['6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM']
 const UNAVAILABLE_SLOTS = ['1:00 PM', '8:00 PM']
 
@@ -598,14 +598,14 @@ export default function Reservation() {
                   <MapPin className="w-5 h-5 text-[#CC2229] flex-shrink-0" />
                   <div>
                     <p className="font-ui text-xs font-bold text-[#0A0806]">Location</p>
-                    <p className="font-ui text-xs text-[#0A0806]/60">Ash Shati, Atelier Lavie</p>
+                    <p className="font-ui text-xs text-[#0A0806]/60">King Abdulaziz Branch Road</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 bg-white border border-[#0A0806]/10 p-4">
                   <Clock className="w-5 h-5 text-[#CC2229] flex-shrink-0" />
                   <div>
                     <p className="font-ui text-xs font-bold text-[#0A0806]">Hours</p>
-                    <p className="font-ui text-xs text-[#0A0806]/60">Daily: 12:00 PM &ndash; 1:00 AM</p>
+                    <p className="font-ui text-xs text-[#0A0806]/60">Daily: 1:00 PM &ndash; 1:00 AM</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 bg-white border border-[#0A0806]/10 p-4">
